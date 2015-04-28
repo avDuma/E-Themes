@@ -1,0 +1,15 @@
+/*2342342*/
+program { name: "sel"; /* when the menu item is actually selected */
+	    signal: "e,state,selected";
+	    source: "e";
+	    action: STATE_SET "selected" 0.0;
+	    transition: LINEAR 0.2;
+	    target: "e.swallow.content";
+	 }
+	 program { name: "unsel"; /* on de-select */
+	    signal: "e,state,unselected";
+	    source: "e";
+	    action: STATE_SET "default" 0.0;
+	    transition: LINEAR 0.3;
+	    target: "e.swallow.content";
+	 }

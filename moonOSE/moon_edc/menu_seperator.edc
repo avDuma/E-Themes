@@ -1,0 +1,25 @@
+/*This file contains the code to have the seperator load on the menu*/
+      part {
+	 name:          "separator";
+	 mouse_events:  0;
+	 description {
+	    state:    "default" 0.0;
+	    min:      20 2;
+	    rel1 {
+	       relative: 0.0  0.0;
+	       offset:   2    2;
+	    }
+	    rel2 {
+	       relative: 1.0  1.0;
+	       offset:   -3   -3;
+	    }
+	    image {
+	       normal: "e17_menu_separator.png";
+	       border:     3 3 0 0;
+	    }
+	    fill {
+	       smooth: 0;
+	    }
+	 }
+      }
+

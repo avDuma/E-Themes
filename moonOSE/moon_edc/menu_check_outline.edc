@@ -1,0 +1,22 @@
+/*This part checks and hows that something is not listed/highlighted
+seek the image to have better understanding*/
+part {
+	 name:          "outline";
+	 mouse_events:  0;
+	 description {
+	    state:    "default" 0.0;
+	    min:      16 16;
+	    max:      16 16;
+	    rel1 {
+	       relative: 0.0  0.0;
+	       offset:   1    1;
+	    }
+	    rel2 {
+	       relative: 1.0  1.0;
+	       offset:   -2   -2;
+	    }
+	    image {
+	       normal: "e17_menu_check1.png";
+	    }
+	 }
+      }

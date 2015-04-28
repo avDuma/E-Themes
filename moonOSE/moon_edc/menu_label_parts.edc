@@ -1,0 +1,4 @@
+/*sadfsdfs*/
+parts {
+	#include "menu_label_part.edc"
+}

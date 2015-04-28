@@ -1,0 +1,305 @@
+group { name: "e/widgets/check";
+      images {
+	 image: "check_base.png" COMP;
+	 image: "check_on.png" COMP;
+	 image: "check_sel.png" COMP;
+      }
+      parts {
+	 part { name: "base";
+	    mouse_events: 0;
+	    scale: 1;
+	    description { state: "default" 0.0;
+	       min: 16 16;
+	       max: 16 16;
+	       align: 0.0 0.5;
+	       fixed: 1 1;
+	       rel1 {
+		  relative: 0.0  0.0;
+		  offset:   2    2;
+	       }
+	       rel2 {
+		  relative: 0.0  1.0;
+		  offset:   2   -3;
+	       }
+	       image.normal: "check_base.png";
+	    }
+	 }
+	 part { name: "mark";
+	    mouse_events: 0;
+	    clip_to: "mark_hold";
+	    description { state: "default" 0.0;
+	       rel1.to: "mark_hold";
+	       rel2.to: "mark_hold";
+	       image.normal: "check_on.png";
+	    }
+	    description { state: "selected" 0.0;
+	       inherit: "default" 0.0;
+	       image.normal: "check_sel.png";
+	    }
+	 }
+	 part { name: "mark_hold";
+	    type: RECT;
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       visible: 0;
+	       color: 255 255 255 0;
+	       rel1 {
+		  to: "base";
+		  offset: -5 -5;
+	       }
+	       rel2 {
+		  to: "base";
+		  offset: 4 4;
+	       }
+	    }
+	    description { state: "on" 0.0;
+	       inherit: "default" 0.0;
+	       visible: 1;
+	       color: 255 255 255 255;
+	       rel1.offset: 0 0;
+	       rel2.offset: -1 -1;
+	    }
+	 }
+	 part { name: "e.text.label";
+	    type: TEXT;
+	    mouse_events: 0;
+	    scale: 1;
+	    description { state: "default" 0.0;
+	       min:      16 16;
+	       rel1 {
+		  to_x:     "base";
+		  relative: 1.0  0.0;
+		  offset:   2 2;
+	       }
+	       rel2 {
+		  relative: 1.0  1.0;
+		  offset:   -2 -2;
+	       }
+	       color: 0 0 0 255;
+	       color_class: "check_text";
+	       text {
+		  font:     "Sans";
+		  size:     10;
+		  min:      1 1;
+		  align:    0.0 0.5;
+		  text_class: "check_button";
+	       }
+	    }
+	    description { state:    "disabled" 0.0;
+	       inherit:  "default" 0.0;
+	       color:    0   0   0 128;
+	       color_class: "check_text_disabled";
+	    }
+	 }
+	 part { name: "event";
+	    type: RECT;
+            ignore_flags: ON_HOLD;
+	    description { state: "default" 0.0;
+	       color: 0 0 0 0;
+	    }
+	    description { state: "disabled" 0.0;
+	       inherit: "default" 0.0;
+	       visible: 0;
+	    }
+	 }
+      }
+      programs {
+	 program { name: "on"; /* if the checkmark is to be displayed */
+	    signal: "e,state,checked";
+	    source: "e";
+	    action: STATE_SET "on" 0.0;
+	    transition: LINEAR 0.15;
+	    target: "mark_hold";
+	 }
+	 program { name: "off"; /* check mark is not to be displayed */
+	    signal: "e,state,unchecked";
+	    source: "e";
+	    action: STATE_SET "default" 0.0;
+	    transition: LINEAR 0.2;
+	    target: "mark_hold";
+	 }
+	 program { name: "click";
+	    signal: "mouse,up,1";
+	    source: "event";
+	    action: SIGNAL_EMIT "e,action,toggle" "";
+	 }
+      }
+   }
+   group { name: "e/widgets/check_icon";
+      images {
+	 image: "check_base.png" COMP;
+	 image: "check_on.png" COMP;
+	 image: "check_sel.png" COMP;
+      }
+      parts {
+	 part { name: "base";
+	    mouse_events: 0;
+	    scale: 1;
+	    description { state: "default" 0.0;
+	       min: 16 16;
+	       max: 16 16;
+	       align: 0.0 0.5;
+	       fixed: 1 1;
+	       rel1 {
+		  relative: 0.0  0.0;
+		  offset:   2    2;
+	       }
+	       rel2 {
+		  relative: 0.0  1.0;
+		  offset:   2   -3;
+	       }
+	       image.normal: "check_base.png";
+	    }
+	 }
+	 part { name: "mark";
+	    mouse_events: 0;
+	    clip_to: "mark_hold";
+	    description { state: "default" 0.0;
+	       rel1.to: "mark_hold";
+	       rel2.to: "mark_hold";
+	       image.normal: "check_on.png";
+	    }
+	    description { state: "selected" 0.0;
+	       inherit: "default" 0.0;
+	       image.normal: "check_sel.png";
+	    }
+	 }
+	 part { name: "mark_hold";
+	    type: RECT;
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       visible: 0;
+	       color: 255 255 255 0;
+	       rel1 {
+		  to: "base";
+		  offset: -5 -5;
+	       }
+	       rel2 {
+		  to: "base";
+		  offset: 4 4;
+	       }
+	    }
+	    description { state: "on" 0.0;
+	       inherit: "default" 0.0;
+	       visible: 1;
+	       color: 255 255 255 255;
+	       rel1.offset: 0 0;
+	       rel2.offset: -1 -1;
+	    }
+	 }
+	 part { name: "e.swallow.icon";
+	    type: SWALLOW;
+	    clip_to: "icon_clip";
+	    description { state: "default" 0.0;
+	       min: 16 16;
+	       rel1 {
+		  to_x: "base";
+		  relative: 1.0  0.0;
+		  offset: 2 2;
+	       }
+	       rel2 {
+		  relative: 1.0  1.0;
+		  offset: -2 -2;
+	       }
+	    }
+	    description { state: "label_visible" 0.0;
+	       inherit: "default" 0.0;
+	       min: 16 16;
+	       rel2 {
+		  to_y: "base";
+		  relative: 1.0  0.0;
+		  offset:   -2 -2;
+	       }
+	    }
+	 }
+	 part { name: "icon_clip";
+	    type: RECT;
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       color: 255 255 255 255;
+	    }
+	 }
+	 part { name: "label_clip";
+	    type: RECT;
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       visible: 0;
+	    }
+	    description { state: "label_visible" 0.0;
+	       visible: 1;
+	    }
+	 }
+	 part { name: "e.text.label";
+	    type: TEXT;
+	    mouse_events: 0;
+	    scale: 1;
+	    clip_to: "label_clip";
+	    description { state: "default" 0.0;
+	       min: 16 16;
+	       rel1 {
+		  to_x: "base";
+		  relative: 1.0  0.0;
+		  offset: 2 2;
+	       }
+	       rel2 {
+		  relative: 1.0  1.0;
+		  offset: -2 -2;
+	       }
+	       color: 0 0 0 255;
+	       color_class: "check_text";
+	       text {
+		  font: "Sans";
+		  size: 10;
+		  min: 1 1;
+		  align: 0.5 0.5;
+		  text_class: "check_button";
+	       }
+	    }
+	    description { state:    "disabled" 0.0;
+	       inherit:  "default" 0.0;
+	       color:    0   0   0 128;
+	       color_class: "check_text_disabled";
+	    }
+	 }
+	 part { name: "event";
+	    type: RECT;
+            ignore_flags: ON_HOLD;
+	    description { state: "default" 0.0;
+	       color: 0 0 0 0;
+	    }
+	    description { state: "disabled" 0.0;
+	       inherit: "default" 0.0;
+	       visible: 0;
+	    }
+	 }
+      }
+      programs {
+	 program { name: "on"; /* if the checkmark is to be displayed */
+	    signal: "e,state,checked";
+	    source: "e";
+	    action: STATE_SET "on" 0.0;
+	    transition: LINEAR 0.15;
+	    target: "mark_hold";
+	 }
+	 program { name: "off"; /* check mark is not to be displayed */
+	    signal: "e,state,unchecked";
+	    source: "e";
+	    action: STATE_SET "default" 0.0;
+	    transition: LINEAR 0.2;
+	    target: "mark_hold";
+	 }
+	 program { name: "click";
+	    signal: "mouse,up,1";
+	    source: "event";
+	    action: SIGNAL_EMIT "e,action,toggle" "";
+	 }
+	 program { name: "label_on";
+	    signal: "e,state,labeled";
+	    source: "e";
+	    action: STATE_SET "label_visible" 0.0;
+	    target: "e.swallow.icon";
+	    target: "label_clip";
+	 }
+      }
+   }
+

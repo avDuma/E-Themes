@@ -1,0 +1,4 @@
+/*This file just contains the link to the actual files */
+parts {
+	#include "menu_submenu_bg_swallow.edc"
+}

@@ -1,0 +1,90 @@
+#ifdef E17_PROFILE
+# if E17_PROFILE == LOWRES_PDA
+#  define SM "sm_"
+# elif E17_PROFILE == MEDIUMRES_PDA
+#  define SM "sm_"
+# elif E17_PROFILE == HIRES_PDA
+#  define SM "sm_"
+# elif E17_PROFILE == SLOW_PC
+#  define SM "sm_"
+# elif E17_PROFILE == MEDIUM_PC
+#  define SM
+# elif E17_PROFILE == FAST_PC
+#  define SM
+# endif
+#else
+# define SM
+#endif
+
+fonts {
+   font: "Vera.ttf"   "Edje-Vera";
+   font: "VeraBd.ttf" "Edje-Vera-Bold";
+}
+
+#define FONT_SIZE 11
+#if 0
+spectra {
+  spectrum {
+    name: "black_to_trans";
+    color: 0 0 0 255 1;
+    color: 0 0 0 0 1;
+  }
+   spectrum 
+     {
+	name: "rubberband";
+	color: 255 231 157 127 1;
+	color: 255 249 231 127 1;
+     }
+}
+#endif
+
+collections {
+#include "moon_edc/splash.edc"
+#include "moon_edc/background.edc"
+#include "moon_edc/battery.edc"
+#include "moon_edc/border.edc"
+#include "moon_edc/clock.edc"
+#include "moon_edc/gadman.edc"
+#include "moon_edc/ibar.edc"
+#include "moon_edc/menu_group.edc"
+#include "moon_edc/images.edc"
+#include "moon_edc/pager.edc"
+#include "moon_edc/resize_move.edc"
+#include "moon_edc/temperature.edc"
+#include "moon_edc/cpufreq.edc"
+#include "moon_edc/ibox.edc"
+#include "moon_edc/start.edc"
+#include "moon_edc/winlist.edc"
+#include "moon_edc/transitions.edc"
+#include "moon_edc/dialog.edc"
+#include "moon_edc/configure.edc"
+#include "moon_edc/icons.edc"
+#include "moon_edc/mouse_cursor.edc"
+#include "moon_edc/about.edc"
+#include "moon_edc/about_theme.edc"
+#include "moon_edc/entry.edc"
+#include "moon_edc/fileman.edc"
+#include "moon_edc/check.edc"
+#include "moon_edc/radio.edc"
+#include "moon_edc/frame.edc"
+#include "moon_edc/button.edc"
+#include "moon_edc/label.edc"
+#include "moon_edc/scrollframe.edc"
+#include "moon_edc/ilist.edc"
+#include "moon_edc/slider.edc"
+#include "moon_edc/exebuf.edc"
+#include "moon_edc/desklock.edc"
+#include "moon_edc/textblock.edc"
+#include "moon_edc/shelf.edc"
+#include "moon_edc/preview.edc"
+#include "moon_edc/cslider.edc"
+#include "moon_edc/spectrum.edc"
+#include "moon_edc/color_well.edc"
+#include "moon_edc/sys.edc"
+#include "moon_edc/syscon.edc"
+#include "moon_edc/deskpreview.edc"
+#include "moon_edc/fontpreview.edc"
+#include "moon_edc/wizard.edc"
+#include "moon_edc/toolbar.edc"
+#include "moon_edc/slidesel.edc"
+}

@@ -1,0 +1,14 @@
+/* This file contains all the images needed by the theme*/
+images {
+	/*menu images*/
+	image: "e17_menu_bg.png" COMP;
+	image: "e17_menu_separator.png" COMP;
+	/*image: "e17_menu_check0.png" COMP;*/
+	image: "e17_menu_check1.png" COMP;
+	image: "e17_menu_check2.png" COMP;
+	image: "e17_titlebar2.png" COMP;
+	image: "e17_menu_arrow.png" COMP;
+	image: "e17_menu_arrow_over.png" COMP;
+	image: "e17_menu_overlay.png" COMP;
+
+}

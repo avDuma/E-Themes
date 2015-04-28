@@ -1,0 +1,243 @@
+   group { name: "e/modules/cpufreq/main";
+      images {
+	 image: "tacho_bg.png" COMP;
+	 image: "tacho_fg.png" COMP;
+	 image: "tacho_dial_00.png" COMP;
+	 image: "tacho_dial_01.png" COMP;
+	 image: "tacho_dial_02.png" COMP;
+	 image: "tacho_dial_03.png" COMP;
+	 image: "tacho_dial_04.png" COMP;
+	 image: "tacho_dial_05.png" COMP;
+	 image: "tacho_dial_06.png" COMP;
+	 image: "tacho_dial_07.png" COMP;
+	 image: "tacho_dial_08.png" COMP;
+	 image: "tacho_dial_09.png" COMP;
+	 image: "tacho_dial_10.png" COMP;
+	 image: "tacho_dial_11.png" COMP;
+	 image: "tacho_dial_12.png" COMP;
+	 image: "tacho_dial_13.png" COMP;
+	 image: "tacho_dial_14.png" COMP;
+	 image: "tacho_dial_15.png" COMP;
+      }
+      min: 16 16;
+      max:  128 128;
+      script {
+	 public available_frequencies;
+	 public available_governors;
+	 
+       public message(Msg_Type:type, id, ...) {
+	  if ((type == MSG_INT_SET) && (id == 1)) {
+	     while (count(available_frequencies) > 0) {
+		remove(available_frequencies, 0);
+	     }
+	     for (new i = 2; i < numargs(); i++) {
+		append_int(available_frequencies, getarg(i));
+	     }
+	  } else if ((type == MSG_STRING_SET) && (id == 2)) {
+	     new text[100];
+	     
+	     while (count(available_governors) > 0) {
+		remove(available_governors, 0);
+	     }
+	     
+	     for (new i = 2; i < numargs(); i++) {
+		snprintf(text, 100, "%s", getarg(i));
+		append_str(available_governors, text);
+	     }
+	  } else if ((type == MSG_INT_SET) && (id == 3)) {
+	     new f = getarg(2);
+	     new use_buttons = getarg(3);
+	     new Float:freq, Float:min_freq, Float:max_freq;
+	     new text[100];
+	     
+	     freq = f;
+	     min_freq = fetch_int(available_frequencies, 0);
+	     max_freq = fetch_int(available_frequencies,
+				  count(available_frequencies) - 1);
+	     
+	     freq = (freq - min_freq) / (max_freq - min_freq);
+	     set_state(PART:"meter", "default", freq);
+	     
+	     if (f < 1000000) {
+		snprintf(text, 100, "%i", f / 1000);
+	     } else {
+		snprintf(text, 100, "%i.%i", f / 1000000,
+			 (f % 1000000) / 100000);
+	     }
+	     set_text(PART:"readout", text);
+	     
+	     if (use_buttons == 0) {
+//		set_state(PART:"increase_button", "inactive", 0.0);
+//		set_state(PART:"decrease_button", "inactive", 0.0);
+//		set_state(PART:"increase", "inactive", 0.0);
+//		set_state(PART:"decrease", "inactive", 0.0);
+	     } else {
+//		set_state(PART:"increase_button", "default", 0.0);
+//		set_state(PART:"decrease_button", "default", 0.0);
+//		set_state(PART:"increase", "default", 0.0);
+//		set_state(PART:"decrease", "default", 0.0);
+	     }
+	  } else if((type == MSG_STRING) && (id == 4)) {
+	     new text[100];
+	     snprintf(text, 100, "%s", getarg(2));
+	  }
+       }
+      }
+      parts {
+	 part { name: "fade_clip";
+	    type: RECT;
+	    mouse_events:   0;
+	    description { state: "default" 0.0;
+	       color: 255 255 255 255;
+	    }
+	    description { state: "faded" 0.0;
+	       color: 255 255 255 128;
+	    }
+	 }
+	 part { name: "base";
+	    clip_to: "fade_clip";
+	    description { state: "default" 0.0;
+	       aspect: 1.0 1.0;
+	       aspect_preference: BOTH;
+	       image.normal: "tacho_bg.png";
+	    }
+	 }
+	 part {
+	    name: "readout";
+	    type: TEXT;
+//	    effect: OUTLINE_SOFT_SHADOW;
+	    mouse_events: 0;
+	    clip_to: "fade_clip";
+	    description {
+	       state: "default" 0.0;
+	       rel1 {
+		  relative: 0.6 0.7;
+		  offset: 0 0;
+	       }
+	       rel2 {
+		  relative: 0.6 0.7;
+		  offset: 0 0;
+	       }
+	       color: 255 255 255 255;
+	       color2: 0 0 0 128;
+	       color3: 0 0 0 32;
+	       color_class: "module_label";
+	       text {
+		  text: "??? Ghz";
+		  font: "Sans:style=Bold,Edje-Vera-Bold";
+		  size: 6;
+		  align: 0.5 0.5;
+		  min: 1 1;
+		  text_class: "module_small";
+	       }
+	    }
+	 }
+	 part { name: "meter";
+	    clip_to: "fade_clip";
+	    mouse_events: 0;
+	    description { state: "default" 0.0000; image.normal: "tacho_dial_00.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.0666; image.normal: "tacho_dial_01.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.1333; image.normal: "tacho_dial_02.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.2000; image.normal: "tacho_dial_03.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.2666; image.normal: "tacho_dial_04.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.3333; image.normal: "tacho_dial_05.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.4000; image.normal: "tacho_dial_06.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.4666; image.normal: "tacho_dial_07.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.5333; image.normal: "tacho_dial_08.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.6000; image.normal: "tacho_dial_09.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.6666; image.normal: "tacho_dial_10.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.7333; image.normal: "tacho_dial_11.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.8000; image.normal: "tacho_dial_12.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.8666; image.normal: "tacho_dial_13.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 0.9333; image.normal: "tacho_dial_14.png"; rel1.to: "base"; rel2.to: "base"; }
+	    description { state: "default" 1.0000; image.normal: "tacho_dial_15.png"; rel1.to: "base"; rel2.to: "base"; }
+	 }
+	 part { name: "over";
+	    clip_to: "fade_clip";
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       rel1.to: "base";
+	       rel2.to: "base";
+	       image.normal: "tacho_fg.png";
+	    }
+	 }
+      }
+      programs {
+/*	 
+	 program {
+	    name: "next_governor";
+	    signal: "mouse,down,1";
+	    source: "cpu";
+	    action: SIGNAL_EMIT "e,action,governor,next" "";
+	 }
+	 program {
+	    name: "next_governor2";
+	    signal: "mouse,down,1";
+	    source: "cpu";
+	    action: STATE_SET "clicked" 0.0;
+	    target: "cpu";
+	 }
+	 program {
+	    name: "next_governor3";
+	    signal: "mouse,up,1";
+	    source: "cpu";
+	    action: STATE_SET "default" 0.0;
+	    target: "cpu";
+	 }
+	 program {
+	    name: "increase_frequency";
+	    signal: "mouse,down,1";
+	    source: "increase";
+	    action: SIGNAL_EMIT "e,action,frequency,increase" "";
+	 }
+	 program {
+	    name: "increase_frequency2";
+	    signal: "mouse,down,1";
+	    source: "increase";
+	    action: STATE_SET "clicked" 0.0;
+	    target: "increase_button";
+	 }
+	 program {
+	    name: "increase_frequency3";
+	    signal: "mouse,up,1";
+	    source: "increase";
+	    action: STATE_SET "default" 0.0;
+	    target: "increase_button";
+	 }
+	 program {
+	    name: "decrease_frequency";
+	    signal: "mouse,down,1";
+	    source: "decrease";
+	    action: SIGNAL_EMIT "e,action,frequency,decrease" "";
+	 }
+	 program {
+	    name: "decrease_frequency2";
+	    signal: "mouse,down,1";
+	    source: "decrease";
+	    action: STATE_SET "clicked" 0.0;
+	    target: "decrease_button";
+	 }
+	 program {
+	    name: "decrease_frequency3";
+	    signal: "mouse,up,1";
+	    source: "decrease";
+	    action: STATE_SET "default" 0.0;
+	    target: "decrease_button";
+	 }
+ */
+	 program {
+	    name: "enabled";
+	    signal: "e,state,enabled";
+	    source: "e";
+	    action: STATE_SET "default" 0.0;
+	    target: "fade_clip";
+	 }
+	 program {
+	    name: "disabled";
+	    signal: "e,state,disabled";
+	    source: "e";
+	    action: STATE_SET "faded" 0.0;
+	    target: "fade_clip";
+	 }
+      }
+   }

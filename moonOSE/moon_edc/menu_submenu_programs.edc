@@ -1,0 +1,4 @@
+/*sadfsdfs*/
+programs {
+	#include "menu_submenu_program.edc"
+}

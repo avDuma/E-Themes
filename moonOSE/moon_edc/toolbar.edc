@@ -1,0 +1,51 @@
+/////////////////////////////////////////////////////////////////////////////
+   /*** TOOLBAR ***/
+
+group { name: "e/toolbar/default/base";
+   images {
+      image: "toolbar_top.png" COMP;
+      image: "toolbar_bottom.png" COMP;
+   }
+   parts {
+      part { name: "base";
+	 mouse_events: 0;
+	 description { state: "default" 0.0;
+	    max: 99999 48;
+	    image.normal: "toolbar_top.png";
+	    image.border: 4 4 4 4;
+	    fill.smooth: 0;
+	 }
+	 description { state: "bottom" 0.0;
+	    inherit: "default" 0.0;
+	    image.normal: "toolbar_bottom.png";
+	 }
+      }
+      part { name: "e.swallow.content";
+	 type: SWALLOW;
+	 description { state: "default" 0.0;
+	    rel1.offset: 2 2;
+	    rel2.offset: -3 -3;
+	 }
+	 description { state: "bottom" 0.0;
+	    inherit: "default" 0.0;
+	 }
+      }
+   }
+   programs {
+      program { name: "orient1";
+	 signal: "e,state,orientation,top";
+	 source: "e";
+	 action: STATE_SET "default" 0.0;
+	 target: "base";
+	 target: "e.swallow.content";
+      }
+      program { name: "orient2";
+	 signal: "e,state,orientation,bottom";
+	 source: "e";
+	 action: STATE_SET "bottom" 0.0;
+	 target: "base";
+	 target: "e.swallow.content";
+      }
+   }
+}
+

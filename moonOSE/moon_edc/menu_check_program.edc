@@ -1,0 +1,15 @@
+/* hlah*/
+program {
+	 name:    "turn_on1";
+	 signal:  "e,state,on";
+	 source:  "e";
+	 action:  STATE_SET "active" 0.0;
+	 target:  "item1";
+      }
+      program {
+	 name:    "turn_off1";
+	 signal:  "e,state,off";
+	 source:  "e";
+	 action:  STATE_SET "default" 0.0;
+	 target:  "item1";
+      }

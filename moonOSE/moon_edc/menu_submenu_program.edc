@@ -1,0 +1,13 @@
+/*sdfsdf*/
+	 program { name: "selected";
+	    signal: "e,state,selected";
+	    source: "e";
+	    action: STATE_SET "over" 0.0;
+	    target: "arrow";
+	 }
+	 program { name: "unselected";
+	    signal: "e,state,unselected";
+	    source: "e";
+	    action: STATE_SET "default" 0.0;
+	    target: "arrow";
+	 }

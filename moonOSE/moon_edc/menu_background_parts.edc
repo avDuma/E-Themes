@@ -1,0 +1,7 @@
+/*This file just contains the link to the actual files */
+parts {
+	#include "menu_background_base.edc"
+	/*#include "menu_background_bubble_part.edc"*/
+	#include "menu_background_text.edc"
+	#include "menu_background_swallow.edc"
+}

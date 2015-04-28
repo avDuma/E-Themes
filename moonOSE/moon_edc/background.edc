@@ -1,0 +1,19 @@
+images {
+   image: "moon.png" COMP;
+   image: "e17_"SM"reflection_shadow_overlay.png" LOSSY 90;
+}
+group {
+   name: "e/desktop/background";
+   parts {
+      part {
+	 name: "background_image";
+	 description {
+	    state: "default" 0.0;
+	    image {
+	       normal: "moon.png";
+	    }
+	 }
+      }
+   }
+}
+

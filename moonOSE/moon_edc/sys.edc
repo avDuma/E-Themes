@@ -1,0 +1,129 @@
+/////////////////////////////////////////////////////////////////////////////
+   /*** SYSTEM ***/
+
+   group { name: "e/sys/logout";
+      alias: "e/sys/halt";
+      alias: "e/sys/reboot";
+      alias: "e/sys/suspend";
+      alias: "e/sys/hibernate";
+      data.item: "borderless" "1";
+//      data.item: "shaped" "1";
+      images {
+	 image: "vgrad_light.png" COMP;
+         image: "shelf_alt_over.png" COMP;
+	 image: "logo_white_128.png" COMP;
+	 image: "busy-1.png" COMP;
+	 image: "busy-2.png" COMP;
+	 image: "busy-3.png" COMP;
+	 image: "busy-4.png" COMP;
+	 image: "busy-5.png" COMP;
+	 image: "busy-6.png" COMP;
+	 image: "busy-7.png" COMP;
+	 image: "busy-8.png" COMP;
+	 image: "busy-9.png" COMP;
+      }
+      styles {
+	 style {
+	    name: "sys_style";
+	    base: "font=Sans:style=Bold font_size=12 text_class=tb_plain align=center color=#000000 style=soft_shadow shadow_color=#0000001f wrap=word";
+	    tag:  "br" "\n";
+	    tag:  "hilight" "+ font=Sans:style=Bold text_class=tb_light";
+	 }
+      }
+      parts {
+	 part { name:          "base";
+	    mouse_events:  0;
+	    description { state:    "default" 0.0;
+      	       min: 250 250;
+	       image.normal: "vgrad_light.png";
+	       fill {
+		  size {
+		     relative: 0 1.0;
+		     offset: 36 0;
+		  }
+	       }
+	    }
+	 }
+         part { name: "over";
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       image.normal: "shelf_alt_over.png";
+	       image.border: 5 5 5 5;
+	       image.middle: 0;
+	       fill.smooth: 0;
+	    }
+	 }
+	 part { name: "busy";
+	    mouse_events:  0;
+	    description { state: "default" 0.0;
+	       min: 32 32;
+	       max: 32 32;
+	       aspect: 1.0 1.0;
+	       align: 0.5 0.0;
+	       aspect_preference: BOTH;
+	       rel1 {
+		  to_y:     "logo";
+		  relative: 0.0 1.0;
+		  offset:   0 1;
+	       }
+               rel2 {
+		  relative: 1.0 1.0;
+		  offset:   -1 1;
+	       }
+	       image {
+		  normal: "busy-9.png";
+		  tween:  "busy-1.png";
+		  tween:  "busy-2.png";
+		  tween:  "busy-3.png";
+		  tween:  "busy-4.png";
+		  tween:  "busy-5.png";
+		  tween:  "busy-6.png";
+		  tween:  "busy-7.png";
+		  tween:  "busy-8.png";
+	       }
+	    }
+	 }
+	 part { name: "logo";
+	    mouse_events: 0;
+	    description { state: "default" 0.0;
+	       min: 128 128;
+	       max: 128 128;
+	       align: 0.5 0.0;
+	       image.normal: "logo_white_128.png";
+	    }
+	    description { state: "done" 0.0;
+	       inherit: "default" 0.0;
+	       color: 255 255 255 0;
+	    }
+	 }
+	 part { name: "e.textblock.message";
+	    type: TEXTBLOCK;
+	    mouse_events:  0;
+	    scale: 1;
+	    description {
+	       state: "default" 0.0;
+	       rel1 {
+		  offset: 8 8;
+		  relative: 0.0 1.0;
+		  to_y: "busy";
+	       }
+	       rel2.offset: -9 -9;
+	       text {
+		  style:    "sys_style";
+		  min:      1 1;
+	       }
+	    }
+	 }
+      }
+      programs {
+	 program { name: "busy_anim";
+	    signal: "show";
+	    source: "";
+	    action: STATE_SET "default" 0.0;
+	    transition: LINEAR 0.3333;
+	    target: "busy";
+	    after:  "busy_anim";
+	 }
+      }
+   }
+

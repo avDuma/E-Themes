@@ -1,0 +1,58 @@
+/*This file is the first file that is loaded when e looks for the menu 
+followed by the other */
+group {
+   name: "e/widgets/menu/default/background";
+   data {
+ /*this tells e the border is shaped*/
+      item: "shaped" "0";
+   }
+   #include "menu_background_parts.edc"
+   #include "menu_background_programs.edc"
+   /*#include "menu_background_bubble_program.edc"*/
+}
+
+group {
+   name: "e/widgets/menu/default/separator";
+	#include "menu_seperator_parts.edc"
+}
+
+group {
+   name: "e/widgets/menu/default/item_bg";
+	#include "menu_item_bg_parts.edc"
+}
+
+group {
+   name: "e/widgets/menu/default/submenu_bg";
+	#include "menu_submenu_bg_parts.edc"
+}
+
+group {
+   name: "e/widgets/menu/default/check";
+	#include "menu_check_parts.edc"
+	#include "menu_check_programs.edc"
+}
+
+group {
+   name: "e/widgets/menu/default/radio";
+	#include "menu_check_parts.edc"
+	#include "menu_check_programs.edc"
+}
+
+group {
+   name: "e/widgets/menu/default/icon";
+	#include "menu_default_icon_parts.edc"
+	#include "menu_default_icon_programs.edc"
+}
+
+group {
+   name: "e/widgets/menu/default/label";
+	#include "menu_label_parts.edc"
+	#include "menu_label_programs.edc"
+}
+
+group {
+   name: "e/widgets/menu/default/submenu";
+	#include "menu_submenu_parts.edc"
+	#include "menu_submenu_programs.edc"
+}
+

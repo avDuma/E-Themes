@@ -1,0 +1,37 @@
+/*sdfsdf*/
+program {
+	 name:    "go_active_pre";
+	 signal:  "e,state,selected";
+	 source:  "e";
+	 action:  STATE_SET "default" 0.0;
+	 target:  "title_bar";
+	 after:   "go_active";
+      }
+      program {
+	 name:    "go_active";
+	 action:  STATE_SET "active" 0.0;
+	 target:  "title_bar";
+	 transition: LINEAR 0.2;
+      }
+      program {
+	 name:    "go_passive";
+	 signal:  "e,state,unselected";
+	 source:  "e";
+	 action:  STATE_SET "default" 0.0;
+	 target:  "title_bar";
+	 transition: LINEAR 0.3;
+      }
+      	 program { name: "sel";
+	    signal: "e,state,selected";
+	    source: "e";
+	    action: STATE_SET "selected" 0.0;
+	    transition: LINEAR 0.2;
+	    target: "e.text.label";
+	 }
+	 program { name: "unsel";
+	    signal: "e,state,unselected";
+	    source: "e";
+	    action: STATE_SET "default" 0.0;
+	    transition: LINEAR 0.3;
+	    target: "e.text.label";
+	 }

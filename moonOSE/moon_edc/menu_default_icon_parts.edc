@@ -1,0 +1,4 @@
+/*sadfsdfs*/
+parts {
+	#include "menu_default_icon_swallow.edc"
+}

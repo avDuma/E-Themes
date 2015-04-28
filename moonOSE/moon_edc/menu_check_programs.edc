@@ -1,0 +1,4 @@
+/*holder*/
+programs {
+	#include "menu_check_program.edc"
+}

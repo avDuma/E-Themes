@@ -1,0 +1,5 @@
+/*This file contains the ACTION CODE, what i mean is that these codes
+make simple file do some sort of animation*/
+ programs {
+	 #include "menu_background_program.edc"
+}
