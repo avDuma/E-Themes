@@ -90,7 +90,7 @@ collections { /* begin the collection of edje groups that are in this file */
 #include "elm/access.edc"
 #include "elm/actionslider.edc"
 #include "elm/bg.edc"
-//elm/border is down, near border.edc
+//elm/border.edc is down, near border.edc
 #include "elm/bubble.edc"
 #include "elm/button.edc"
 #include "elm/calendar.edc"
@@ -102,8 +102,11 @@ collections { /* begin the collection of edje groups that are in this file */
 #include "elm/datetime.edc"
 #include "elm/dayselector.edc"
 #include "elm/diskselector.edc"
+//elm/entry.edc is down, near e/widgets/scrollframe
+
 //elm/frame.edc is down, near e/widgets/frame
 #include "elm/label.edc"
+//elm/scroller.edc is down, near e/widgets/scrollframe
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -3242,7 +3245,6 @@ group { name: "e/pointer/enlightenment/rotate/color";
 			image: "slider-horiz.png" COMP;
 			image: "slider-vert-active.png" COMP;
 			image: "slider-vert.png" COMP;
-			image: "scrollbar-background.png" COMP;
 		}
 		parts {
 			part { name: "bg"; type: RECT;
@@ -9765,6 +9767,9 @@ group { name: "e/fileman/toolbar/default/base";
 			}
 		}
 	}
+	
+#include "elm/scroller.edc"
+	
 
 	group { name: "e/widgets/ilist";
 		data.item: "stacking" "above";
