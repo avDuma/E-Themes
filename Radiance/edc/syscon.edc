@@ -449,7 +449,7 @@ group
                   name: "button_clicked";
                   signal: "mouse,clicked,1";
                   source: "icon_overlay";
-                  action: SIGNAL_EMIT "e,action,shutdown,show" "e";
+                  action: SIGNAL_EMIT "e,action,shutdown,show" "";
                }
                program { name: "go_big";
          action: STATE_SET "visible" 0.0;

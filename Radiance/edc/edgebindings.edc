@@ -226,6 +226,22 @@ group { name: "e/modules/conf_edgebindings/selection";
             }
          }
       }
+      
+      part { name: "e.swallow.check"; type: SWALLOW;
+         description { state: "default" 0.0;
+            rel1 {
+relative: 1 1;
+offset: 5 4;
+to_x: "e.swallow.background";
+to_y: "e.text.description";
+            }
+            rel2 {
+relative: 1 1;
+offset: -5 24;
+to_y: "e.text.description";
+            }
+         }
+      }
       part { name: "e.swallow.slider"; type: SWALLOW;
          description { state: "default" 0.0;
             rel1 {

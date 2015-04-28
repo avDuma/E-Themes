@@ -59,7 +59,7 @@
             rel2.to: "name";
             align: 0.5 1.0;
             text { font: "Sans"; size: 10;
-               text: "An E19 theme matchable with GTK, created by Alberto 'Duma' Verdoja";
+               text: "An E17 theme matchable with GTK, created by Alberto 'Duma' Verdoja";
                min: 1 1;
                ellipsis: -1;
                align: 0.5 1.0;

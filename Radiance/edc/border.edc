@@ -434,6 +434,8 @@ styles {
 group { name: "e/widgets/border/default/border";
    alias: "e/widgets/border/shaped/border";
 	data.item: "shadow" "1";
+	data.item: "argb" "1";
+
    
    images {
 		BORDER_IMAGES 
@@ -589,6 +591,8 @@ group { name: "e/widgets/border/default/border";
 group { name: "e/widgets/border/dialog/border";
 	alias: "e/widgets/border/modal/border";
 	data.item: "shadow" "1";
+	data.item: "argb" "1";
+	
 	images {
 		BORDER_IMAGES 
 		BT_CLOSE_IMAGES
@@ -671,6 +675,7 @@ group { name: "e/widgets/border/dialog/border";
 
 group { name: "e/widgets/border/noresize/border";
 	data.item: "shadow" "1";
+	data.item: "argb" "1";
    
    images {
 		BORDER_IMAGES 
@@ -812,6 +817,8 @@ group { name: "e/widgets/border/noresize/border";
 
 group { name: "e/widgets/border/noresize_dialog/border";
 	data.item: "shadow" "1";
+	data.item: "argb" "1";
+	
 	images {
 		BORDER_IMAGES 
 		BT_CLOSE_IMAGES
