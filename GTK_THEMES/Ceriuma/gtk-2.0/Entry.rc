@@ -1,0 +1,58 @@
+style "entry"
+{	
+	GtkWidget::focus-line-width		= 0
+	GtkWidget::interior-focus		= 0
+	GtkEntry::state-hint = 1
+
+
+	xthickness 	= 6
+	ythickness 	= 1
+	
+	base[SELECTED]	= "#999999"
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= SHADOW
+			file		= "Images/Entries/entry0.png"
+			border		= {9,9,9,9}
+			shadow		= IN
+		}
+		
+		image
+		{
+			function	= FLAT_BOX
+			file		= "Images/Entries/box1.png"
+			border		= {9,9,9,9}
+			stretch		= TRUE
+			state		= ACTIVE
+		}
+
+		image
+		{
+			function	= FLAT_BOX
+			file		= "Images/Entries/box0.png"
+			border		= {9,9,9,9}
+			stretch		= TRUE
+			state		= INSENSITIVE
+		}
+	
+		image
+		{
+			function	= FLAT_BOX
+			file		= "Images/Entries/box0.png"
+			border		= {9,9,9,9}
+			stretch		= TRUE
+			state		= NORMAL
+		}
+		
+		image
+		{
+			function	= FOCUS
+			file		= "Images/Entries/entry1.png"
+			border		= {9,9,9,9}
+			stretch		= TRUE
+		}
+	}
+}

@@ -1,0 +1,29 @@
+style "progress"
+{
+	fg[PRELIGHT]	= @fg_color
+
+	xthickness	= 0
+	ythickness	= 0
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+			detail		= "trough"
+			file		= "Images/Progressbars/box.png"
+			border		= {6, 6, 6, 6}
+			stretch		= TRUE
+		}
+				
+		image
+		{
+			function	= BOX
+			detail		= "bar"
+			file		= "Images/Progressbars/bar.png"
+			border		= {6, 6, 6, 6}
+			stretch		= TRUE
+		}
+	}
+
+}

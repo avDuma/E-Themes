@@ -1,0 +1,62 @@
+style "spin"
+{	
+	base[NORMAL]				= @bg_color
+	base[ACTIVE]				= @bg_color
+	base[INSENSITIVE]			= @bg_color
+	GtkSpinButton::inner-border		= { 0, 0, 0, 0}
+	engine "pixmap"
+	{
+		image
+		{
+			function	= ARROW
+			recolorable	= TRUE
+			overlay_file		= "Images/dot.png"
+			overlay_stretch		= FALSE
+		}
+
+		
+
+		image
+		{
+			function	= FLAT_BOX
+		}
+
+		image
+		{
+			function	= FOCUS
+			file		= "Images/null.png"
+			border		= {8,8,8,8}
+			stretch		= TRUE
+			recolorable	= TRUE
+		}
+
+		image
+		{
+			function	= SHADOW
+			file		= "Images/Spin/entry.png"
+			border		= {4,4,4,4}
+			stretch		= TRUE
+			shadow		= IN
+		}
+
+		image
+  		{
+			function	= BOX
+      			detail		= "spinbutton_up"
+			recolorable	= TRUE
+			file		= "Images/Spin/frame-end.png"
+			border		= { 4, 4, 4, 4}
+			stretch		= TRUE
+		}
+
+		image
+  		{
+			function	= BOX
+      			detail		= "spinbutton_down"
+			recolorable	= TRUE
+			file		= "Images/Spin/bgdown.png"
+			border		= { 4, 4, 4, 4}
+			stretch		= TRUE
+		}
+	}
+}

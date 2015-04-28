@@ -1,0 +1,57 @@
+style "button" = "default"
+{	
+	fg[PRELIGHT]	= @fg_color
+	text[PRELIGHT]	= @fg_color
+
+	engine "pixmap"
+	{	
+		image
+		{
+			function	= VLINE
+			file		= "Images/null.png"
+			border		= {1, 1, 1, 1}
+		}
+
+		image
+		{
+			function	= FOCUS
+			file		= "Images/null.png"
+		}
+		image
+		{
+			function		= BOX
+			state			= NORMAL
+			file			= "Images/Buttons/button.png"
+			border			= { 6, 6, 6, 6 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= PRELIGHT
+			file			= "Images/Buttons/button.png"
+			border			= { 6, 6, 6, 6 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= ACTIVE
+			file			= "Images/Buttons/button-pressed.png"
+			border			= { 6, 6, 6, 6 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= INSENSITIVE
+			file			= "Images/Buttons/button-ins.png"
+			border			= { 6, 6, 6, 6 }
+			stretch			= TRUE
+		}
+
+	}
+}

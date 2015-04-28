@@ -24,3 +24,14 @@ Theme created inspired by the old Bodhi Forum Layout, there's a GTK 2/3 theme av
 
 ##OpenGEU Quarto di Luna Theme
 There's the two theme created by Luca De Marini and ArtPulse for the latest OpenGEU Version, Quarto di Luna. I've recompiled for new version of Enlightenment and added Elementary Support. Maybe in the future I'll release the GTK 2/3 theme. At the moment there's only the GTK2 theme available for light theme, the Morning Sunshine one.
+
+##Others GTK 2 Themes
+There are also a couple of GTK 2 Theme that are ports of old E17 Theme. I'll share with you if someone want to improve, add GTK 3 support or something similar. I've added
+  * Japanuma, Japan 2007 port
+  * Blinguma, Blingbling port
+  * Ceriuma, Cerium port
+  * Black&Whituma, Black&White port (old E17 default theme)
+  * Gantuma, Gant port
+  * LG2 GTK, port of the omonimous theme
+  * A-Electric-Blue GTK, port of the omonimous theme
+  

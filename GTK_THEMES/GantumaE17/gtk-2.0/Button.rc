@@ -1,0 +1,62 @@
+style "button" = "default"
+{	GtkButton	::inner-border	= {1,1,2,2}
+	engine "pixmap"
+	{	
+		image
+		{
+			function	= VLINE
+			file		= "Images/Lines/vlinefade.png"
+			border		= {8,8,1,1}
+			stretch		= TRUE
+			recolorable	= TRUE
+		}
+
+		image
+		{
+			function	= FOCUS
+			file		= "Images/null.png"
+		}
+		image
+		{
+			function		= BOX
+			state			= NORMAL
+			file			= "Images/Buttons/button.png"
+			border			={ 8, 8, 8, 8 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= PRELIGHT
+			file			= "Images/Buttons/focus.png"
+			overlay_file		= "Images/Buttons/button.png"
+			overlay_stretch		= TRUE
+			overlay_border		= {8,8,8,8}
+			border			= { 5, 5, 5, 5 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= ACTIVE
+			file			= "Images/Buttons/focus.png"
+			overlay_file		= "Images/Buttons/button-pressed.png"
+			overlay_stretch		= TRUE
+			overlay_border		= {8,8,8,8}
+			border			= { 5, 5, 5, 5 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= INSENSITIVE
+			file			= "Images/Buttons/button-ins.png"
+			border			={ 10, 10, 10, 10 }
+			stretch			= TRUE
+		}
+
+	}
+}

@@ -1,0 +1,262 @@
+style "scrollbar"
+{	
+	GtkScrollbar ::slider-width = 16
+	GtkScrollbar ::stepper-size = 16
+	GtkScrollbar   ::min-slider-length    = 30
+	GtkScrollbar   ::activate-slider      = 1
+	engine "pixmap"
+	{
+	##Background
+		image
+		{
+		function	= BOX
+		recolorable	= TRUE
+		file		= "Images/Scrollbars/backV.png"
+		border		= { 1, 1, 1,1 }
+		stretch		= TRUE
+		orientation	= VERTICAL
+		}
+		
+		image
+		{
+		function	= BOX
+		recolorable	= TRUE
+		file		= "Images/Scrollbars/backH.png"
+		stretch		= TRUE
+		border		= { 1, 1, 1,1 }
+		orientation	= HORIZONTAL
+		}
+	##Sliders
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= NORMAL
+		file		= "Images/Scrollbars/scrollH1.png" 
+		border		= { 10, 10, 0, 0 }
+		stretch		= TRUE
+		orientation	= HORIZONTAL
+		overlay_file	= "Images/handleH.png"
+		overlay_stretch	= FALSE
+		}
+
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= ACTIVE
+		file		= "Images/Scrollbars/scrollH2.png" 
+		border		= { 10, 10, 0, 0 }
+		stretch		= TRUE
+		orientation	= HORIZONTAL
+		overlay_file	= "Images/handleH.png"
+		overlay_stretch	= FALSE
+		}
+
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= PRELIGHT
+		file		= "Images/Scrollbars/scrollH1.png" 
+		border		= { 10, 10, 0, 0 }
+		stretch		= TRUE
+		orientation	= HORIZONTAL
+		overlay_file	= "Images/handleH.png"
+		overlay_stretch	= FALSE
+		}
+
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= INSENSITIVE
+		file		= "Images/Scrollbars/scrollH1.png" 
+		border		= { 10, 10, 0, 0 }
+		stretch		= TRUE
+		orientation	= HORIZONTAL
+		overlay_file	= "Images/handleH.png"
+		overlay_stretch	= FALSE
+		}
+
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= NORMAL
+		file		= "Images/Scrollbars/scrollV1.png" 
+		border		= { 0, 0, 10, 10 }
+		stretch		= TRUE
+		orientation	= VERTICAL
+		overlay_file	= "Images/handleV.png"
+		overlay_stretch	= FALSE
+		}
+
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= ACTIVE
+		file		= "Images/Scrollbars/scrollV2.png" 
+		border		= { 0, 0, 10, 10 }
+		stretch		= TRUE
+		orientation	= VERTICAL
+		overlay_file	= "Images/handleV.png"
+		overlay_stretch	= FALSE
+		}
+
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= PRELIGHT
+		file		= "Images/Scrollbars/scrollV1.png" 
+		border		= { 0, 0, 10, 10 }
+		stretch		= TRUE
+		orientation	= VERTICAL
+		overlay_file	= "Images/handleV.png"
+		overlay_stretch	= FALSE
+		}
+
+		image 
+		{
+		function	= SLIDER
+		recolorable	= TRUE
+		state		= INSENSITIVE
+		file		= "Images/Scrollbars/scrollV1.png" 
+		border		= { 0, 0, 10, 10 }
+		stretch		= TRUE
+		orientation	= VERTICAL
+		overlay_file	= "Images/handleV.png"
+		overlay_stretch	= FALSE
+		}
+	##Stepper
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/left1.png"
+		state = NORMAL		
+		arrow_direction = LEFT
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/left1.png"
+		state = PRELIGHT
+		arrow_direction = LEFT
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/left2.png"
+		state = ACTIVE
+		arrow_direction = LEFT
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/left1.png"
+		state = INSENSITIVE
+		arrow_direction = LEFT
+		}
+	
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/right1.png"
+		state = NORMAL
+		arrow_direction = RIGHT
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/right1.png"
+		state = PRELIGHT
+		arrow_direction = RIGHT
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/right2.png"
+		state = ACTIVE
+		arrow_direction = RIGHT
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/right1.png"
+		state = INSENSITIVE
+		arrow_direction = RIGHT
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/up1.png"
+		state = NORMAL
+		arrow_direction = UP
+		}
+	
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/up1.png"
+		state = PRELIGHT
+		arrow_direction = UP
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/up2.png"
+		state = ACTIVE
+		arrow_direction = UP
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/up1.png"
+		state = INSENSITIVE
+		arrow_direction = UP
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/down1.png"
+		state = NORMAL
+		arrow_direction = DOWN
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/down1.png"
+		state = PRELIGHT
+		arrow_direction = DOWN
+		}
+
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/down2.png"
+		state = ACTIVE
+		arrow_direction = DOWN
+		}
+	
+		image
+		{
+		function = STEPPER
+		file = "Images/Scrollbars/down1.png"
+		state = INSENSITIVE
+		arrow_direction = DOWN
+		}
+	}
+}

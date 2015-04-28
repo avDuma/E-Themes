@@ -1,0 +1,139 @@
+style "button" = "default"
+{	
+	GtkButton	::interior-focus	= 0
+	GtkButton	::focus-padding		= 0
+	GtkButton	::focus-line-width	= 0
+	GtkButton	::inner-border		= {5,5,5,5}
+		
+	fg[PRELIGHT]	= @fg_color
+	text[PRELIGHT]	= @fg_color
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+			detail		= "buttondefault"
+			file		= "Images/null.png"
+		}	
+	
+		image
+		{
+			function	= VLINE
+			file		= "Images/null.png"
+			border		= {1, 1, 1, 1}
+		}
+
+		image
+		{
+			function	= FOCUS
+			file		= "Images/focus.png"
+			border		= {4,4,4,4}
+		}
+		image
+		{
+			function	= BOX
+			state		= NORMAL
+			file		= "Images/Buttons/button-g.png"
+			border		= { 8, 8, 8, 8 }
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= BOX
+			state		= PRELIGHT
+			file		= "Images/Buttons/button-g.png"
+			border		= { 8, 8, 8, 8 }
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= BOX
+			state		= ACTIVE
+			file		= "Images/Buttons/button-pressed-g.png"
+			stretch		= TRUE
+			border		= { 8, 8, 8, 8 }
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= BOX
+			state		= INSENSITIVE
+			file		= "Images/Buttons/button-ins.png"
+			border		= { 6, 6, 6, 6 }
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= ARROW
+			recolorable	= TRUE
+			file		= "Images/null.png"
+			overlay_file	= "Images/down.png"
+			overlay_stretch	= FALSE
+			arrow_direction	= DOWN
+		}
+	}
+}
+
+style "buttonfull"
+{
+	GtkButton	::inner-border	= {0,0,0,0}
+	GtkButton	::focus-padding		= 1
+	GtkButton	::focus-line-width	= 1
+	
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+			detail		= "button"
+			state		= NORMAL
+			file		= "Images/Buttons/button.png"
+			border		= { 8, 8, 8, 8 }
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= BOX
+			detail		= "button"
+			state		= PRELIGHT
+			file		= "Images/Buttons/button.png"
+			border		= { 8, 8, 8, 8 }
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= BOX
+			detail		= "button"
+			state		= ACTIVE
+			file		= "Images/Buttons/button-pressed.png"
+			stretch		= TRUE
+			border		= { 8, 8, 8, 8 }
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= BOX
+			detail		= "button"
+			state		= INSENSITIVE
+			file		= "Images/Buttons/button-ins.png"
+			border		= { 6, 6, 6, 6 }
+			stretch		= TRUE
+		}
+	}
+}
+
+style "label"
+{	
+	engine "murrine"
+	{
+		textstyle = 3
+	}
+}

@@ -1,0 +1,204 @@
+#=======================================#
+#		GantumaE17		#
+#	    				#
+#	Pixmap theme for gant-e17	#
+#	       ~Amule-fix~		#
+#					#
+#Made by Alberto "nerduma" Verdoja	#
+#		pimpmylinux@email.it	#
+#=======================================#
+
+				##############################HOW TO USE IT##################################
+				#Edit the amule launcher using in application entry			    #
+				#	bash -c "GTK2_RC_FILES=~/.themes/GantumaE17/gtk-2.0/amule.rc amule" #
+				#instead of 								    #
+				#				amule					    #
+				#############################################################################
+		
+
+gtk_color_scheme = "fg_color:#000000\nbg_color:#4A7292\nbase_color:#F8F9F9\ntext_color:#000000\nselected_bg_color:#7793A9\nselected_fg_color:#ffffff\ntooltip_bg_color:#E2E2E2\ntooltip_fg_color:#ffffff\nfg_tabcolor:#000000"
+
+
+#gtk-icon-sizes = "gtk-menu=20,20:"
+
+
+
+style "default"
+{	
+	#see this on button.rc
+	#GtkButton	::inner-border		= {10,10,0,0}
+
+	GtkScrolledWindow	:: scrollbars-within-bevel	= 0
+	#GtkScrolledWindow	:: shadow_type			= GTK_SHADOW_IN
+	GtkScrolledWindow	:: scrollbar-spacing		= 1
+
+	GtkNotebook	::shadow_type		= GTK_SHADOW_NONE
+
+	GtkToolBar	::shadow_type		= GTK_SHADOW_NONE
+
+	GtkMenuBar	::shadow_type		= GTK_SHADOW_NONE
+
+	GtkStatusbar	::shadow_type		= GTK_SHADOW_NONE
+
+	GtkPaned	::handle-size		= 8
+
+	GtkMenu		::horizontal-offset	= 0
+
+	GtkMenuItem	::toggle-spacing	= 10
+
+	GtkRange	::slider-width		= 32
+
+	bg[NORMAL]       	= @bg_color
+	bg[ACTIVE]       	= shade (1.0233,@bg_color)
+	bg[PRELIGHT]      	= mix(0.90, shade (1.1,@bg_color), @selected_bg_color)
+	bg[SELECTED]      	= @selected_bg_color
+	bg[INSENSITIVE]  	= shade (1.03,@bg_color)
+
+	fg[NORMAL]       	= @fg_color
+	fg[ACTIVE]       	= @fg_color
+	fg[PRELIGHT]     	= @fg_color
+	fg[SELECTED]     	= @selected_fg_color
+	fg[INSENSITIVE]  	= "#85A0B6"#darker (@base_color)
+
+	base[NORMAL]     	=  @base_color
+	base[ACTIVE]     	=  @selected_bg_color#shade (0.65,@selected_bg_color)
+	base[PRELIGHT]   	=  @base_color
+	base[SELECTED]  	=  @selected_bg_color
+	base[INSENSITIVE]	=  shade (1.025,@bg_color)
+
+	text[NORMAL]     	=  @text_color
+	text[ACTIVE]      	=  @selected_fg_color#shade (0.95,@base_color)
+	text[PRELIGHT]   	=  @selected_fg_color#"#000000"
+	text[SELECTED]   	=  @selected_fg_color
+	text[INSENSITIVE]	=  mix (0.675,"#000000",@fg_color)
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= HLINE
+			file		= "Images/Lines/hline.png"
+			border		= {1,1,1,1}
+			stretch		= TRUE
+			recolorable	= TRUE
+		}
+		
+		image
+		{
+			function	= VLINE
+			file		= "Images/Lines/vline.png"
+			border		= {1,1,1,1}
+			stretch		= TRUE
+			recolorable	= TRUE
+		}
+		image
+		{	function	= HANDLE
+			overlay_file	= "Images/handleV.png"
+			overlay_stretch	= FALSE
+			orientation	= VERTICAL
+		}
+		image
+		{	function	= HANDLE
+			overlay_file	= "Images/handleH.png"
+			overlay_stretch	= FALSE
+			orientation	= HORIZONTAL
+		}	
+		##For flat all widget		
+		image
+		{
+			function	= SHADOW
+			shadow		= IN
+			file		= "Images/Shadows/shadows-etched-in.png"
+			border		= {4, 4, 4, 4}
+		}
+		image
+		{
+			function	= SHADOW
+			shadow		= ETCHED_IN
+			file		= "Images/Shadows/shadows-etched-in.png"
+			border		= {4, 4, 4, 4}
+		}
+		image
+		{
+			function	= SHADOW
+			shadow		= OUT
+			file		= "Images/Shadows/frame.png"
+			border		= {4, 4, 4, 4}
+		}
+		image
+		{
+			function	= SHADOW
+			shadow		= ETCHED_OUT
+			file		= "Images/Shadows/frame.png"
+			border		= {4, 4, 4, 4}
+		}
+
+
+	}
+}
+
+style "noshdw"
+{
+	engine "pixmap"
+	{
+		image
+		{
+			function	= SHADOW
+		}
+	}
+}
+
+style "frame"
+{
+	engine "pixmap"
+	{
+		image
+		{
+			function	= SHADOW_GAP
+	    		recolorable	= TRUE
+	    		file		= "Images/Shadows/frame.png"
+	    		border		= {4, 4, 4, 4}
+	    		stretch		= TRUE
+	    		gap_start_file	= "Images/Shadows/frame-gap-start.png"
+	    		gap_start_border= { 8, 0, 8, 0}
+	    		gap_end_file	= "Images/Shadows/frame-gap-end.png"
+	    		gap_end_border	= { 0, 8, 8, 0}
+	    		gap_side	= TOP
+		}
+
+	}
+}
+
+class "GtkWidget"	style "default"
+
+include "RadioCheck.rc"
+include "Button.rc"
+include "Scrollbar.rc"
+include "Progress.rc"
+include "Menu.rc"
+include "Tab.rc"
+include "Scrolled.rc"
+include "Entry.rc"
+include "Range.rc"
+
+##Flat Toolbar
+widget_class "*GtkToolbar*"		style "noshdw"
+##Shadow on entry on toolbar
+widget_class "*GtkToolbar.*GtkEntry"	style "entry"
+
+class "GtkNotebook"	style "tab"
+class "GtkButton"	style "button"
+class "GtkCheckButton"	style "radioCheck"
+class "GtkRadioButton"	style "radioCheck"
+class "GtkFrame"	style "frame"
+class "GtkScrollbar"	style "scrollbar"
+class "GtkProgressBar"	style "progress"
+class "GtkMenu"		style "menu"
+class "GtkMenuItem"	style "menuitem"
+class "GtkEntry"	style "entry"
+class "GtkRange"	style "range"
+
+widget_class "*GtkScrolledWindow.*"	style "insidescrlld"
+widget_class "*GtkViewport.*"		style "insidescrlld"
+widget_class "*<GtkMenuBar>*"		style "menubar"
+

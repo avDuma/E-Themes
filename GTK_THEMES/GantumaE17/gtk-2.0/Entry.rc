@@ -1,0 +1,29 @@
+style "entry"
+{	
+	GtkWidget::focus-line-width		= 0
+	GtkWidget::interior-focus		= 0
+	xthickness 	= 5
+	ythickness 	= 5
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= SHADOW
+			file		= "Images/Entries/entry.png"
+			border		= {9,9,9,9}
+			stretch		= TRUE
+			state		= NORMAL
+			shadow		= IN
+		}
+		
+		image
+		{
+			function	= FOCUS
+			file		= "Images/Entries/focus.png"
+			border		= {4,4,4,4}
+			stretch		= TRUE
+			recolorable	= TRUE
+		}
+	}
+}

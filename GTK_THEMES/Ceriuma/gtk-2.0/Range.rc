@@ -1,0 +1,77 @@
+style "range"
+{	GtkRange	::slider-width		= 32
+	engine "pixmap"
+	{
+	## Background
+		image
+		{
+		function	= BOX
+		recolorable	= TRUE
+		file		= "Images/Ranges/backV.png"
+		border		= { 1, 1, 1, 1 }
+		stretch		= TRUE
+		orientation	= VERTICAL
+		}
+		
+		image
+		{
+		function	= BOX
+		recolorable	= TRUE
+		file		= "Images/Ranges/backH.png"
+		stretch		= TRUE
+		border		= { 1, 1, 1, 1 }
+		orientation	= HORIZONTAL
+		}
+	## Slider
+		image
+		{		
+		function	= SLIDER
+		state		= NORMAL
+		file		= "Images/null.png"
+		stretch		= TRUE
+		overlay_file	= "Images/Ranges/slider1.png"
+		overlay_stretch	= FALSE
+		}
+
+		image
+		{		
+		function	= SLIDER
+		state		= PRELIGHT
+		file		= "Images/null.png"
+		stretch		= TRUE
+		overlay_file	= "Images/Ranges/slider1.png"
+		overlay_stretch	= FALSE
+		}
+
+		image
+		{		
+		function	= SLIDER
+		state		= SELECTED
+		file		= "Images/null.png"
+		stretch		= TRUE
+		overlay_file	= "Images/Ranges/slider2.png"
+		overlay_stretch	= FALSE
+		}
+
+		image
+		{		
+		function	= SLIDER
+		state		= ACTIVE
+		file		= "Images/null.png"
+		stretch		= TRUE
+		overlay_file	= "Images/Ranges/slider2.png"
+		overlay_stretch	= FALSE
+		}
+
+		image
+		{		
+		function	= SLIDER
+		state		= INSENSITIVE
+		file		= "Images/null.png"
+		stretch		= TRUE
+		overlay_file	= "Images/Ranges/slider1.png"
+		overlay_stretch	= FALSE
+		}
+
+	}
+}

@@ -1,0 +1,79 @@
+style "tree"
+{	
+	GtkTreeView	::row-ending-details	= 0
+	GtkTreeView	::indent-expanders	= TRUE
+	GtkTreeView	::allow-rules		= 1
+	GtkTreeView	::even-row-color	= "#EDEDE6"
+	GtkTreeView	::odd-row-color		= "#E6E6E0"
+
+
+	bg[NORMAL]	= "#3c3c3c"
+
+	engine "pixmap"
+	{
+		# Active Rows
+		#========================================================
+		
+		
+		
+		# This is for treeviews with only one column
+		image
+		{
+			function        = FLAT_BOX
+			state           = SELECTED
+			border          = {4, 4, 4, 4}
+			file            = "Images/Tree/selected.png"
+			stretch		= TRUE
+		}
+		
+		image
+		{
+			function        = FLAT_BOX
+			state           = NORMAL
+			detail 		= "cell_odd"
+			border          = {4, 4, 4, 4}
+			file            = "Images/Tree/odd.png"
+			stretch		= TRUE
+		}
+		image
+		{
+			function        = FLAT_BOX
+			state           = NORMAL
+			detail 		= "cell_even"
+			border          = {4, 4, 4, 4}
+			file            = "Images/Tree/even.png"
+			stretch		= TRUE
+		}
+
+
+
+		# this is needed for the progressbars inside treeviews (e.g. Transmission, System Info)
+	        image
+		{
+			function        = BOX
+			state           = SELECTED
+			border          = {8,7,2,2}
+			file            = "Images/Tree/selected.png"
+			stretch		= TRUE
+		}
+	}
+}
+
+style "listheader"
+{	GtkButton	::inner-border		= {0,0,0,0}
+	font_name = "Bold"
+
+	bg[NORMAL]	= "#ececec"
+
+	fg[NORMAL]	= @fg_selected_tabcolor
+	fg[PRELIGHT]	= @fg_selected_tabcolor
+	fg[ACTIVE]	= @fg_selected_tabcolor
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+		}
+	}
+}
