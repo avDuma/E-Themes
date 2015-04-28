@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Bodhi Forum GTK
+Comment=The GTK theme for Bodhi Forum E17 theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Bodhi Forum GTK
+ButtonLayout=:minimize,maximize,close

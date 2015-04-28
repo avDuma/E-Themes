@@ -1,0 +1,46 @@
+/**
+ * Color definitions.
+ *
+ * Each color defined in this file is usable as a symbolic color
+ * in all files included after it.
+ *
+ * Color definitions have the format `@define-color <name> <value>;',
+ * where <name> is a name you choose, and <value> is a color definition.
+ * Defined colors can be used in rules with the syntax `@<name>'
+ *
+ * The most common color definition is a html color code: #rrbbgg
+ * For more information see (1) or (2).
+ *
+ * (1) file:///usr/share/devhelp/books/gtk3/GtkCssProvider.html#gtkcssprovider-symbolic-colors
+ * (2) http://developer.gnome.org/gtk3/3.1/GtkCssProvider.html#gtkcssprovider-symbolic-colors
+ */
+
+/*fg_color:#000000
+ * bg_color:#DBE4B7
+ * base_color:#ffffff
+ * text_color:#000000
+ * selected_bg_color:#B1C75C
+ * selected_fg_color:#000000
+ * tooltip_bg_color:#ffffff
+ * tooltip_fg_color:#000000
+ * fg_tabcolor:#000000
+ * fg_selected_tabcolor:#000000"
+
+ Some common color definitions
+ */
+ 
+ @define-color bg_color #DBE4B7;
+ @define-color base_color #ffffff; 
+ @define-color fg_color #000000;
+ @define-color text_color #000000;
+ @define-color insensitive #6D725B;
+ @define-color transparent alpha (@bg_color, 0.0);
+ 
+ /*Bodhi Color Palette*/
+ @define-color lgreen #B1C75C;
+ @define-color dgreen #5A860A;
+ @define-color lorange #FFD300;
+ @define-color dorange #F27B0F;
+ 
+ 
+ 

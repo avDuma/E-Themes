@@ -1,0 +1,56 @@
+style "tree"
+{	
+	GtkTreeView	::row-ending-details	= 0
+	GtkTreeView	::odd-row-color		= "#ffffff"
+	GtkTreeView	::even-row-color	= "#ffffff"
+	GtkTreeView	::indent-expanders	= TRUE
+	GtkTreeView	::allow-rules		= 0
+
+	bg[NORMAL]	= "#7CA21B"
+	base[SELECTED] = "#F2850C"
+	base[ACTIVE] = "#F2850C"
+		
+	fg[ACTIVE]	= @selected_fg_color
+	fg[SELECTED]	= @selected_fg_color
+
+	text[ACTIVE]   	= @selected_fg_color
+	engine "pixmap"
+	{	
+		
+	}
+}
+
+style "listheader"
+{	GtkButton	::inner-border		= {0,0,0,0}
+	font_name = "Bold"
+
+	bg[NORMAL]	= "#7CA21B"
+
+	fg[NORMAL]	= @selected_fg_color
+	fg[PRELIGHT]	= @selected_fg_color
+	fg[ACTIVE]	= @selected_fg_color
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+		}
+	}
+}
+
+style "evolution-listheader"
+{	GtkButton	::inner-border		= {0,0,0,0}
+
+	bg[NORMAL]	= "#DBC8A4"
+
+	fg[NORMAL]	= @selected_fg_color
+
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+		}
+	}
+}

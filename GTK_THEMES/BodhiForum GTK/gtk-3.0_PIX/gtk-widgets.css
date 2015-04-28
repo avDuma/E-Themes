@@ -1,0 +1,307 @@
+/**
+ * Style classes.
+ *
+ * The style classes rules apply to any widget defining that class.
+ * For example, the .buttons class applies to all types of buttons,
+ * and allows you to theme all these types of buttons using a single
+ * set of rules.
+ *
+ * You can use all style properties defined for any of the class
+ * members in the class rules. These properties can be found in
+ * 'Template\Widgets\WidgetName.css'.
+ */
+ 
+ * {	
+ color: @text_color;
+ -unico-focus-fill-color: @transparent;
+ -unico-focus-border-color: @transparent;
+
+ -GtkWidget-focus-line-width: 0;
+ -GtkCheckButton-indicator-size: 19;
+ -GtkCheckMenuItem-indicator-size: 19;
+
+}
+
+/*BUTTONS, CHECK AND RADIO BUTTONS*/
+.button {
+	background-clip: content-box;
+	border-image-source: url("Images/Buttons/button.png"); 
+	border-image-slice: 7 8 8 7;
+	border-image-width: 7px 8px 8px 7px;
+	border-image-repeat: stretch;
+	padding: 4 4 4 4;
+    border-width: 2;
+    border-style: inset;
+    background-image:  -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (#C6D462),
+                       to (#7EA51C));
+}
+.button:active, .button:prelight {
+	border-image-source: url("Images/Buttons/button-pressed.png"); 
+
+	background-image:  -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (@lorange),
+                       to (@dorange));
+}
+.button:insensitive {
+	border-image-source: url("Images/Buttons/button-ins.png"); 
+	background-image:  -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (#E1E1E1),
+                       to (#C2C2C2));
+}
+    
+.check {
+	background-image: url("Images/CheckRadio/check1.png");
+}
+.check:active {
+	background-image: url("Images/CheckRadio/check2.png");
+}
+.check:prelight {
+	background-image: url("Images/CheckRadio/check2.png");
+}
+.check:insensitive:active {
+	background-image: url("Images/CheckRadio/check0.png");
+}
+.check:insensitive {
+	background-image: url("Images/CheckRadio/check02.png");
+}
+
+.radio {
+	background-image: url("Images/CheckRadio/radio1.png");
+}
+.radio:active {
+	background-image: url("Images/CheckRadio/radio2.png");
+}
+.radio:prelight {
+	background-image: url("Images/CheckRadio/radio2.png");
+}
+.radio:insensitive:active {
+	background-image: url("Images/CheckRadio/radio0.png");
+}
+.radio:insensitive {
+	background-image: url("Images/CheckRadio/radio02.png");
+}
+ 
+.accelerator {
+	/* Members: GtkAccelLabel. */
+}
+
+/*FRAME*/
+
+.frame {
+    border-radius: 6 6 6 0;
+    border-width: 2px;
+    border-style: solid;
+    border-color: @bg_color;
+    border-image: url("Images/Shadows/frame-in.png");	border-image-slice: 7 8 8 7;
+	border-image-width: 7px 8px 8px 7px;
+	border-image-repeat: stretch;
+}
+
+/*ENTRY*/
+
+.entry {
+	background-clip: content-box;
+    border-image: url("Images/Entries/entry2.png");
+    border-image-slice: 5 5 5 5;
+	border-image-width: 5px 5px 5px 5px;
+	border-image-repeat: stretch;
+	padding: 5 3 3 5;
+	background-color: #ffffff;
+}
+.entry:selected{
+	background-color: @lgreen;
+}
+
+/*MENUBAR*/
+
+.menubar {
+	background-image:  -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (@lgreen),
+                       to (@dgreen));
+}
+
+.menubar.menuitem,
+.menubar .menuitem {
+    padding:  5 5 5 5;
+}
+
+.menubar:hover,
+.menuitem:prelight {
+	background-clip: content-box;
+	background-image:	-gtk-gradient (linear,
+						left top, left bottom,
+						from (#ffca00),
+						to (#fb9e13) );
+	border-image:	url("Images/Menu/focus.png");
+	border-image-slice: 8 8 8 8;
+	border-image-width: 8px 8px 8px 8px;
+	border-image-repeat: stretch;
+   	}      
+   	
+.menu {
+	background-clip: padding-box;
+	/* Members: GtkCheckMenuItem, GtkRadioMenuItem, GtkMenu, GtkMenuItem. */
+	background-image:	-gtk-gradient (radial,
+						center center, 0,
+						center center, 1,
+						color-stop (0.95, #ffffff),
+		color-stop (1, mix (@bg_color, #aaaaaa, 0.85)));
+	border-style: solid;
+	border-radius: 8 8 8 0;
+	border-width: 2;
+	border-color: @dorange;
+	-GtkMenu-horizontal-padding: 0;
+    -GtkMenu-vertical-padding: 0;
+     	padding: 4px 4px 4px 4px;
+
+}
+
+.menuitem {
+}
+
+.spinner {
+	/* Members: GtkSpinner. */
+}
+
+.tooltip {
+	/* Members: GtkTooltip. */
+}
+
+.cell {
+}
+
+.viewport {
+	/* Members: GtkViewport. */
+
+}
+
+.grip {
+	/* Members: GtkWindow. */
+}
+
+.popup {
+	/* Members: GtkMenu. */
+}
+
+.scrolled-window {
+	/* Members: GtkScrolledWindow. */
+	border-image:	url("Images/Menu/focus.png");
+	border-image-slice: 8 8 8 8;
+	border-image-width: 8px 8px 8px 8px;
+	border-image-repeat: stretch;
+	background-color: #004422;
+}
+
+.slider {
+	/* Members: GtkScale, GtkScrollbar. */
+}
+
+.notebook {
+	/* Members: GtkNotebook. */
+}
+
+.trough {
+	/* Members: GtkProgressBar, GtkScale, GtkScrollbar. */
+}
+
+.background {
+		/* Members: GtkWindow. */
+		background-color: @bg_color;
+
+}
+
+.toolbar {
+	/* Members: GtkToolbar. */
+}
+
+.toolbar:hover {
+}
+
+.dock {
+	/* Members: GtkHandleBox. */
+}
+
+
+.toolbar.button {
+ background-image: -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (@lorange),
+                       to (@dorange));
+}
+
+*:insensitive {
+    color: @insensitive;
+    text-shadow: 1 1 alpha( #ffffff, 0.5);
+}
+
+.progressbar {
+	/* Members: GtkProgressBar, GtkCellRendererProgress. */
+	background-color: #ffffff;
+	border-style: solid;
+    border-width: 1px;
+}
+
+.arrow {
+	/* Members: GtkArrow. */
+}
+
+
+
+.expander {
+	/* Members: GtkExpander. */
+}
+
+/*Gtk Widget */
+
+GtkLabel {
+		/*Members: GtkLabel. 
+		color: @fg_color;*/
+}
+
+GtkSeparator {
+	color: alpha (#000000, 0.2);
+} 
+
+/*
+ * Imports for widget-specific theming.
+ */
+
+@import url("widgets/gtkwindow.css");
+@import url("widgets/gtkswitch.css");
+@import url("widgets/gtkscrollbar.css");
+@import url("widgets/gtkcalendar.css");
+@import url("widgets/gtkcombobox.css");
+@import url("widgets/gtkwidget.css");
+@import url("widgets/gtknotebook.css");
+@import url("widgets/gtkmessagedialog.css");
+@import url("widgets/gtktreeview.css");
+@import url("widgets/gtkcheckmenuitem.css");
+@import url("widgets/gtkprogressbar.css");
+@import url("widgets/gtkscale.css");
+@import url("widgets/gtkbuttonbox.css");
+@import url("widgets/gtkinfobar.css");
+@import url("widgets/gtkscrolledwindow.css");
+@import url("widgets/gtkrange.css");
+@import url("widgets/gtkdialog.css");
+@import url("widgets/gtktoolbutton.css");
+@import url("widgets/gtkiconview.css");
+@import url("widgets/gtkmenu.css");
+@import url("widgets/gtkmenuitem.css");
+@import url("widgets/gtkspinbutton.css");
+@import url("widgets/gtktoolbar.css");
+@import url("widgets/gtkcheckbutton.css");
+@import url("widgets/gtkpaned.css");
+@import url("widgets/gtktoolitemgroup.css");
+@import url("widgets/gtkarrow.css");
+@import url("widgets/gtkassistant.css");
+@import url("widgets/gtktextview.css");
+@import url("widgets/gtkexpander.css");
+@import url("widgets/gtkmenubar.css");
+@import url("widgets/gtkentry.css");
+@import url("widgets/gtkbutton.css");
+@import url("widgets/gtkstatusbar.css");

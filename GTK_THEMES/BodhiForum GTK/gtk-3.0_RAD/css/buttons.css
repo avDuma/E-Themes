@@ -1,0 +1,68 @@
+/**********
+ * button *
+ **********/
+/*BUTTONS, CHECK AND RADIO BUTTONS*/
+.button {
+	background-clip: content-box;
+	border-image-source: url("Images/Buttons/button.png"); 
+	border-image-slice: 7 8 8 7;
+	border-image-width: 7px 8px 8px 7px;
+	border-image-repeat: stretch;
+	padding: 4 4 4 4;
+    border-width: 2;
+    border-style: inset;
+    background-image:  -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (#C6D462),
+                       to (#7EA51C));
+}
+.button:active, .button:prelight {
+	border-image-source: url("Images/Buttons/button-pressed.png"); 
+
+	background-image:  -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (@lorange),
+                       to (@dorange));
+}
+.button:insensitive {
+	border-image-source: url("Images/Buttons/button-ins.png"); 
+	background-image:  -gtk-gradient (linear,
+                       left top, left bottom,
+                       from (#E1E1E1),
+                       to (#C2C2C2));
+}
+    
+.check {
+	background-image: url("Images/CheckRadio/check1.png");
+}
+.check:active {
+	background-image: url("Images/CheckRadio/check2.png");
+}
+.check:prelight {
+	background-image: url("Images/CheckRadio/check2.png");
+}
+.check:insensitive:active {
+	background-image: url("Images/CheckRadio/check0.png");
+}
+.check:insensitive {
+	background-image: url("Images/CheckRadio/check02.png");
+}
+
+.radio {
+	background-image: url("Images/CheckRadio/radio1.png");
+}
+.radio:active {
+	background-image: url("Images/CheckRadio/radio2.png");
+}
+.radio:prelight {
+	background-image: url("Images/CheckRadio/radio2.png");
+}
+.radio:insensitive:active {
+	background-image: url("Images/CheckRadio/radio0.png");
+}
+.radio:insensitive {
+	background-image: url("Images/CheckRadio/radio02.png");
+}
+
+
+/*******************************/
