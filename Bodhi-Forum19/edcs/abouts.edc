@@ -1,0 +1,847 @@
+/////////////////////////////////////////////////////////////////////////////
+/*** ABOUT E ***/
+
+   group {
+      name: "e/widgets/about/main";
+      images {
+		  image: "img/e17.png" COMP;
+         image: "img/about_top.png" COMP;
+         image: "img/about_mid.png" COMP;
+         image: "img/about_bot.png" COMP;
+         image: "img/bodhi.png" COMP;
+      }
+      // data.item: "borderless" "1";
+      // data.item: "shaped" "1";
+      styles {
+         style {
+            name: "about_style";
+            base: "font=Sans font_size=11 align=center text_class=tb_plain color=#000000ff wrap=word";
+            tag: "hilight" "+ font=Sans:style=Bold text_class=tb_plain color=#F2850Cff";
+            tag: "title" "+ font_size=12 font=Sans:style=Bold text_class=tb_big color=#000 ";
+            tag: "/title" "- \n \n";
+            tag: "br" "\n";
+         }
+      }
+      min: 300 240;
+      max: 640 640;
+      parts {
+         part {
+            name: "sizer";
+            type: RECT;
+            mouse_events: 0;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               min: 300 240;
+               visible: 0;
+            }
+         }
+         part {
+            name: "about_clip";
+            type: RECT;
+            mouse_events: 0;
+            description {
+               state: "default" 0.0;
+               rel1 {
+                  to: "top";
+                  relative: 0.0 0.0;
+                  offset: 6 0;
+               }
+               rel2 {
+                  to: "top";
+                  relative: 1.0 1.0;
+                  offset: -7 -7;
+               }
+               color: 255 255 255 255;
+            }
+         }
+         part {
+            name: "authors_clip";
+            type: RECT;
+            mouse_events: 0;
+            description {
+               state: "default" 0.0;
+               rel1 {
+                  to: "bot";
+                  relative: 0.0 0.0;
+                  offset: 6 6;
+               }
+               rel2 {
+                  to: "bot";
+                  relative: 1.0 1.0;
+                  offset: -7 -1;
+               }
+               color: 255 255 255 255;
+            }
+         }
+         part {
+            name: "background_image";
+            type: RECT;
+            description {
+               state: "default" 0.0;
+               color: 255 255 255 255;
+               
+               
+            }
+         }
+         part {
+            name: "e.textblock.about";
+            type: TEXTBLOCK;
+            mouse_events: 0;
+            clip_to: "about_clip";
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               fixed: 1 1;
+               align: 0.5 0.0;
+               max: 10000 10000;
+               min: 160 0;
+               rel1 {
+                  to: "top";
+                  relative: 0.0 1.0;
+                  offset: 32 -17;
+               }
+               rel2 {
+                  to: "top";
+                  relative: 1.0 1.0;
+                  offset: -33 -17;
+               }
+               text {
+                  style: "about_style";
+                  min: 0 1;
+               }
+            }
+            description {
+               state: "up" 0.0;
+               inherit: "default" 0.0;
+               align: 0.5 1.0;
+               rel1 {
+                  relative: 0.0 0.0;
+                  offset: 32 0;
+               }
+               rel2 {
+                  relative: 1.0 0.0;
+                  offset: -33 -1;
+               }
+            }
+         }
+         part {
+            name: "e.textblock.authors";
+            type: TEXTBLOCK;
+            mouse_events: 0;
+            clip_to: "authors_clip";
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               fixed: 1 1;
+               align: 0.5 0.0;
+               max: 10000 10000;
+               min: 160 0;
+               rel1 {
+                  to: "bot";
+                  relative: 0.0 1.0;
+                  offset: 32 0;
+               }
+               rel2 {
+                  to: "bot";
+                  relative: 1.0 1.0;
+                  offset: -33 0;
+               }
+               text {
+                  style: "about_style";
+                  min: 0 1;
+               }
+            }
+            description {
+               state: "up" 0.0;
+               inherit: "default" 0.0;
+               align: 0.5 1.0;
+               rel1 {
+                  relative: 0.0 0.0;
+                  offset: 32 16;
+               }
+               rel2 {
+                  relative: 1.0 0.0;
+                  offset: -33 16;
+               }
+            }
+         }
+         part {
+            name: "top";
+            description {
+               state: "default" 0.0;
+               image.normal: "img/about_top.png";
+               image.middle: 0;
+               image.border: 28 28 28 28;
+               rel2.to_y: "e.text.title";
+               rel2.relative: 1.0 0.0;
+               rel2.offset: -1 6;
+               fill.smooth: 0;
+               color_class: "fileman_base";
+            }
+         }
+         part {
+            name: "bot";
+            description {
+               state: "default" 0.0;
+               image.normal: "img/about_bot.png";
+               image.middle: 0;
+               image.border: 28 28 28 0;
+               rel1.to_y: "e.text.title";
+               rel1.relative: 0.0 1.0;
+               rel1.offset: 0 -5;
+               fill.smooth: 0;
+				color_class: "fileman_base";
+            }
+         }
+         part {
+            name: "mid";
+            description {
+               state: "default" 0.0;
+               image.normal: "img/about_mid.png";
+               rel1 {
+                  to: "top";
+                  relative: 0.0 1.0;
+                  offset: 0 -1;
+               }
+               rel2 {
+                  to: "bot";
+                  relative: 1.0 0.0;
+                  offset: -1 0;
+               }
+               fill.smooth: 0;
+               color_class: "fileman_base";
+            }
+         }
+         part {
+            name: "e.text.title";
+            type: TEXT;
+            mouse_events: 0;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               color: 0 0 0 255;
+               align: 1.0 0.5;
+               rel1 {
+                  relative: 0.0 0.5;
+                  offset: 0 0;
+               }
+               rel2 {
+                  to_x: "logo";
+                  relative: 0.0 0.5;
+                  offset: -5 -1;
+               }
+               text {
+                  font: "Sans:style=Bold";
+                  size: 10;
+                  min: 1 1;
+                  align: 1.0 0.5;
+                  text_class: "about_title";
+               }
+            }
+            
+         }
+         part {
+            name: "e.text.version";
+            type: TEXT;
+            mouse_events: 0;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               color: 0 0 0 255;
+               align: 0.0 0.5;
+               rel1 {
+                  to_x: "logo";
+                  relative: 1.0 0.5;
+                  offset: 5 0;
+               }
+               rel2 {
+                  relative: 1.0 0.5;
+                  offset: -1 -1;
+               }
+               text {
+                  font: "Sans:style=Bold";
+                  size: 10;
+                  min: 1 1;
+                  align: 0.0 0.5;
+                  text_class: "about_version";
+               }
+            }
+         }
+       
+
+         part {
+            name: "logo";
+
+            description {
+            max: 48 48;
+            state: "default" 0.0;
+               aspect: 1.0 1.0;
+               aspect_preference: VERTICAL;
+               image.normal: "img/bodhi.png";
+               rel1 {
+                  to: "top";
+                  relative: 0.5 1.0;
+                  offset: 0 -30;
+               }
+               rel2 {
+                  to: "bot";
+                  relative: 0.5 0.0;
+                  offset: -1 29;
+               }
+               color: 255 255 255 255;
+
+            }
+            description {
+				visible: 0;
+				state: "e17" 0.0;
+				inherit: "default" 0.0;
+				color: 255 255 255 0;
+			}
+         }
+         part {
+            name: "logo2";
+
+            description {
+            max: 64 64;
+            state: "default" 0.0;
+               aspect: 1.0 1.0;
+               aspect_preference: VERTICAL;
+               image.normal: "img/e17.png";
+               rel1 {
+                  to: "top";
+                  relative: 0.5 1.0;
+                  offset: 0 -30;
+               }
+               rel2 {
+                  to: "bot";
+                  relative: 0.5 0.0;
+                  offset: -1 29;
+               }
+               color: 255 255 255 0;
+            }
+            description {
+				state: "e17" 0.0;
+				inherit: "default" 0.0;
+				color: 255 255 255 255;
+			}
+         }
+         
+         part {
+            name: "button_image";
+            mouse_events: 1;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               fixed: 1 1;
+               align: 0.5 1.0;
+               rel1.relative: 0.5 0.98;
+               rel1.offset: 0 -1;
+               rel2.relative: 0.5 0.98;
+               rel2.offset: 0 -1;
+               min: 64 32;
+               max: 64 32;
+               image {
+                  normal: "img/button.png";
+                  border: 7 7 7 7;
+               }
+            }
+            description {
+               state: "clicked" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "img/button-pressed.png";
+            }
+            description {
+				state: "over" 0.0;
+				inherit: "default" 0.0;
+				image.normal: "img/button-prelight.png";
+			}
+         }
+         part {
+            name: "e.text.label";
+            type: TEXT;
+            effect: SOFT_SHADOW;
+            mouse_events: 0;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1 {
+                  to: "button_image";
+                  relative: 0.0  0.0;
+                  offset: 3    3;
+               }
+               rel2 {
+                  relative: 1.0  1.0;
+                  offset: -4   -4;
+                  to: "button_image";
+               }
+               color_class: "button_text";
+               text {
+                  text: "Close";
+                  font: "Sans";
+                  size: 11;
+                  min: 1 1;
+                  align: 0.5 0.5;
+                  text_class: "button";
+               }
+            }
+         }
+
+
+      }
+      programs {
+		  program {
+				name: "logo_animate";
+				signal: "show";
+				source: "";
+				action: STATE_SET "e17" 0.0;
+				transition: SINUSOIDAL 3.0;
+				target: "logo";
+				target: "logo2";
+				after: "logo_animate2";
+			}
+			program {
+				name: "logo_animate2";
+				action: STATE_SET "default" 0.0;
+				transition: SINUSOIDAL 3.0;
+				target: "logo";
+				target: "logo2";
+				after: "logo_animate";
+			}
+		  OVER_PROGRAMS("button_image")
+         program {
+            name: "showa";
+            signal: "show";
+            source: "";
+            action: STATE_SET "up" 0.0;
+            transition: LINEAR 45.0;
+            target: "e.textblock.about";
+            after: "showa2";
+         }
+         program {
+            name: "showa2";
+            action: STATE_SET "default" 0.0;
+            target: "e.textblock.about";
+            after: "showa";
+         }
+         program {
+            name: "showb";
+            signal: "show";
+            source: "";
+            action: STATE_SET "up" 0.0;
+            transition: LINEAR 45.0;
+            target: "e.textblock.authors";
+            after: "showb2";
+         }
+         program {
+            name: "showb2";
+            action: STATE_SET "default" 0.0;
+            target: "e.textblock.authors";
+            after: "showb";
+         }
+         program {
+            name: "button_click";
+            signal: "mouse,down,1";
+            source: "button_image";
+            action: STATE_SET "clicked" 0.0;
+            target: "button_image";
+         }
+         program {
+            name: "button_unclick";
+            signal: "mouse,up,1";
+            source: "button_image";
+            action: STATE_SET "default" 0.0;
+            target: "button_image";
+         }
+         program {
+            name: "button_unclick2";
+            signal: "mouse,clicked,1";
+            source: "button_image";
+            action: SIGNAL_EMIT "e,action,close" "";
+         }
+      }
+   }
+
+
+/////////////////////////////////////////////////////////////////////////////
+/*** THEME ABOUT ***/
+
+#define ADV_IMG(NUMBER)	image: "img/th_about/"NUMBER".png" COMP;
+
+#define ADV_TITLE(NUMBER1, NUMBER2, TITLE)	\
+part {										\
+			name: "adv_title"NUMBER1;		\
+			 type: TEXT;					\
+			 description {					\
+				 state: "default" 0.0;		\
+				 align: 0.0 0.0;			\
+				 rel1 {						\
+					 to: "clip";			\
+				 }							\
+				 rel2 {						\
+					 to: "clip";			\
+				 }							\
+				 color: 0 0 0 0;			\
+				 text {						\
+					 align: 0.0 0.0;		\
+					 text: TITLE;			\
+					 font: "Sans";			\
+					 size: 11;				\
+				 }							\
+			 }								\
+			 description {					\
+				 state: NUMBER1 0.0;		\
+				 inherit: "default" 0.0;	\
+				 color: 0 0 0 255;			\
+			 }								\
+			 description {					\
+				 state: NUMBER2 0.0;		\
+				 inherit: "default" 0.0;	\
+				 color: 0 0 0 0;			\
+			 }								\
+		 }
+
+#define ADV_IMAGE(NUMBER1, NUMBER2)			\
+part {										\
+			 name: "adv_image"NUMBER1;		\
+			 description {					\
+				 state: "default" 0.0;		\
+				 align: 1.0 1.0;			\
+				 rel1.to: "clip";			\
+				 rel1.offset: 18 18;		\
+				 rel2.to: "clip";			\
+				image.normal: "img/th_about/"NUMBER1".png";		\
+				color: 255 255 255 0;		\
+			 }								\
+			 description {					\
+				 state: NUMBER1 0.0;		\
+				 inherit: "default" 0.0;	\
+				 color: 255 255 255 255;	\
+			 }								\
+			 description {					\
+				 state: NUMBER2 0.0;		\
+				 inherit: "default" 0.0;	\
+				 color: 255 255 255 0;		\
+			 }								\
+		 }
+
+#define ADV_PROGRAM(NUMBER1, NUMBER2)		\
+	program {								\
+			 name: "switch_ad"NUMBER1;		\
+			 action: STATE_SET NUMBER2 0.0;	\
+			 target: "adv_image"NUMBER1;	\
+			 target: "adv_title"NUMBER1;	\
+ 			 target: "adv_image"NUMBER2;	\
+			 target: "adv_title"NUMBER2;	\
+			 transition: LINEAR 0.2;	\
+			 after: "switch_ad"NUMBER2;		\
+		 }
+		 
+		 
+   group {
+      name: "e/theme/about";
+      images {
+		  image: "img/bodhi.png" COMP;
+         image: "img/th_about_fade.png" COMP;
+         ADV_IMG("0")
+         ADV_IMG("1")
+         ADV_IMG("2")
+         ADV_IMG("3")
+         ADV_IMG("4")
+         ADV_IMG("5")
+}
+      styles {
+         style {
+            name: "theme_about_style";
+            base: "font=Sans font_size=11 align=center color=#000 wrap=word";
+            tag: "hilight" "+ font=Sans:style=Bold";
+            tag: "br" "\n";
+         }
+                 style {
+            name: "theme_about_version";
+            base: "font=Sans font_size=10 align=right color=#000 wrap=word";
+            tag: "hilight" "+ font=Sans:style=Bold";
+            tag: "br" "\n";
+         }
+      }
+      min: 300 240;
+      max: 300 240;
+      parts {
+         part {
+            name: "base";
+            type: RECT;
+            description {
+               state: "default" 0.0;
+               color: 255 255 255 255;
+               color_class: "fileman_base";
+               aspect: 1.0 1.0;
+               aspect_preference: NONE;
+            }
+         }
+         
+         part {
+			 name: "bodhi_logo";
+			 description {
+				 max: 48 48;
+				 state: "default" 0.0;
+				 image.normal: "img/bodhi.png";
+				 align: 0.0 0.0;
+				 rel1.offset: 4 4;
+			 }
+		 }
+		part {
+			 name: "logo";
+			 description {
+				 max: 64 64;
+				 state: "default" 0.0;
+				 image.normal: "img/e17.png";
+				 align: 1.0 0.0;
+				 rel1.offset: 0 -6;
+			 }
+		 }
+		 part {
+			 name: "clip";
+			type: RECT;
+			description {
+				state: "default" 0.0;
+				rel1 {
+					to: "bodhi_logo";
+					relative: 1.0 0.0;
+					offset: 3 0;
+				}
+				rel2 {
+					to_x: "logo";
+					to_y: "title";
+					relative: 0.0 0.0;
+					offset: 3 0;
+				}
+				color: 255 255 255 0;
+			}
+		 }
+		 part {
+			 name: "adv_title";
+			 type: TEXT;
+			 description {
+				 state: "default" 0.0;
+				 align: 0.0 0.0;
+				 rel1 {
+					 to: "clip";
+					// relative: 0.0 0.0;
+				 }
+				 rel2 {
+					 to: "clip";
+				 }
+				 color: 0 0 0 255;
+				 text {
+					 align: 0.0 0.0;
+					 text: "Based on BodhiForum theme";
+					 font: "Sans";
+					 size: 11;
+				 }
+			 }
+			 description {
+				 state: "1" 0.0;
+				 inherit: "default" 0.0;
+				 color: 0 0 0 0;
+			 }
+		 }
+		ADV_TITLE("1", "2","Pager with desktop preview")	
+		ADV_TITLE("2", "3", "Everything Theme")
+		ADV_TITLE("3", "4", "Engage Bar Theme")
+		ADV_TITLE("4", "5", "Multiple Border Style")
+		ADV_TITLE("5", "6", "a full EFM Theme")
+		 part {
+			 name: "adv_image";
+			 description {
+				 state: "default" 0.0;
+				 align: 1.0 1.0;
+				 rel1.to: "clip";
+				 rel1.offset: 18 18;
+				 rel2.to: "clip";
+				image.normal: "img/th_about/0.png";
+				color: 255 255 255 255;
+			 }
+			 description {
+				 state: "1" 0.0;
+				 inherit: "default" 0.0;
+				 color: 255 255 255 0;
+			 }
+		 }
+		ADV_IMAGE("1","2") 
+		ADV_IMAGE("2","3")
+		ADV_IMAGE("3","4")
+		ADV_IMAGE("4", "5")
+		ADV_IMAGE("5", "6")
+		 part {
+			 name: "fade";
+			 type: IMAGE;
+			 description {
+				 state: "default";
+				 rel1.to: "clip";
+				 rel2.to: "clip";
+				 image.normal: "img/th_about_fade.png";
+			 }
+		 }
+         part {
+			 name: "title";
+			 type: TEXT;
+			 description {
+				state: "default" 0.0;
+				rel1.to: "base";
+				rel1.relative: 0.0 0.5;
+				color: 0 0 0 255;
+				text {
+					font: "Harabara";
+					text: "Bodhi Linux Theme";
+					size: 24;
+					align: 0.5 0.0;
+				}
+			 }
+		 }
+         part {
+            name: "about";
+            type: TEXTBLOCK;
+            mouse_events: 0;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1.to: "title";
+               rel1.relative: 0.0 0.0;
+               rel1.offset: 0 -30;
+               text {
+                  style: "theme_about_style";
+                  min: 1 1;
+                  text:
+                            "written by Alberto <hilight>Duma</hilight> Verdoja<br>"
+                            "for Bodhi Linux users"
+                            ;
+               }
+            }
+         }
+         part {
+            name: "button_image";
+            mouse_events: 1;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               fixed: 1 1;
+               align: 0.5 1.0;
+               rel1.relative: 0.5 0.98;
+               rel1.offset: 0 -1;
+               rel2.relative: 0.5 0.98;
+               rel2.offset: 0 -1;
+               min: 64 32;
+               max: 64 32;
+               image {
+                  normal: "img/button.png";
+                  border: 10 10 10 10;
+               }
+            }
+            description {
+               state: "clicked" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "img/button-pressed.png";
+            }
+            description {
+               state: "over" 0.0;
+               inherit: "default" 0.0;
+               image.normal: "img/button-prelight.png";
+            }
+         }
+         part {
+            name: "e.text.label";
+            type: TEXT;
+            mouse_events: 0;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1 {
+                  to: "button_image";
+                  relative: 0.0  0.0;
+                  offset: 3    3;
+               }
+               rel2 {
+                  relative: 1.0  1.0;
+                  offset: -4   -4;
+                  to: "button_image";
+               }
+               color_class: "button_text";
+               text {
+                  text: "Close";
+                  font: "Sans";
+                  size: 11;
+                  min: 1 1;
+                  align: 0.5 0.5;
+                  text_class: "button";
+               }
+            }
+         }
+        part {
+			 name: "version";
+			 mouse_events: 0;
+			 type: TEXTBLOCK;
+			 description {
+				 state: "default" 0.0;
+				 align: 0.90 0.95;
+
+				 text {
+					 align: 1.0 1.0;
+					 style: "theme_about_version";
+					 text: "<hilight>version:</hilight> 0.19999blah<br>"
+							"<hilight>license:</hilight> cc-by-nc-sa";
+				 }
+			 }
+		 }
+        
+      }
+      programs {
+		  OVER_PROGRAMS("button_image")
+         program {
+			 name: "switch_ad";
+			 signal: "show"; source: "";
+			 action: STATE_SET "1" 0.0;
+			 target: "adv_title";
+			 target: "adv_image";
+			 target: "adv_image1";
+			 target: "adv_title1";
+			 transition: LINEAR 0.2;
+			 after: "switch_ad1";
+		 }
+ADV_PROGRAM("1","2")
+ADV_PROGRAM("2","3")
+ADV_PROGRAM("3","4")
+ADV_PROGRAM("4","5")
+		program {
+			 name: "switch_ad5";
+			 action: STATE_SET "default" 0.0;
+			 target: "adv_title";
+			 target: "adv_image";
+			 target: "adv_image5";
+			 target: "adv_title5";
+			 transition: LINEAR 2.0;
+			 after: "switch_ad";
+		 }
+
+         program {
+            name: "button_click";
+            signal: "mouse,down,1";
+            source: "button_image";
+            action: STATE_SET "clicked" 0.0;
+            target: "button_image";
+         }
+         program {
+            name: "button_unclick";
+            signal: "mouse,up,1";
+            source: "button_image";
+            action: STATE_SET "default" 0.0;
+            target: "button_image";
+         }
+         program {
+            name: "button_unclick2";
+            signal: "mouse,clicked,1";
+            source: "button_image";
+            action: SIGNAL_EMIT "e,action,close" "";
+         }
+      }
+   }
+

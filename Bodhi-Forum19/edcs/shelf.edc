@@ -1,0 +1,321 @@
+
+/////////////////////////////////////////////////////////////////////////////
+/*** SHELF ***/
+
+   /* Shelves are "panels" that  are placed around the edges of the screen
+    * to hold useful gadgets to control things - like switch desktops
+    * (the pager module and its gadget), launch programs, and anything else
+    * someone wants to put in there. The way to add gadgets to a shelf is to
+    * write a module that places a gadget there. This means that it might end
+    * up containing all sorts of things and the artist needs to be aware of
+    * that and make sure the shelf border and background etc. won't interfere
+    * with all manner of things that may get placed there */
+  
+   /* This is put around gadgets in the shelf if they ask for an "inset" style
+    * framing. This puts some sort of bordering around them to make them look
+    * "inset" into the shelf or screen. this is meant to go with the default
+    * shelf style as implied in the group name */
+   group {
+      name: "e/shelf/default/inset";
+      alias: "e/shelf/alternate/inset";
+
+    images {
+         image: "img/shelf_inset_bg.png" COMP;
+         image: "img/shelf_inset_over.png" COMP;
+    }
+	parts {
+        part {
+            name: "base";
+            type: IMAGE;
+            description {
+               state: "default" 0.0;
+               rel1 {
+                  to: "inset";
+                  offset: 1 1;
+               }
+               rel2 {
+                  to: "inset";
+                  offset: -1 -1;
+               }
+               color: 255 255 255 255;
+               image.normal: "img/shelf_inset_bg.png";
+               image.border: 7 7 7 7;
+            }
+         }
+         part {
+            name: "clip";
+            type: RECT;
+            description {
+               state: "default" 0.0;
+               rel1.to: "base";
+               rel2.to: "base";
+               color: 255 255 255 255;
+            }
+         }
+         part {
+            name: "e.swallow.content";
+            type: SWALLOW;
+            clip_to: "clip";
+            description {
+               state: "default" 0.0;
+               rel1 {
+                  to: "base";
+                  offset: 1 1;
+               }
+               rel2 {
+                  to: "base";
+                  offset: -2 -2;
+               }
+            }
+         }
+         part {
+            name: "inset";
+            mouse_events: 0;
+            description {
+               state: "default" 0.0;
+               rel1.offset: 1 1;
+               rel2.offset: -2 -2;
+               image.normal: "img/shelf_inset_over.png";
+               image.middle: 0;
+               /* here we say the "middle" part of the image
+                * between the borders is not filled - it's
+                * empty, so don't draw it - ignore it */
+               image.border: 7 7 7 7;
+               fill.smooth: 0;
+            }
+         }
+      }
+      programs {
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,top";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,top_left";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,top_right";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,bottom";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,bottom_left";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,bottom_right";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,left";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,left_top";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,left_bottom";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,right";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,right_top";
+         //    source: "e";
+         //      }
+         // tell us what oriantation we are in. not used here
+         //      program { name: "xx";
+         //    signal: "e,state,orientation,right_bottom";
+         //    source: "e";
+         //      }
+      }
+   }
+   /* Same as inset, but meant to be with no decorations that are visible. here
+    * we simply make the content swallow inset a bit from the edges to align
+    * with any plain style inset boxes */
+   group {
+      name: "e/shelf/default/plain";
+      alias: "e/shelf/alternate/plain";
+      parts {
+         part {
+            name: "clip";
+            type: RECT;
+            description {
+               state: "default" 0.0;
+               color: 255 255 255 255;
+            }
+         }
+         part {
+            name: "e.swallow.content";
+            type: SWALLOW;
+            clip_to: "clip";
+            description {
+               state: "default" 0.0;
+               rel1.offset: 1 1;
+               rel2.offset: -2 -2;
+            }
+         }
+      }
+   }
+   /* This is the "invisible" shelf. Yes. Even it has visual config in edje.
+    * The idea is that it will remain invisible, BUT will allow the designer
+    * to do some layout and padding. This gets the same signals as the
+    * default shelf and can provide the same data items */
+   group {
+      name: "e/shelf/invisible/base";
+      parts {
+         part {
+            name: "e.swallow.content";
+            type: SWALLOW;
+            description {
+               state: "default" 0.0;
+               rel1 {
+                  relative: 0.0 0.0;
+                  offset: 0 0;
+               }
+               rel2 {
+                  relative: 1.0 1.0;
+                  offset: -1 -1;
+               }
+            }
+         }
+      }
+   }
+
+
+   group {
+      name: "e/shelf/invisible/plain";
+      alias: "e/shelf/invisible/inset";
+      parts {
+         part {
+            name: "clip";
+            type: RECT;
+            description {
+               state: "default" 0.0;
+               color: 255 255 255 255;
+            }
+         }
+         part {
+            name: "e.swallow.content";
+            type: SWALLOW;
+            clip_to: "clip";
+            description {
+               state: "default" 0.0;
+               rel1.offset: 1 1;
+               rel2.offset: -2 -2;
+            }
+         }
+      }
+   }
+   
+#define BASE_ORIENT(POS, REL1, REL2)					\
+description {	state: POS 0.0;							\
+				inherit: "default" 0.0;					\
+				rel1.offset: REL1;						\
+				rel2.offset: REL2;		 				\
+            }
+
+#define ORIENT(POS, OFF1, OFF2)							\
+description {	state: POS 0.0; 						\
+				inherit: "default" 0.0; 				\
+				rel1.relative: 0.01 0.01;				\
+				rel2.relative: 0.99 0.99;				\
+				rel1.offset: OFF1; 						\
+				rel2.offset: OFF2;						\
+            }
+
+#define ORIENT_PROGRAM(POS)								\
+program { name: POS; 									\
+          signal: "e,state,orientation,"POS; 			\
+          source: "e"; 									\
+          action: STATE_SET POS 0.0; 					\
+          target: "base"; 								\
+          target: "e.swallow.content"; 					\
+        } 
+
+#define SHELF(NAME, IMAGE)  									\
+   group {														\
+      data.item: "hidden_state_size" "2";						\
+      name: NAME; 												\
+      images.image: IMAGE COMP;									\
+      parts { 													\
+         part { 												\
+            name: "base"; 										\
+            mouse_events: 1; 									\
+            description { 										\
+               state: "default" 0.0; 							\
+               color_class: "shelf_base"; 						\
+               image.normal: IMAGE; 							\
+               image.border: 8 8 8 8; 							\
+               fill.smooth: 0; 									\
+            } 													\
+            BASE_ORIENT("left", -10 0, -1 -8)					\
+            BASE_ORIENT("left_top", -10 -10, -1 -8)				\
+            BASE_ORIENT("left_bottom", -10 0, -1 10)			\
+            BASE_ORIENT("right", 0 0, 10 -1)					\
+			BASE_ORIENT("right_top", 0 -10, 10 -1)				\
+			BASE_ORIENT("right_bottom", 0 0, 10 10)				\
+			BASE_ORIENT("top", 0 -10, -1 -1)					\
+			BASE_ORIENT("top_left", -10 -10, -1 -1)				\
+			BASE_ORIENT("top_right", 0 -10, 10 -1)				\
+			BASE_ORIENT("bottom", 0 0, -1 10)					\
+			BASE_ORIENT("bottom_left", -10 0, -1 10)			\
+			BASE_ORIENT("bottom_right", 0 0, 10 10)				\
+         } 														\
+         part {													\
+            name: "e.swallow.content"; 							\
+            type: SWALLOW; 										\
+            description { 										\
+               state: "default" 0.0; 							\
+		   }													\
+		   ORIENT("left", 1 1, -4 0)							\
+		   ORIENT("left_top", 1 0, -4 0)						\
+		   ORIENT("left_bottom", 1 0, -4 0)						\
+		   ORIENT("right", 4 1, 0 0)							\
+		   ORIENT("right_top", 4 1, 0 0)						\
+		   ORIENT("right_bottom", 4 1, 0 0)						\
+		   ORIENT("top", 1 1, -1 -4)								\
+		   ORIENT("top_left", 1 1, -1 -4)						\
+		   ORIENT("top_right", 1 1, -1 -4)						\
+		   ORIENT("bottom", 1 4, -1 -1)							\
+		   ORIENT("bottom_left", 1 4, -1 -1)						\
+		   ORIENT("bottom_right", 1 4, -1 -1)					\
+         } 														\
+      } 														\
+      programs { 												\
+		ORIENT_PROGRAM("left")									\
+		ORIENT_PROGRAM("left_top")								\
+		ORIENT_PROGRAM("left_bottom")							\
+		ORIENT_PROGRAM("right")									\
+		ORIENT_PROGRAM("right_top")								\
+		ORIENT_PROGRAM("right_bottom")							\
+		ORIENT_PROGRAM("top")									\
+		ORIENT_PROGRAM("top_left")								\
+		ORIENT_PROGRAM("top_right")								\
+		ORIENT_PROGRAM("bottom")								\
+		ORIENT_PROGRAM("bottom_left")							\
+		ORIENT_PROGRAM("bottom_right")							\
+      } 														\
+   }
+   
+SHELF("e/shelf/alternate/base", "img/shelf_alt_bg2.png")
+SHELF("e/shelf/default/base", "img/shelf_bg2.png")
+SHELF("modules/illume-indicator/window", "img/shelf_bg.png")

@@ -1,0 +1,79 @@
+program {
+	name:	"star_start";
+	action:	STATE_SET "titling" 0.0;
+	in:		5.0 30.0;
+	transition: LINEAR 1;
+	target:	"star0";
+	after:	"star_stop";
+}
+program {
+	name:	"star_stop";
+	action:	STATE_SET "default" 0.0;
+	transition: DECELERATE 1;
+	target:	"star0";
+	after:	"star_start";
+	after:	"star_start1";
+}
+program {
+	name:	"star_start1";
+	action:	STATE_SET "titling" 0.0;
+	in:		5.0 30.0;
+	transition: LINEAR 1;
+	target:	"star1";
+	after:	"star_stop1";
+	after:	"star_start2";
+}
+program {
+	name:	"star_stop1";
+	action:	STATE_SET "default" 0.0;
+	transition: DECELERATE 1;
+	target:	"star1";
+	after:	"star_start1";
+}
+program {
+	name:	"star_start2";
+	action:	STATE_SET "titling" 0.0;
+	in:		5.0 30.0;
+	transition: LINEAR 1;
+	target:	"star2";
+	after:	"star_stop2";
+	after:	"star_start3";
+}
+program {
+	name:	"star_stop2";
+	action:	STATE_SET "default" 0.0;
+	transition: DECELERATE 1;
+	target:	"star2";
+	after:	"star_start2";
+}
+program {
+	name:	"star_start3";
+	action:	STATE_SET "titling" 0.0;
+	in:		5.0 30.0;
+	transition: LINEAR 1;
+	target:	"star3";
+	after:	"star_stop3";
+	after:	"star_start4";
+}
+program {
+	name:	"star_stop3";
+	action:	STATE_SET "default" 0.0;
+	transition: DECELERATE 1;
+	target:	"star3";
+	after:	"star_start3";
+}
+program {
+	name:	"star_start4";
+	action:	STATE_SET "titling" 0.0;
+	in:		5.0 30.0;
+	transition: LINEAR 1;
+	target:	"star4";
+	after:	"star_stop4";
+}
+program {
+	name:	"star_stop4";
+	action:	STATE_SET "default" 0.0;
+	transition: DECELERATE 1;
+	target:	"star4";
+	after:	"star_start4";
+}
