@@ -1,0 +1,37 @@
+style "progress"
+{
+	xthickness	= 0
+	ythickness	= 2
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+			detail		= "trough"
+			file		= "Images/Progressbars/box.png"
+			border		= {4, 4, 4, 4}
+			stretch		= TRUE
+		}
+
+		image
+		{
+			function	= BOX
+			detail		= "bar"
+			file		= "Images/Progressbars/barH.png"
+			border		= {4,4,4,4}
+			stretch		= TRUE
+			orientation	= HORIZONTAL
+		}
+		
+		image
+		{
+			function	= BOX
+			detail		= "bar"
+			file		= "Images/Progressbars/barV.png"
+			border		= {4,4,4,4}
+			stretch		= TRUE
+			orientation	= VERTICAL
+		}
+	}
+
+}

@@ -1,0 +1,37 @@
+style "entry"
+{	
+	GtkWidget::focus-line-width		= 0
+	GtkWidget::interior-focus		= 0
+	GtkEntry::state-hint = 1
+
+
+	xthickness 	= 5
+	ythickness 	= 4
+	
+	engine "pixmap"
+	{
+		image
+		{
+			function	= SHADOW
+			file		= "Images/Entries/entry.png"
+			border		= {9,9,9,9}
+			shadow		= IN
+		}
+		
+		image
+		{
+			function	= FLAT_BOX
+			file		= "Images/Entries/box.png"
+			border		= {9,9,9,9}
+			stretch		= TRUE
+		}
+	
+		image
+		{
+			function	= FOCUS
+			file		= "Images/null.png"
+			border		= {9,9,9,9}
+			stretch		= TRUE
+		}
+	}
+}

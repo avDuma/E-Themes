@@ -1,0 +1,77 @@
+style "button" = "default"
+{	
+	engine "pixmap"
+	{
+		image
+		{
+			function	= BOX
+			detail		= "buttondefault"
+			file		= "Images/null.png"
+		}	
+	
+		image
+		{
+			function	= VLINE
+			file		= "Images/null.png"
+			border		= {1, 1, 1, 1}
+		}
+
+		image
+		{
+			function	= FOCUS
+			file		= "Images/null.png"
+			border		= {6,6,6,6}
+		}
+		image
+		{
+			function		= BOX
+			state			= NORMAL
+			file			= "Images/Buttons/button.png"
+			border			= { 6, 6, 6, 6 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= PRELIGHT
+			file			= "Images/Buttons/button.png"
+			border			= { 5, 5, 5, 5 }
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= ACTIVE
+			file			= "Images/Buttons/button-pressed.png"
+			stretch			= TRUE
+			border			= {8,8,8,8}
+			stretch			= TRUE
+		}
+
+		image
+		{
+			function		= BOX
+			state			= INSENSITIVE
+			file			= "Images/Buttons/button-ins.png"
+			border			= { 6, 6, 6, 6 }
+			stretch			= TRUE
+		}
+
+	}
+}
+
+style "label"
+{	
+	text[NORMAL]	= "#ffffff"
+	text[PRELIGHT]	= "#ffffff"
+	fg[NORMAL]	= "#ffffff"
+	fg[PRELIGHT]	= "#ffffff"
+	fg[ACTIVE]	= "#ffffff"
+
+	engine "murrine"
+	{
+		textstyle = 3
+	}
+}
