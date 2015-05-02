@@ -7,15 +7,12 @@
             color: 255 255 255 255;	\
             color_class: "ilist_item_odd_base";	\
          }	\
-         description { state: "selected" 0.0;	\
-			color_class: "focus";	\
-		 }	\
       }	\
       part { name: "ilist_sel_SH"; type: IMAGE; mouse_events: 0;	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9; /*left right top bottom*/	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2; /*left right top bottom*/	\
 			visible: 0;	\
 		}	\
 		description { state: "selected" 0.0;	\
@@ -124,15 +121,12 @@
             color: 255 255 255 255;	\
             color_class: "ilist_item_odd_base";	\
          }	\
-         description { state: "selected" 0.0;	\
-			color_class: "focus";	\
-		 }	\
       }	\
       part { name: "ilist_sel_SH"; type: IMAGE; mouse_events: 0;	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9; /*left right top bottom*/	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2; /*left right top bottom*/	\
 			visible: 0;	\
 		}	\
 		description { state: "selected" 0.0;	\
@@ -169,7 +163,7 @@ group { name: "elm/genlist/item/group_index/default"; nomouse; program_source: "
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_header";
-            text { font: "Sans:style=Bold"; size: 12;
+            text { font: "Sans:style=Bold"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -251,7 +245,7 @@ group { name: "elm/genlist/item/default/default";
    data.item: "treesize" TREEPAD;
    data.item: "flips" "elm.text.flip";
 #define IMGP() \
-	images.image: "img/ilist_sel_SH.png" COMP;
+	images.image: "selected.png" COMP;
    IMGP()
    parts {
 //---------------------------------------------------------------------------
@@ -275,21 +269,14 @@ group { name: "elm/genlist/item/default/default";
             color_class: "ilist_item_odd_base"; \
          } \
       } \
-      part { name: "base_sel"; type: RECT; mouse_events: 0;	\
+      part { name: "base_sel"; mouse_events: 0;	\
 		clip_to: "base_clip_selected";	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			color_class: "focus";	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2;	\
 		}	\
-	  }	\
-	  part { name: "base_sel_SH"; mouse_events: 0;	\
-		clip_to: "base_clip_selected";	\
-		description { state: "default" 0.0;	\
-			STAY_ON("base_sel")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9;	\
-		}	\
-	  }	\
+	  }		\
       program { \
          signal: "elm,state,odd"; source: "elm"; \
          action: STATE_SET "odd" 1.0; \
@@ -360,7 +347,7 @@ group { name: "elm/genlist/item/default/default";
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -389,7 +376,7 @@ group { name: "elm/genlist/item/default/default";
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -418,7 +405,7 @@ group { name: "elm/genlist/item/default/default";
             color: 255 255 255 255;
             color3: 255 255 255 255;            
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -564,7 +551,7 @@ group { name: "elm/genlist/item/default_style/default"; nomouse;
    data.item: "treesize" TREEPAD;
    data.item: "flips" "elm.text.flip";
    styles.style { name: "genlist_style";
-      base: "font=""Sans"" font_size=12 align=left valign=0.5 color=#4c4c4cff text_class=list_item";
+      base: "font=""Sans"" font_size=10 align=left valign=0.5 color=#4c4c4cff text_class=list_item";
       tag: "br" "\n";
       tag: "ps" "ps";
       tag: "hilight" "+ font_weight=Bold";
@@ -572,7 +559,7 @@ group { name: "elm/genlist/item/default_style/default"; nomouse;
       tag: "tab" "\t";
    }
    styles.style { name: "genlist_style_selected";
-      base: "font=""Sans"" font_size=12 align=left valign=0.5 color=#fff text_class=list_item_selected";
+      base: "font=""Sans"" font_size=10 align=left valign=0.5 color=#fff text_class=list_item_selected";
       tag: "br" "\n";
       tag: "ps" "ps";
       tag: "hilight" "+ font_weight=Bold";
@@ -580,7 +567,7 @@ group { name: "elm/genlist/item/default_style/default"; nomouse;
       tag: "tab" "\t";
    }
    styles.style { name: "genlist_style_disabled";
-      base: "font=""Sans"" font_size=12 align=left valign=0.5 color=#4c4c4c7d text_class=list_item";
+      base: "font=""Sans"" font_size=10 align=left valign=0.5 color=#4c4c4c7d text_class=list_item";
       tag: "br" "\n";
       tag: "ps" "ps";
       tag: "hilight" "+ font_weight=Bold";
@@ -603,7 +590,7 @@ group { name: "elm/genlist/item/default_style/default"; nomouse;
             rel2.relative: 0.0 1.0;
             rel2.to_x: "elm.swallow.end";
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -632,7 +619,7 @@ group { name: "elm/genlist/item/default_style/default"; nomouse;
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -661,7 +648,7 @@ group { name: "elm/genlist/item/default_style/default"; nomouse;
             rel2.offset: -1 -1;
             rel2.to: "elm.text";
             color_class: "list_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -823,7 +810,7 @@ group { name: "elm/genlist/item/one_icon/default"; nomouse;
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 1;
                align: 0.0 0.5;
                text_class: "list_item";
@@ -851,7 +838,7 @@ group { name: "elm/genlist/item/one_icon/default"; nomouse;
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -880,7 +867,7 @@ group { name: "elm/genlist/item/one_icon/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -1027,7 +1014,7 @@ group { name: "elm/genlist/item/end_icon/default"; nomouse;
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -1056,7 +1043,7 @@ group { name: "elm/genlist/item/end_icon/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -1085,7 +1072,7 @@ group { name: "elm/genlist/item/end_icon/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -1226,7 +1213,7 @@ group { name: "elm/genlist/item/no_icon/default"; nomouse;
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -1255,7 +1242,7 @@ group { name: "elm/genlist/item/no_icon/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -1284,7 +1271,7 @@ group { name: "elm/genlist/item/no_icon/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -1436,9 +1423,12 @@ group { name: "elm/genlist/tree/default/default"; nomouse;
 //   alias: "elm/genlist/tree/effect_parts/default";
 //   alias: "elm/genlist/item/effect_parts/default";
 #define TREEIMGS() \
-   images.image: "img/arrow.png" COMP; \
-   images.image: "img/arrow_down.png" COMP; \
-   images.image: "img/arrow_left.png" COMP; \
+   images.image: "menu_arrow_normal.png" COMP; \
+   images.image: "menu_arrow_d_normal.png" COMP; \
+   images.image: "menu_arrow_l_normal.png" COMP; \
+   images.image: "menu_arrow_sel.png" COMP; \
+   images.image: "menu_arrow_d_sel.png" COMP; \
+   images.image: "menu_arrow_l_sel.png" COMP; \
    
    TREEIMGS()
    parts {
@@ -1462,14 +1452,13 @@ group { name: "elm/genlist/tree/default/default"; nomouse;
          scale: 1; \
          ignore_flags: ON_HOLD; \
          description { state: "default" 0.0; \
-            FIXED_SIZE(5,7)	\
+            FIXED_SIZE(9,12)	\
             STAY_ON("arrow")	\
-            image.normal: "img/arrow.png"; \
-            color_class: "ilist_item";	\
+            image.normal: "menu_arrow_normal.png"; \
          } \
          description { state: "selected" 0.0; \
             inherit: "default" 0.0; \
-            color_class: "ilist_item_selected";\
+            image.normal: "menu_arrow_sel.png"; \
          } \
          description { state: "disabled" 0.0; \
             inherit: "default" 0.0;	\
@@ -1477,18 +1466,17 @@ group { name: "elm/genlist/tree/default/default"; nomouse;
          } \
          description { state: "default" 1.0; \
             inherit: "default" 0.0; \
-            FIXED_SIZE(7,5)	\
-            image.normal: "img/arrow_down.png"; \
+            FIXED_SIZE(12,9)	\
+            image.normal: "menu_arrow_d_normal.png"; \
          } \
          description { state: "selected" 1.0; \
             inherit: "default" 0.0; \
-            FIXED_SIZE(7,5)	\
-            image.normal: "img/arrow_down.png"; \
-            color_class: "ilist_item_selected";\
+            FIXED_SIZE(12,9)	\
+            image.normal: "menu_arrow_d_sel.png"; \
          } \
          description { state: "disabled" 1.0; \
-            FIXED_SIZE(7,5)	\
-            image.normal: "img/arrow_down.png"; \
+            FIXED_SIZE(12,9)	\
+            image.normal: "menu_arrow_d_normal.png"; \
             color: 255 255 255 125; \
          } \
       } \
@@ -1497,14 +1485,13 @@ group { name: "elm/genlist/tree/default/default"; nomouse;
          scale: 1; \
          ignore_flags: ON_HOLD; \
          description { state: "default" 0.0; \
-            FIXED_SIZE(5,7)	\
+            FIXED_SIZE(9,12)	\
             STAY_ON("arrow")	\
-            image.normal: "img/arrow_left.png"; \
-            color_class: "ilist_item";	\
+            image.normal: "menu_arrow_l_normal.png"; \
          } \
          description { state: "selected" 0.0; \
             inherit: "default" 0.0; \
-            color_class: "ilist_item_selected";\
+            image.normal: "menu_arrow_l_sel.png"; \
          } \
          description { state: "disabled" 0.0; \
             inherit: "default" 0.0;	\
@@ -1512,18 +1499,17 @@ group { name: "elm/genlist/tree/default/default"; nomouse;
          } \
          description { state: "default" 1.0; \
             inherit: "default" 0.0; \
-            FIXED_SIZE(7,5)	\
-            image.normal: "img/arrow_down.png"; \
+            FIXED_SIZE(12,9)	\
+            image.normal: "menu_arrow_d_normal.png"; \
          } \
          description { state: "selected" 1.0; \
             inherit: "default" 0.0; \
-            FIXED_SIZE(7,5)	\
-            image.normal: "img/arrow_down.png"; \
-            color_class: "ilist_item_selected";\
+            FIXED_SIZE(12,9)	\
+            image.normal: "menu_arrow_d_sel.png"; \
          } \
          description { state: "disabled" 1.0; \
-            FIXED_SIZE(7,5)	\
-            image.normal: "img/arrow_down.png"; \
+            FIXED_SIZE(12,9)	\
+            image.normal: "menu_arrow_d_normal.png"; \
             color: 255 255 255 125; \
          } \
       } \
@@ -1942,7 +1928,7 @@ group { name: "elm/genlist/item/icon_top_text_bottom/default";nomouse;
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.5 0.5;
@@ -1971,7 +1957,7 @@ group { name: "elm/genlist/item/icon_top_text_bottom/default";nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 0.5;
                text_class: "list_item";
@@ -2003,7 +1989,7 @@ group { name: "elm/genlist/item/icon_top_text_bottom/default";nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 0.5;
                text_class: "list_item";
@@ -2091,7 +2077,7 @@ group { name: "elm/genlist/item/icon_top_text_bottom/default";nomouse;
             rel2.offset: -1 2;
             align: 0.5 0.0;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.5 0.5;
@@ -2359,8 +2345,8 @@ COMPRESS_ODD("elm/genlist/tree_compress_odd/icon_top_text_bottom/default", "elm/
       part { name: "ilist_sel_SH"; type: IMAGE; mouse_events: 0;	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9; /*left right top bottom*/	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2; /*left right top bottom*/	\
 			visible: 0;	\
 		}	\
 		description { state: "selected" 0.0;	\
@@ -2398,7 +2384,7 @@ group { name: "elm/genlist/item/double_label/default"; nomouse;
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.0 0.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.0;
@@ -2427,7 +2413,7 @@ group { name: "elm/genlist/item/double_label/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -2456,7 +2442,7 @@ group { name: "elm/genlist/item/double_label/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3006,8 +2992,8 @@ COMPRESS_SUB_ODD("elm/genlist/tree_compress_odd/double_label/default", "elm/genl
       part { name: "ilist_sel_SH"; type: IMAGE; mouse_events: 0;	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9; /*left right top bottom*/	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2; /*left right top bottom*/	\
 			visible: 0;	\
 		}	\
 		description { state: "selected" 0.0;	\
@@ -3042,7 +3028,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.0 0.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.0;
@@ -3073,7 +3059,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3103,7 +3089,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3150,7 +3136,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -3179,7 +3165,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.title.1";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3209,7 +3195,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.title.1";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3242,7 +3228,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.0 1.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 1.0;
@@ -3272,7 +3258,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.title.2";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3302,7 +3288,7 @@ group { name: "elm/genlist/item/message/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.title.2";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3446,7 +3432,7 @@ group { name: "elm/genlist/item/media/default"; nomouse;
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.0 0.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.0;
@@ -3475,7 +3461,7 @@ group { name: "elm/genlist/item/media/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.title";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3505,7 +3491,7 @@ group { name: "elm/genlist/item/media/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.title";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3897,8 +3883,8 @@ group { name: "elm/genlist/item/media/default"; nomouse;
       part { name: "ilist_sel_SH"; type: IMAGE; mouse_events: 0;	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9; /*left right top bottom*/	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2; /*left right top bottom*/	\
 			visible: 0;	\
 		}	\
 		description { state: "selected" 0.0;	\
@@ -3938,7 +3924,7 @@ group { name: "elm/genlist/item/media-album/default"; nomouse;
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.0 0.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.0;
@@ -3968,7 +3954,7 @@ group { name: "elm/genlist/item/media-album/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.trackno";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -3998,7 +3984,7 @@ group { name: "elm/genlist/item/media-album/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.trackno";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -4041,7 +4027,7 @@ group { name: "elm/genlist/item/media-album/default"; nomouse;
             rel1.offset: 2 0;
             rel2.to: "elm.text.trackno";
             rel2.offset: 2 -1;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -4067,7 +4053,7 @@ group { name: "elm/genlist/item/media-album/default"; nomouse;
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.0 0.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.0;
@@ -4096,7 +4082,7 @@ group { name: "elm/genlist/item/media-album/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.title";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -4126,7 +4112,7 @@ group { name: "elm/genlist/item/media-album/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.title";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -4541,7 +4527,7 @@ group { name: "elm/genlist/item/media-preview/default"; nomouse;
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.0 0.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.0;
@@ -4570,7 +4556,7 @@ group { name: "elm/genlist/item/media-preview/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -4599,7 +4585,7 @@ group { name: "elm/genlist/item/media-preview/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -5113,8 +5099,8 @@ group { name: "elm/genlist/item_odd_compress/media-preview/default";
       part { name: "ilist_sel_SH"; type: IMAGE; mouse_events: 0;	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9; /*left right top bottom*/	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2; /*left right top bottom*/	\
 			visible: 0;	\
 		}	\
 		description { state: "selected" 0.0;	\
@@ -5147,7 +5133,7 @@ group { name: "elm/genlist/item/mode/default"; nomouse;
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -5176,7 +5162,7 @@ group { name: "elm/genlist/item/mode/default"; nomouse;
             color: 255 255 255 125;
              color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.mode";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -5208,7 +5194,7 @@ group { name: "elm/genlist/item/mode/default"; nomouse;
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text.mode";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -5486,8 +5472,8 @@ group { name: "elm/genlist/item/edit/default";
 		clip_to: "base_clip_selected";
 		description { state: "default" 0.0;
 			STAY_ON("base_sel")
-			image.normal: "img/ilist_sel_SH.png";
-			image.border: 0 0 9 9;
+			image.normal: "selected.png";
+			image.border: 2 2 2 2;
 		}
 	  }
       program {

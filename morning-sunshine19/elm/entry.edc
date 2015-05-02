@@ -88,7 +88,7 @@ group { name: "elm/scroller/entry_single/default";
 	images.image: "img/entry0.png" COMP;
 	images.image: "img/entry1.png" COMP;
 	images.image: "img/entry2.png" COMP;
-	images.image: "img/entry_bg.png" COMP;
+	images.image: "entry.png" COMP;
    
    data.item: "focus_highlight" "on";
    
@@ -135,12 +135,12 @@ group { name: "elm/scroller/entry_single/default";
       }
       part { name: "bg";
          description { state: "default" 0.0;
-            image.normal: "img/entry_bg.png";
+            image.normal: "entry.png";
             image.border: 6 6 6 6;
          }
 		   description { state: "disabled" 0.0;
 			   inherit: "default" 0.0;
-			   color_class: "dialog_base";
+			   color: 255 255 255 150;
 		   }
       }
       part { name: "clipper"; type: RECT;
@@ -219,7 +219,7 @@ group { name: "elm/scroller/entry_single/default";
          action: STATE_SET "default" 0.0;
          target: "elm.swallow.end";
       }
-      part { name: "inset"; mouse_events: 0; repeat_events: 1;
+      /*part { name: "inset"; mouse_events: 0; repeat_events: 1;
          description { state: "default" 0.0;
             image.normal: "img/entry1.png";
             image.border: 6 6 6 6;
@@ -235,7 +235,7 @@ group { name: "elm/scroller/entry_single/default";
 			inherit: "default" 0.0;
 			image.normal: "img/entry0.png";
 		 }
-      }
+      }*/
       part { name: "elm.swallow.overlay"; type: SWALLOW;
          clip_to: "clipper";
          description { state: "default" 0.0;
@@ -248,16 +248,16 @@ group { name: "elm/scroller/entry_single/default";
 	   program { name: "disable";
 		signal: "elm,state,disabled"; source: "elm";
 		action: STATE_SET "disabled" 0.0;
-		target: "inset";
+		//target: "inset";
 		target: "bg";
 	}
 	program { name: "enable";
 		signal: "elm,state,enabled"; source: "elm";
 		action: STATE_SET "default" 0.0;
-		target: "inset";
+		//target: "inset";
 		target: "bg";
 	}
-      program {
+      /*program {
          signal: "elm,action,focus_highlight,show"; source: "elm";
          action: STATE_SET "focused" 0.0;
          target: "inset";
@@ -266,7 +266,7 @@ group { name: "elm/scroller/entry_single/default";
          signal: "elm,action,focus_highlight,hide"; source: "elm";
          action: STATE_SET "default" 0.0;
          target: "inset";
-      }
+      }*/
    }
 }
 

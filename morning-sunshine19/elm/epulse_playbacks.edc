@@ -21,7 +21,8 @@
             to_y: _rel2_to_y;                                              \
             relative: _rel2_x _rel2_y;                                     \
          }                                                                 \
-      }
+      }                                                                 \
+  }
 
 group {
     name: "elm/layout/playbacks/default";
@@ -155,7 +156,7 @@ group {
             }
             color_class: "label_text";
             text {
-               size: 12;
+               size: 10;
                align: 0.0 0.5;
                min: 0 1;
          }
@@ -196,4 +197,5 @@ group {
          target: "base";
       }
    }
+}
 }

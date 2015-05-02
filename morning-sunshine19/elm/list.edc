@@ -117,19 +117,12 @@ group { name: "elm/list/item/default";
             color_class: "ilist_item_base_odd";
          }
       }
-      part { name: "base_sel"; type: RECT; mouse_events: 0;
+      part { name: "base_sel"; mouse_events: 0;
 		clip_to: "base_clip_selected";
 		description { state: "default" 0.0;
 			STAY_ON("base")
-			color_class: "focus";
-		}
-	  }
-	  part { name: "base_sel_SH"; mouse_events: 0;
-		clip_to: "base_clip_selected";
-		description { state: "default" 0.0;
-			STAY_ON("base_sel")
-			image.normal: "img/ilist_sel_SH.png";
-			image.border: 0 0 9 9;
+			image.normal: "selected.png";
+			image.border: 2 2 2 2;
 		}
 	  }
       program {
@@ -180,7 +173,7 @@ group { name: "elm/list/item/default";
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.0 0.5;
@@ -204,7 +197,7 @@ group { name: "elm/list/item/default";
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -228,7 +221,7 @@ group { name: "elm/list/item/default";
            color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.0 0.5;
                text_class: "list_item";
@@ -352,19 +345,12 @@ group { name: "elm/list/h_item/default";
             color_class: "ilist_item_base_odd";
          }
       }
-      part { name: "base_sel"; type: RECT; mouse_events: 0;
+      part { name: "base_sel"; mouse_events: 0;
 		clip_to: "base_clip_selected";
 		description { state: "default" 0.0;
 			STAY_ON("base")
-			color_class: "focus";
-		}
-	  }
-	  part { name: "base_sel_SH"; mouse_events: 0;
-		clip_to: "base_clip_selected";
-		description { state: "default" 0.0;
-			STAY_ON("base_sel")
-			image.normal: "img/ilist_sel_SH.png";
-			image.border: 0 0 9 9;
+			image.normal: "selected.png";
+			image.border: 2 2 2 2;
 		}
 	  }
       program {
@@ -414,7 +400,7 @@ group { name: "elm/list/h_item/default";
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                ellipsis: -1;
                align: 0.5 0.5;
@@ -438,7 +424,7 @@ group { name: "elm/list/h_item/default";
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 0.5;
                text_class: "list_item";
@@ -462,7 +448,7 @@ group { name: "elm/list/h_item/default";
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 0.5;
                text_class: "list_item";

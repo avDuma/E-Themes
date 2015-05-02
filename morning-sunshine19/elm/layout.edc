@@ -108,7 +108,7 @@ group { name: "elm/layout/application/content-back";
             color_class: "label_text";
             color: 255 255 255 255;
             color3: 255 255 255 255;
-            text { font: "Sans:style=Bold"; size: 12;
+            text { font: "Sans:style=Bold"; size: 10;
             }
          }
       }
@@ -251,7 +251,7 @@ group { name: "elm/layout/application/content-back-next";
             color_class: "label_text";
             color: 255 255 255 255;
             color3: 255 255 255 255;
-            text { font: "Sans:style=Bold"; size: 12;
+            text { font: "Sans:style=Bold"; size: 10;
             }
          }
       }
@@ -529,7 +529,7 @@ group { name: "elm/layout/application/titlebar";
             color_class: "label_text";
             color: 255 255 255 255;
             color3: 255 255 255 255;
-            text { font: "Sans:style=Bold"; size: 12;
+            text { font: "Sans:style=Bold"; size: 10;
             }
          }
       }

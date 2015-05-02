@@ -103,9 +103,20 @@ collections { /* begin the collection of edje groups that are in this file */
 #include "elm/dayselector.edc"
 #include "elm/diskselector.edc"
 //elm/entry.edc is down, near e/widgets/scrollframe
-
+#include "elm/epulse_playbacks.edc"
+#include "elm/fileselector.edc"
+#include "elm/flipselector.edc"
+#include "elm/focus.edc"
 //elm/frame.edc is down, near e/widgets/frame
+#include "elm/genlist.edc"
+#include "elm/gengrid.edc"
+#include "elm/hover.edc"
+#include "elm/icon.edc"
+#include "elm/index.edc"
+#include "elm/inwin.edc"
 #include "elm/label.edc"
+#include "elm/layout.edc"
+#include "elm/list.edc"
 //elm/scroller.edc is down, near e/widgets/scrollframe
 
 
@@ -9769,6 +9780,7 @@ group { name: "e/fileman/toolbar/default/base";
 	}
 	
 #include "elm/scroller.edc"
+#include "elm/entry.edc"
 	
 
 	group { name: "e/widgets/ilist";

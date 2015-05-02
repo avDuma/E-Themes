@@ -29,19 +29,12 @@ group { name: "elm/gengrid/item/default/default";
             color_class: "ilist_item_odd_base"; \
          } \
       } \
-      part { name: "base_sel"; type: RECT; mouse_events: 0;	\
+      part { name: "base_sel"; mouse_events: 0;	\
 		clip_to: "base_clip_selected";	\
 		description { state: "default" 0.0;	\
 			STAY_ON("base")	\
-			color_class: "focus";	\
-		}	\
-	  }	\
-	  part { name: "base_sel_SH"; mouse_events: 0;	\
-		clip_to: "base_clip_selected";	\
-		description { state: "default" 0.0;	\
-			STAY_ON("base_sel")	\
-			image.normal: "img/ilist_sel_SH.png";	\
-			image.border: 0 0 9 9;	\
+			image.normal: "selected.png";	\
+			image.border: 2 2 2 2;			\
 		}	\
 	  }	\
       program { \
@@ -113,7 +106,7 @@ group { name: "elm/gengrid/item/default/default";
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.5 1.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 1;
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -137,7 +130,7 @@ group { name: "elm/gengrid/item/default/default";
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -162,7 +155,7 @@ group { name: "elm/gengrid/item/default/default";
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -260,7 +253,7 @@ group { name: "elm/gengrid/item/default_style/default";
    data.item: "texts" "elm.text";
    data.item: "contents" "elm.swallow.icon elm.swallow.end";
    styles.style {    name: "gengrid_style";
-      base: "font=""Sans"" font_size=12 align=left color=#4c4c4cff text_class=list_item ellipsis=1.0";
+      base: "font=""Sans"" font_size=10 align=left color=#4c4c4cff text_class=list_item ellipsis=1.0";
       tag: "br" "\n";
       tag: "ps" "ps";
       tag: "hilight" "+ font_weight=Bold";
@@ -268,7 +261,7 @@ group { name: "elm/gengrid/item/default_style/default";
       tag: "tab" "\t";
    }
    styles.style { name: "gengrid_style_selected";
-      base: "font=""Sans"" font_size=12 align=left color=#ffffffff text_class=list_item_selected ellipsis=1.0";
+      base: "font=""Sans"" font_size=10 align=left color=#ffffffff text_class=list_item_selected ellipsis=1.0";
       tag: "br" "\n";
       tag: "ps" "ps";
       tag: "hilight" "+ font_weight=Bold";
@@ -276,7 +269,7 @@ group { name: "elm/gengrid/item/default_style/default";
       tag: "tab" "\t";
    }
    styles.style { name: "gengrid_style_disabled";
-      base: "font=""Sans"" font_size=12 align=left color=#4c4c4c7d text_class=list_item ellipsis=1.0";
+      base: "font=""Sans"" font_size=10 align=left color=#4c4c4c7d text_class=list_item ellipsis=1.0";
       tag: "br" "\n";
       tag: "ps" "ps";
       tag: "hilight" "+ font_weight=Bold";
@@ -438,7 +431,8 @@ group { name: "elm/gengrid/item/default_style/default";
 
 group { name: "elm/gengrid/item/up/default";
    inherit: "elm/gengrid/item/default/default";
-   images.image: "img/icon_arrow_up.png" COMP;
+   images.image: "menu_arrow_u_normal.png" COMP;
+   images.image: "menu_arrow_u_sel.png" COMP;
    parts {
       part { name: "icon_area"; type: RECT;
          description { state: "default" 0.0;
@@ -451,12 +445,12 @@ group { name: "elm/gengrid/item/up/default";
             aspect: 1.0 1.0; aspect_preference: BOTH;
             rel1.to: "icon_area";
             rel2.to: "icon_area";
-            image.normal: "img/icon_arrow_up.png";
-            color_class: "focus";
+            FIXED_SIZE(12,9)
+            image.normal: "menu_arrow_u_normal.png";
          }
          description { state: "selected" 0.0;
 			inherit: "default" 0.0;
-			color_class: "ilist_item_selected";
+            image.normal: "menu_arrow_u_sel.png";
 		 }
       }
       program { name: "sel_up";
@@ -497,7 +491,7 @@ group { name: "elm/gengrid/item/album-preview/default";
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.5 1.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 1;
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -521,7 +515,7 @@ group { name: "elm/gengrid/item/album-preview/default";
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -546,7 +540,7 @@ group { name: "elm/gengrid/item/album-preview/default";
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item_selected";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -759,7 +753,7 @@ group { name: "elm/gengrid/item/thumb/default";
             color3: 255 255 255 255;
             color_class: "ilist_item";
             align: 0.5 1.0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 1;
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -783,7 +777,7 @@ group { name: "elm/gengrid/item/thumb/default";
             color: 255 255 255 125;
             color3: 255 255 255 125;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 1.0;
                text_class: "grid_item";
@@ -808,7 +802,7 @@ group { name: "elm/gengrid/item/thumb/default";
             color2: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "ilist_item";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_source: "elm.text";
                align: 0.5 1.0;
                text_class: "grid_item";
