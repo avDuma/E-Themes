@@ -1,7 +1,6 @@
 group { name: "elm/photocam/base/default";
    inherit: "elm/scroller/base/default";
-   images.image: "img/logo_small.png" COMP;
-   images.image: "img/logo_small_SH.png" COMP;
+   images.image: "logo.png" COMP;
    
    
    parts {
@@ -19,28 +18,12 @@ group { name: "elm/photocam/base/default";
          clip_to: "busy_clip";
          scale: 1;
          description { state: "default" 0.0;
-            image.normal: "img/logo_small.png";
-            FIXED_SIZE(40,51)
+            image.normal: "logo.png";
+            FIXED_SIZE(51,51)
             align: 0.0 0.0;
             rel1.offset: 3 3;
             rel2.offset: 3 3;
-            color_class: "focus";
 			map.on: 1;
-            map.smooth: 1;
-            map.rotation.center: "logo";
-         }
-         description { state: "spin" 0.0;
-            inherit: "default" 0.0;
-            map.rotation.z: 360;
-         }
-      }
-      part { name: "logo_SH"; mouse_events: 0;
-         clip_to: "busy_clip";
-         description { state: "default" 0.0;
-            FIXED_SIZE(40,51)
-            STAY_ON("logo")
-            image.normal: "img/logo_small_SH.png";
-            map.on: 1;
             map.smooth: 1;
             map.rotation.center: "logo";
          }
@@ -65,20 +48,17 @@ group { name: "elm/photocam/base/default";
       program { name: "spin0";
          action: STATE_SET "default" 0.0;
          target: "logo";
-         target: "logo_SH";
          after: "spin1";
       }
       program { name: "spin1";
          action: STATE_SET "spin" 0.0;
          transition: LINEAR 1.0;
          target: "logo";
-         target: "logo_SH";
          after: "spin2";
       }
       program { name: "spin2";
          action: STATE_SET "default" 0.0;
          target: "logo";
-         target: "logo_SH";
          after: "spin1";
       }
       
@@ -105,7 +85,6 @@ group { name: "elm/photocam/base/default";
       program { name: "spin4";
          action: STATE_SET "default" 0.0;
          target: "logo";
-         target: "logo_SH";
       }
    }
 }

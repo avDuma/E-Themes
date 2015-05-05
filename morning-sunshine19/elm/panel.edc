@@ -1,10 +1,9 @@
 group { name: "elm/panel/left/default";
    
-   images.image: "win_glow.png" COMP;
-   images.image: "img/arrow.png" COMP;
-   images.image: "img/arrow_left.png" COMP;
-   images.image: "img/arrow_up.png" COMP;
-   images.image: "img/arrow_down.png" COMP;
+   images.image: "menu_arrow_normal.png" COMP;
+   images.image: "menu_arrow_l_normal.png" COMP;
+   images.image: "menu_arrow_u_normal.png" COMP;
+   images.image: "menu_arrow_d_normal.png" COMP;
    
    data.item: "focus_highlight" "on";
    
@@ -14,12 +13,15 @@ group { name: "elm/panel/left/default";
          description { state: "default" 0.0;
          }
       }
-      part { name: "base"; type: RECT;
+      part { name: "base";
          description { state: "default" 0.0;
             rel1.to_x: "all";
             rel2.to_x: "elm.swallow.event";
             rel2.relative: 0.0 1.0;
             rel2.offset: -4 -1;
+            image.normal: "dia_bg.png";
+            image.border: 15 15 2 2;
+            fill.smooth: 0;
             color_class: "dialog_base";
          }
       }
@@ -58,14 +60,13 @@ group { name: "elm/panel/left/default";
       part { name: "icn"; mouse_events: 0;
          scale: 1;
          description { state: "default" 0.0;
-            FIXED_SIZE(5,7)
+            FIXED_SIZE(9,12)
             STAY_ON("btn")
-            color_class: "label_text";
-            image.normal: "img/arrow_left.png";
+            image.normal: "menu_arrow_l_normal.png";
          }
          description { state: "hidden" 0.0;
             inherit: "default" 0.0;
-            image.normal: "img/arrow.png";
+            image.normal: "menu_arrow_normal.png";
          }
       }
    }
@@ -136,10 +137,10 @@ group { name: "elm/panel/right/default";
       }
       part { name: "icn";
          description { state: "default" 0.0;
-            image.normal: "img/arrow.png";
+            image.normal: "menu_arrow_normal.png";
          }
          description { state: "hidden" 0.0;
-            image.normal: "img/arrow_left.png";
+            image.normal: "menu_arrow_l_normal.png";
          }
       }
    }
@@ -187,12 +188,12 @@ group { name: "elm/panel/top/default";
       }
       part { name: "icn";
          description { state: "default" 0.0;
-			FIXED_SIZE(7,5)
-            image.normal: "img/arrow_up.png";
+			FIXED_SIZE(12,9)
+            image.normal: "menu_arrow_u_normal.png";
          }
          description { state: "hidden" 0.0;
-			FIXED_SIZE(7,5)
-            image.normal: "img/arrow_down.png";
+			FIXED_SIZE(12,9)
+            image.normal: "menu_arrow_d_normal.png";
          }
       }
    }
@@ -240,12 +241,12 @@ group { name: "elm/panel/bottom/default";
       }
       part { name: "icn";
          description { state: "default" 0.0;
-			FIXED_SIZE(7,5)
-            image.normal: "img/arrow_down.png";
+			FIXED_SIZE(12,9)
+            image.normal: "menu_arrow_d_normal.png";
          }
          description { state: "hidden" 0.0;
-			FIXED_SIZE(7,5)
-            image.normal: "img/arrow_up.png";
+			FIXED_SIZE(12,9)
+            image.normal: "menu_arrow_u_normal.png";
          }
       }
    }

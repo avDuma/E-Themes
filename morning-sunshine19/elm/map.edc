@@ -147,7 +147,7 @@ group { name: "elm/map/marker_bubble/default";
             fill.smooth: 0;
             rel2.relative: 0.0 1.0;
             rel2.to: "base1";
-            color_class: "border_frame";
+            color_class: "focus";
          }
       }
       PART_SHINE("base0", "base0", "img/bub_base_b0_SH.png", 12 0 8 13)
@@ -159,7 +159,7 @@ group { name: "elm/map/marker_bubble/default";
             fill.smooth: 0;
             max: 17 99999;
             min: 17 22;
-            color_class: "border_frame";
+            color_class: "focus";
          }
       }
       PART_SHINE("base1", "base1", "img/bub_base_b1_SH.png", 0 0 8 13)
@@ -171,7 +171,7 @@ group { name: "elm/map/marker_bubble/default";
             fill.smooth: 0;
             rel1.relative: 1.0 0.0;
             rel1.to: "base1";
-            color_class: "border_frame";
+            color_class: "focus";
          }
       }
       PART_SHINE("base2", "base2", "img/bub_base_b2_SH.png", 0 12 8 13)

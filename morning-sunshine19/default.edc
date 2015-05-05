@@ -117,7 +117,19 @@ collections { /* begin the collection of edje groups that are in this file */
 #include "elm/label.edc"
 #include "elm/layout.edc"
 #include "elm/list.edc"
+//elm/map.edc is down, near e/widget/scrollframe
+//elm/menu is down, near e/widgets/menu/default/separator
+#include "elm/multibuttonentry.edc"
+#include "elm/naviframe.edc"
+#include "elm/notify.edc"
+#include "elm/panel.edc"
+#include "elm/panes.edc"
+
+//elm/photocam.edc is down, near e/widget/scrollframe
+
 //elm/scroller.edc is down, near e/widgets/scrollframe
+
+#include "elm/win.edc"
 
 #include "wallpaper.edc"
 
@@ -879,6 +891,8 @@ group { name: "e/pointer/enlightenment/rotate/color";
 			}
 		}
 	}
+
+#include "elm/menu.edc"
 
 	/* this is used for regular menu items. this is what swallows/holds the
 			* whole line of the menu item, icon, check/radio mark, label and submenu
@@ -9601,6 +9615,8 @@ group { name: "e/fileman/toolbar/default/base";
 	
 #include "elm/scroller.edc"
 #include "elm/entry.edc"
+#include "elm/photocam.edc"
+#include "elm/map.edc"
 	
 
 	group { name: "e/widgets/ilist";
