@@ -1,0 +1,122 @@
+/*	This file contains the code for the animated and the static background
+ *	of the Morning Sunshint theme, so users can choose if spend more memory
+ *	for animated background (the original written) or keep the static one. */
+
+#define BACKGROUND_LIGHT												\
+   images.image: "Midnight_light.png" COMP;								\
+   data {item: "style" "4";												\
+	item: "noanimation" "1";											\
+		}																\
+   parts {																\
+      part { name: "bg"; mouse_events: 0;								\
+         description { state: "default" 0.0;							\
+            image.normal: "Midnight_light.png";							\
+            image.scale_hint: STATIC;									\
+         }																\
+      }																	\
+   }
+				
+				
+				
+#define BACKGROUND_ANIMATED												\
+		images {												\
+			image: "wp_bg.png" COMP;												\
+			image: "wp_moon.png" COMP;												\
+			image: "wp_plants_under.png" COMP;												\
+			image: "wp_plants_middle.png" COMP;												\
+			image: "wp_plants_top.png" COMP;												\
+			image: "star01.png" COMP;												\
+			image: "star02.png" COMP;												\
+			image: "star03.png" COMP;												\
+			image: "star04.png" COMP;												\
+			image: "wp_slogan.png" COMP;												\
+		}												\
+		parts {												\
+			part { name: "background";												\
+				description { state: "default" 0.0;												\
+					image.normal: "wp_bg.png";												\
+				}												\
+			}												\
+			part { name: "background_moon";												\
+				description { state: "default" 0.0;												\
+					aspect: 1 1;												\
+					aspect_preference: HORIZONTAL;												\
+					image.normal: "wp_moon.png";												\
+					rel1.to: "background";												\
+					rel2.to: "background";												\
+					rel1.relative: 0.0 0.0;												\
+					rel2.relative: 0.45 0.60;												\
+				}												\
+			}												\
+			#include "stars-parts.edc"												\
+			part { name: "background_plants_bottom";												\
+				description { state: "default" 0.0;												\
+					image.normal: "wp_plants_under.png";												\
+					rel1.to: "background";												\
+					rel2.to: "background";												\
+				}												\
+			}												\
+			part { name: "background_plants_mid";												\
+				description { state: "default" 0.0;												\
+					image.normal: "wp_plants_middle.png";												\
+					rel1.to: "background";												\
+					rel2.to: "background";												\
+				}												\
+			}												\
+			part { name: "background_plants_top";												\
+				description { state: "default" 0.0;												\
+					image.normal: "wp_plants_top.png";												\
+					rel1.to: "background";												\
+					rel2.to: "background";												\
+				}												\
+			}												\
+			part { name: "background_slogan";												\
+				description { state: "default" 0.0;												\
+					aspect: 1 1;												\
+					aspect_preference: NONE;												\
+					image.normal: "wp_slogan.png";												\
+					rel1.to: "background_slogan_events";												\
+					rel2.to: "background_slogan_events";												\
+					color: 255 255 255 0;												\
+				}												\
+				description { state: "visible" 0.0;												\
+					inherit: "default" 0.0;												\
+					color: 255 255 255 255;												\
+				}												\
+			}												\
+			part { name: "background_slogan_events";												\
+				type: RECT;												\
+				mouse_events: 1;												\
+				description { state: "default" 0.0;												\
+					rel1.to: "background_moon";												\
+					rel2.to: "background_moon";												\
+					rel1.relative: 0.35 0.45;												\
+					rel2.relative: 0.65 0.52;												\
+					visible: 1;												\
+					color: 255 255 255 0;												\
+				}												\
+			}												\
+		}												\
+		programs {												\
+			program {												\
+				name:	"init";												\
+				signal:	"load";												\
+				source:	"";												\
+				after:	"star_start";												\
+			}												\
+			#include "star-programs.edc"												\
+			program { name: "event_slogan_in";												\
+				signal: "mouse,in";												\
+				source: "background_slogan_events";												\
+				action: STATE_SET "visible" 0.0;												\
+				transition: LINEAR 1.0;												\
+				target: "background_slogan";												\
+			}												\
+			program { name: "event_slogan_out";												\
+				signal: "mouse,out";												\
+				source: "background_slogan_events";												\
+				action: STATE_SET "default" 0.0;												\
+				transition: LINEAR 1.0;												\
+				target: "background_slogan";												\
+			}												\
+		}

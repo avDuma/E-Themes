@@ -24,13 +24,15 @@ data {
 /// These stuffs can be changed also with Settings -> Look -> Colors, but
 /// won't affect the Elementary widget
 //Background of Window
+#define BACADA(TRASP) 186\ 202\ 218\ TRASP
+
 #define BGWIN 120\ 126\ 132
 
 //Focus Color
 #define SELECTED 186\ 202\ 218
 
 //Color of foreground: e.g.: labels on buttons, on menus
-#define FG_COLOR 76\ 76\ 76
+#define FG_COLOR 55\ 56\ 57
 
 //The color of the Window Border
 #define RADIANCE_COLOR BGWIN
@@ -84,114 +86,75 @@ collections { /* begin the collection of edje groups that are in this file */
 #include "packagekit.edc"
 #include "randr.edc"
 
+//ELM Support
+#include "elm/access.edc"
+#include "elm/actionslider.edc"
+#include "elm/bg.edc"
+//elm/border.edc is down, near border.edc
+#include "elm/bubble.edc"
+#include "elm/button.edc"
+#include "elm/calendar.edc"
+#include "elm/check.edc"
+#include "elm/clock.edc"
+#include "elm/colorsel.edc"
+#include "elm/conform.edc"
+#include "elm/ctxpopup.edc"
+#include "elm/datetime.edc"
+#include "elm/dayselector.edc"
+#include "elm/diskselector.edc"
+//elm/entry.edc is down, near e/widgets/scrollframe
+#include "elm/epulse_playbacks.edc"
+#include "elm/fileselector.edc"
+#include "elm/flipselector.edc"
+#include "elm/focus.edc"
+//elm/frame.edc is down, near e/widgets/frame
+#include "elm/genlist.edc"
+#include "elm/gengrid.edc"
+#include "elm/hover.edc"
+#include "elm/icon.edc"
+#include "elm/index.edc"
+#include "elm/inwin.edc"
+#include "elm/label.edc"
+#include "elm/layout.edc"
+#include "elm/list.edc"
+//elm/map.edc is down, near e/widget/scrollframe
+//elm/menu is down, near e/widgets/menu/default/separator
+#include "elm/multibuttonentry.edc"
+#include "elm/naviframe.edc"
+#include "elm/notify.edc"
+#include "elm/panel.edc"
+#include "elm/panes.edc"
+#include "elm/photo.edc"
+//elm/photocam.edc is down, near e/widget/scrollframe
+#include "elm/player.edc"
+//elm/pointer.edc is down, near e/pointer/enlightenment/default/color
+#include "elm/popup.edc"
+#include "elm/progress.edc"
+#include "elm/radio.edc"
+//elm/scroller.edc is down, near e/widgets/scrollframe
+#include "elm/segment_control.edc"
+//elm/separator.edc" is down, near e/widgets/menu/default/separator
+#include "elm/slider.edc"
+#include "elm/slideshow.edc"
+#include "elm/spinner.edc"
+#include "elm/thumb.edc"
+#include "elm/toolbar.edc"
+#include "elm/tooltip.edc"
+#include "elm/video.edc"
+#include "elm/win.edc"
+
+#include "wallpaper.edc"
+
 /////////////////////////////////////////////////////////////////////////////
 	/*** DEFAULT WALLPAPER ***/
 	group { name: "e/desktop/background"; /* the name of the group */
 		alias: "e/desklock/background";
-		images {
-			image: "wp_bg.png" COMP;
-			image: "wp_moon.png" COMP;
-			image: "wp_plants_under.png" COMP;
-			image: "wp_plants_middle.png" COMP;
-			image: "wp_plants_top.png" COMP;
-			image: "star01.png" COMP;
-			image: "star02.png" COMP;
-			image: "star03.png" COMP;
-			image: "star04.png" COMP;
-			image: "wp_slogan.png" COMP;
+		
+		/* CHOOSE YOUR BACKGROUND STYLE!! */
+		//BACKGROUND_ANIMATED
+		BACKGROUND_LIGHT
+		
 		}
-		/* this section actually contains the list of parts from bottom to top
-				* (defining the layering/stacking order) */
-		parts {
-			part { name: "background";
-				description { state: "default" 0.0;
-					image.normal: "wp_bg.png";
-				}
-			}
-			part { name: "background_moon";
-				description { state: "default" 0.0;
-					aspect: 1 1;
-					aspect_preference: HORIZONTAL;
-					image.normal: "wp_moon.png";
-					rel1.to: "background";
-					rel2.to: "background";
-					rel1.relative: 0.0 0.0;
-					rel2.relative: 0.45 0.60;
-				}
-			}
-			#include "stars-parts.edc"
-			part { name: "background_plants_bottom";
-				description { state: "default" 0.0;
-					image.normal: "wp_plants_under.png";
-					rel1.to: "background";
-					rel2.to: "background";
-				}
-			}
-			part { name: "background_plants_mid";
-				description { state: "default" 0.0;
-					image.normal: "wp_plants_middle.png";
-					rel1.to: "background";
-					rel2.to: "background";
-				}
-			}
-			part { name: "background_plants_top";
-				description { state: "default" 0.0;
-					image.normal: "wp_plants_top.png";
-					rel1.to: "background";
-					rel2.to: "background";
-				}
-			}
-			part { name: "background_slogan";
-				description { state: "default" 0.0;
-					aspect: 1 1;
-					aspect_preference: NONE;
-					image.normal: "wp_slogan.png";
-					rel1.to: "background_slogan_events";
-					rel2.to: "background_slogan_events";
-					color: 255 255 255 0;
-				}
-				description { state: "visible" 0.0;
-					inherit: "default" 0.0;
-					color: 255 255 255 255;
-				}
-			}
-			part { name: "background_slogan_events";
-				type: RECT;
-				mouse_events: 1;
-				description { state: "default" 0.0;
-					rel1.to: "background_moon";
-					rel2.to: "background_moon";
-					rel1.relative: 0.35 0.45;
-					rel2.relative: 0.65 0.52;
-					visible: 1;
-					color: 255 255 255 0;
-				}
-			}
-		}
-		programs {
-			program {
-				name:	"init";
-				signal:	"load";
-				source:	"";
-				after:	"star_start";
-			}
-			#include "star-programs.edc"
-			program { name: "event_slogan_in";
-				signal: "mouse,in";
-				source: "background_slogan_events";
-				action: STATE_SET "visible" 0.0;
-				transition: LINEAR 1.0;
-				target: "background_slogan";
-			}
-			program { name: "event_slogan_out";
-				signal: "mouse,out";
-				source: "background_slogan_events";
-				action: STATE_SET "default" 0.0;
-				transition: LINEAR 1.0;
-				target: "background_slogan";
-			}
-		}
-	}
 
 	group { name: "e/desktop/background/scrollframe";
 		parts {
@@ -263,6 +226,7 @@ image: "bd_left.png" COMP;
 image: "win_shadow.png" COMP;
 }
 #include "border.edc"
+#include "elm/border.edc"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -294,6 +258,7 @@ image: "win_shadow.png" COMP;
 		}
 	}
 
+#include "elm/pointer.edc"
 
 group { name: "e/pointer/enlightenment/resize_br/color";
    inherit: "e/pointer/enlightenment/default/color";
@@ -939,6 +904,9 @@ group { name: "e/pointer/enlightenment/rotate/color";
 			}
 		}
 	}
+
+#include "elm/menu.edc"
+#include "elm/separator.edc"
 
 	/* this is used for regular menu items. this is what swallows/holds the
 			* whole line of the menu item, icon, check/radio mark, label and submenu
@@ -3136,7 +3104,6 @@ group { name: "e/pointer/enlightenment/rotate/color";
 			image: "slider-horiz.png" COMP;
 			image: "slider-vert-active.png" COMP;
 			image: "slider-vert.png" COMP;
-			image: "scrollbar-background.png" COMP;
 		}
 		parts {
 			part { name: "bg"; type: RECT;
@@ -7794,10 +7761,10 @@ group { name: "e/pointer/enlightenment/rotate/color";
             min: 16 2;
             max: 99999 2;
             rel1.relative: 0.0 1.0;
-            rel1.offset: 0 0;
+            rel1.offset: 2 4;
             rel1.to_y: "e.swallow.content";
             rel2.relative: 1.0 0.0;
-            rel2.offset: -1 -1;
+            rel2.offset: -3 -5;
             rel2.to_y: "e.swallow.button";
             image.normal: "menu_sep.png";
             fill.smooth: 0;
@@ -8837,6 +8804,7 @@ group { name: "e/fileman/toolbar/default/base";
 		images {
 			image: "button-normal.png" COMP;
 			image: "button-pressed.png" COMP;
+			image: "button-prelight.png" COMP;
 			image: "button-insensitive.png" COMP;
 		}
 		parts {
@@ -8853,6 +8821,11 @@ group { name: "e/fileman/toolbar/default/base";
 					inherit: "default" 0.0;
 					image.border: 4 4 4 4;
 					image.normal: "button-pressed.png";
+				}
+				description { state: "over" 0.0;
+					inherit: "default" 0.0;
+					image.border: 4 4 4 4;
+					image.normal: "button-prelight.png";
 				}
 				description { state: "disabled" 0.0;
 					inherit: "default" 0.0;
@@ -8965,6 +8938,7 @@ group { name: "e/fileman/toolbar/default/base";
 			}
 		}
 		programs {
+			OVER_P("button_image","button_image","default","over")
 			program {
 				name:	"button_click";
 				signal: "mouse,down,1";
@@ -9652,6 +9626,12 @@ group { name: "e/fileman/toolbar/default/base";
 			}
 		}
 	}
+	
+#include "elm/scroller.edc"
+#include "elm/entry.edc"
+#include "elm/photocam.edc"
+#include "elm/map.edc"
+	
 
 	group { name: "e/widgets/ilist";
 		data.item: "stacking" "above";
@@ -11125,21 +11105,14 @@ group { name: "e/widgets/entry/password";
 			image: "frame.png" COMP;
 		}
 		parts {
-			part { name: "base0";
-				mouse_events:  0;
-				description { state: "default" 0.0;
-					image.normal: "dia_bg.png";
-					image.border: 15 15 1 1; 
-					color_class: "dialog_base";
-					fill.smooth: 0;
-				}
-			}
 			part { name: "base";
 				mouse_events:  0;
-				description { state:			"default" 0.0;
+				description { state: "default" 0.0;
+					rel1.offset: 1 1;
+					rel2.offset: -2 -2;
 					image {
 						normal: "frame.png";
-						border: 5 5 5 5;
+						border: 8 8 8 8;
 					}
 					fill.smooth : 0;
 				}
@@ -11183,6 +11156,9 @@ group { name: "e/widgets/entry/password";
 			}
 		}
 	}
+
+#include "elm/frame.edc"
+
 
 	group { name: "e/widgets/label";
 		parts {
