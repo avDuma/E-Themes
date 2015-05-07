@@ -124,11 +124,23 @@ collections { /* begin the collection of edje groups that are in this file */
 #include "elm/notify.edc"
 #include "elm/panel.edc"
 #include "elm/panes.edc"
-
+#include "elm/photo.edc"
 //elm/photocam.edc is down, near e/widget/scrollframe
-
+#include "elm/player.edc"
+//elm/pointer.edc is down, near e/pointer/enlightenment/default/color
+#include "elm/popup.edc"
+#include "elm/progress.edc"
+#include "elm/radio.edc"
 //elm/scroller.edc is down, near e/widgets/scrollframe
-
+#include "elm/segment_control.edc"
+//elm/separator.edc" is down, near e/widgets/menu/default/separator
+#include "elm/slider.edc"
+#include "elm/slideshow.edc"
+#include "elm/spinner.edc"
+#include "elm/thumb.edc"
+#include "elm/toolbar.edc"
+#include "elm/tooltip.edc"
+#include "elm/video.edc"
 #include "elm/win.edc"
 
 #include "wallpaper.edc"
@@ -143,7 +155,7 @@ collections { /* begin the collection of edje groups that are in this file */
 		BACKGROUND_LIGHT
 		
 	}
-		
+
 	group { name: "e/desktop/background/scrollframe";
 		parts {
 			part { name: "clipper";
@@ -246,6 +258,7 @@ image: "win_shadow.png" COMP;
 		}
 	}
 
+#include "elm/pointer.edc"
 
 group { name: "e/pointer/enlightenment/resize_br/color";
    inherit: "e/pointer/enlightenment/default/color";
@@ -893,6 +906,7 @@ group { name: "e/pointer/enlightenment/rotate/color";
 	}
 
 #include "elm/menu.edc"
+#include "elm/separator.edc"
 
 	/* this is used for regular menu items. this is what swallows/holds the
 			* whole line of the menu item, icon, check/radio mark, label and submenu
@@ -7747,10 +7761,10 @@ group { name: "e/pointer/enlightenment/rotate/color";
             min: 16 2;
             max: 99999 2;
             rel1.relative: 0.0 1.0;
-            rel1.offset: 0 0;
+            rel1.offset: 2 4;
             rel1.to_y: "e.swallow.content";
             rel2.relative: 1.0 0.0;
-            rel2.offset: -1 -1;
+            rel2.offset: -3 -5;
             rel2.to_y: "e.swallow.button";
             image.normal: "menu_sep.png";
             fill.smooth: 0;

@@ -1,23 +1,24 @@
 group { name: "elm/spinner/base/default";
-
-   images.image: "img/arrow_left.png" COMP;
-   images.image: "img/entry1.png" COMP;
-   images.image: "img/entry0.png" COMP;
-   images.image: "img/entry2.png" COMP;
-	images.image: "img/entry_bg.png" COMP;
-   
-   images.image: "img/arrow.png" COMP;
+   images.image: "entry.png" COMP;
+	
+   images.image: "menu_arrow_l_normal.png" COMP;
+   images.image: "menu_arrow_l_sel.png" COMP;
+      
+   images.image: "menu_arrow_normal.png" COMP;
+   images.image: "menu_arrow_sel.png" COMP;
    
    parts {
 	   part { name: "base";
 		   description { state: "default" 0.0;
-			   image.normal: "img/entry_bg.png";
-				image.border: 10 10 10 10;
-			   STAY_ON("inset")
+				image.normal: "entry.png";
+				image.border: 4 4 4 4;
+				fill.smooth: 0;
+				rel1.offset: 0 3;
+				rel2.offset: -1 -5;
 		   }
 		   description { state: "disabled" 0.0;
 			   inherit: "default" 0.0;
-			   color_class: "dialog_base";
+			   color: 255 255 255 150;
 		   }
 	   }
       part { name: "elm.text"; type: TEXT;
@@ -26,15 +27,15 @@ group { name: "elm/spinner/base/default";
          description { state: "default" 0.0;
             color: 255 255 255 255; color3: 255 255 255 255;
             color_class: "slider_text";
-            rel1.to_y: "inset";
+            rel1.to_y: "base";
             rel1.to_x: "left";
             rel1.relative: 1.0 0.0;
             rel1.offset: 1 1;
-            rel2.to_y: "inset";
+            rel2.to_y: "base";
             rel2.to_x: "right";
             rel2.relative: 0.0 1.0;
             rel2.offset: -2 -2;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                text_class: "spinner";
                ellipsis: -1;
@@ -55,8 +56,7 @@ group { name: "elm/spinner/base/default";
          dragable.y: 0 0 0;
          description { state: "default" 0.0;
             fixed: 1 0;
-            rel1.to: "inset";
-            rel2.to: "inset";
+            STAY_ON("base")
             color: 0 0 0 0;
          }
       }
@@ -85,17 +85,16 @@ group { name: "elm/spinner/base/default";
          description { state: "default" 0.0;
             rel1.to: "left";
             rel2.to: "left";
-            image.normal: "img/arrow_left.png";
-            FIXED_SIZE(5, 7)
-            color_class: "slider_text";
+            image.normal: "menu_arrow_l_normal.png";
+            FIXED_SIZE(9,12)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: -2 0;
+            image.normal: "menu_arrow_l_sel.png";
          }
          description { state: "disabled" 0.0;
             inherit: "default" 0.0;
-            color_class: "slider_text_disabled";
+            color: 255 255 255 150;
          }
       }
       part { name: "arrow2"; mouse_events: 0;
@@ -103,24 +102,23 @@ group { name: "elm/spinner/base/default";
          description { state: "default" 0.0;
             rel1.to: "right";
             rel2.to: "right";
-            image.normal: "img/arrow.png";
-            FIXED_SIZE(5, 7)
-            color_class: "slider_text";
+            image.normal: "menu_arrow_normal.png";
+            FIXED_SIZE(9,12)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 2 0;
+            image.normal: "menu_arrow_sel.png";
          }
          description { state: "disabled" 0.0;
             inherit: "default" 0.0;
-            color_class: "slider_text_disabled";
+            color: 255 255 255 150;
          }
       }
       part { name: "left"; type: RECT;
          description { state: "default" 0.0;
-            rel1.to: "inset";
+            rel1.to: "base";
             rel1.offset: 1 1;
-            rel2.to: "inset";
+            rel2.to: "base";
             rel2.offset: 1 -2;
             rel2.relative: 0.0 1.0;
             align: 0.0 0.5;
@@ -147,10 +145,10 @@ group { name: "elm/spinner/base/default";
       }
       part { name: "right"; type: RECT;
          description { state: "default" 0.0;
-            rel1.to: "inset";
+            rel1.to: "base";
             rel1.offset: 1 1;
             rel1.relative: 1.0 0.0;
-            rel2.to: "inset";
+            rel2.to: "base";
             rel2.offset: 1 -2;
             align: 1.0 0.5;
             color: 0 0 0 0;
@@ -173,23 +171,6 @@ group { name: "elm/spinner/base/default";
          after: "right3";
       } program { name: "right3";
          action: SIGNAL_EMIT "elm,action,increment,stop" "elm";
-      }
-      part { name: "inset"; mouse_events: 0;
-         description { state: "default" 0.0;
-            rel1.offset: 0 3;
-            rel2.offset: -1 -5;
-            image.normal: "img/entry1.png";
-            image.border: 10 10 10 10;
-         }
-         description { state: "focused" 0.0;
-			inherit: "default" 0.0;
-			image.normal: "img/entry2.png";
-			color_class: "focus";
-		  }
-		 description { state: "disabled" 0.0;
-			inherit: "default" 0.0;
-			image.normal: "img/entry0.png";
-		 }
       }
       part { name: "access_text"; type: RECT; repeat_events: 1;
          description { state: "default" 0.0;
@@ -234,7 +215,7 @@ group { name: "elm/spinner/base/default";
          signal: "mouse,clicked,1"; source: "elm.dragable.slider";
          action: SIGNAL_EMIT "elm,action,entry,toggle" "elm";
       }
-      program {
+     /* program {
          signal: "elm,action,focus_highlight,show"; source: "elm";
          action: STATE_SET "focused" 0.0;
          target: "inset";
@@ -243,7 +224,7 @@ group { name: "elm/spinner/base/default";
          signal: "elm,action,focus_highlight,hide"; source: "elm";
          action: STATE_SET "default" 0.0;
          target: "inset";
-      }
+      } */
       program {
          signal: "elm,state,enabled"; source: "elm";
          action: STATE_SET "default" 0.0;
@@ -253,7 +234,6 @@ group { name: "elm/spinner/base/default";
          target: "disabler";
          target: "elm.swallow.entry";
          target: "elm.text";
-         target: "inset";
          target: "base";
       }
       program {
@@ -265,7 +245,6 @@ group { name: "elm/spinner/base/default";
          target: "disabler";
          target: "elm.swallow.entry";
          target: "elm.text";
-         target: "inset";
          target: "base";
       }
    }
@@ -273,15 +252,18 @@ group { name: "elm/spinner/base/default";
 
 group { name: "elm/spinner/base/vertical";
    inherit: "elm/spinner/base/default";
-   images.image: "img/arrow_up.png" COMP;
    
-   images.image: "img/arrow_down.png" COMP;
+   images.image: "menu_arrow_u_normal.png" COMP;
+   images.image: "menu_arrow_u_sel.png" COMP;
+   
+   images.image: "menu_arrow_d_normal.png" COMP;
+   images.image: "menu_arrow_d_sel.png" COMP;
    
    
    parts {
       part { name: "elm.text";
          description { state: "default" 0.0;
-            rel1.to_x: "inset";
+            rel1.to_x: "base";
             rel1.relative: 0.0 0.0;
             rel1.offset: 1 1;
             rel2.to_x: "left";
@@ -300,28 +282,30 @@ group { name: "elm/spinner/base/vertical";
       }
       part { name: "arrow1"; mouse_events: 0;
          description { state: "default" 0.0;
-            image.normal: "img/arrow_down.png";
-            FIXED_SIZE(7, 5)
+            image.normal: "menu_arrow_d_normal.png";
+            FIXED_SIZE(12,9)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 0 2;
+            image.normal: "menu_arrow_d_sel.png";
          }
          description { state: "disabled" 0.0;
             inherit: "default" 0.0;
+            color: 255 255 255 150;
          }
       }
       part { name: "arrow2"; mouse_events: 0;
          description { state: "default" 0.0;
-            image.normal: "img/arrow_up.png";
-            FIXED_SIZE(7, 5)
+            image.normal: "menu_arrow_u_normal.png";
+            FIXED_SIZE(12,9)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 0 -2;
+            image.normal: "menu_arrow_u_sel.png";
          }
          description { state: "disabled" 0.0;
             inherit: "default" 0.0;
+            color: 255 255 255 150;
          }
       }
       part { name: "left";

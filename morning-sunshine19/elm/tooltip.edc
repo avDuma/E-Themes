@@ -1,7 +1,7 @@
 group { name: "elm/label/base/tooltip";
    styles {
       style { name: "tooltip_style";
-         base: "font=""Sans"" font_size=12 color=#ffffff wrap=word text_class=bubble";
+         base: "font=""Sans"" font_size=10 color=#ffffff wrap=word text_class=bubble";
          tag:  "br" "\n";
          tag: "hilight" "+ font=""Sans"" text_class=bubble";
          tag: "b" "+ font=""Sans"" text_class=bubble";
@@ -205,7 +205,7 @@ group { name: "elm/tooltip/base/default";
                border: 7 7 6 8;
             }
             image.middle: SOLID;
-            color_class: "border_frame";
+            color_class: "focus";
             color: 255 255 255 TOOLTIP_OPACITY;	
          }
       }
@@ -230,7 +230,7 @@ group { name: "elm/tooltip/base/default";
                to: "pop";                                          \
             }                                                      \
             image.normal: "img/tooltip-corner-"name_"-tip.png";		\
-            color_class: "border_frame";				   			\
+            color_class: "focus";				   			\
             color: 255 255 255 TOOLTIP_OPACITY;						\
          }                                                         \
          description { state: "visible" 0.0;                       \
@@ -326,7 +326,7 @@ group { name: "elm/tooltip/base/default";
             rel1.to: "edge-drag-"name_;                            \
             rel2.to: "edge-drag-"name_;                            \
             image.normal: "img/tooltip-edge-"name_"-tip.png";      \
-            color_class: "border_frame" ;						   \
+            color_class: "focus" ;						   \
             color: 255 255 255 TOOLTIP_OPACITY;						\
          }                                                         \
       }																\
@@ -397,7 +397,7 @@ group { name: "elm/tooltip/base/default";
             rel1.to: "edge-drag-"name_;                            \
             rel2.to: "edge-drag-"name_;                            \
             image.normal: "img/tooltip-edge-"name_"-tip.png";      \
-            color_class: "border_frame" ;						   \
+            color_class: "focus" ;						   \
             color: 255 255 255 TOOLTIP_OPACITY;						\
          }                                                         \
       }																\

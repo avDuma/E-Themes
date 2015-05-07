@@ -3,6 +3,7 @@ group { name: "elm/player/base/default";
  
  images.image: "img/shadow_square_tiny.png" COMP;
  images.image: "img/vgrad_shadow_bi.png" COMP;
+ images.image: "dia_bg.png" COMP; 
  
    script {
       public in_control;
@@ -126,8 +127,9 @@ group { name: "elm/player/base/default";
          clip_to: "volpopclip";
          description { state: "default" 0.0;
             STAY_ON("volpop")
-            image.normal: "img/menu_bg_SH.png";
-            image.border: 2 2 2 2;
+            image.normal: "dia_bg.png";
+            image.border: 15 15 2 2;
+            color_class: "dialog_base";
             fill.smooth: 0;
          }
       }

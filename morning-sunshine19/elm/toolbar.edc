@@ -1,33 +1,18 @@
 // === toolbar default base with scrolling arrows etc.
 group { name: "elm/toolbar/base/default";
    
-   images.image: "img/toolbar_vert_SH.png" COMP;
-   images.image: "img/toolbar_SH.png" COMP;
-   images.image: "img/arrow.png" COMP;
-   images.image: "img/arrow_up.png" COMP;
-   images.image: "img/arrow_left.png" COMP;
-   images.image: "img/arrow_down.png" COMP;
+   images.image: "icon_right_arrow.png" COMP;
+   images.image: "icon_up_arrow.png" COMP;
+   images.image: "icon_left_arrow.png" COMP;
+   images.image: "icon_down_arrow.png" COMP;
   
   
    parts {
       part { name: "base"; type: RECT;
          description { state: "default" 0.0;
-            color_class: "border_frame";
+            color: TRANSPARENT;
          }
       }
-      part { name: "base_SH";
-		  description { state: "default" 0.0;
-			  image.normal: "img/toolbar_SH.png";
-			  image.border: 2 2 2 2;
-			  color_class: "border_frame_active";
-			  STAY_ON("base")
-		  }
-		  description { state: "vert" 0.0;
-			  inherit: "default" 0.0;
-			  image.normal: "img/toolbar_vert_SH.png";
-			  image.border: 4 4 4 4;
-		  }
-	  }
       part { name: "clipper"; type: RECT;
          description { state: "default" 0.0;
             rel1.to: "base";
@@ -57,13 +42,12 @@ group { name: "elm/toolbar/base/default";
          description { state: "default" 0.0;
             rel1.to: "arrow_l_ev";
             rel2.to: "arrow_l_ev";
-            image.normal: "img/arrow_left.png";
-            FIXED_SIZE(5, 7)
-            color_class: "border_title_active";
+            image.normal: "icon_left_arrow.png";
+            FIXED_SIZE(32, 32)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: -2 0;
+            rel1.offset: -4 0;
          }
       }
       part { name: "arrow_l_ev"; type: RECT;
@@ -74,7 +58,7 @@ group { name: "elm/toolbar/base/default";
             rel2.to: "base";
             align: 0.0 0.5;
             color: 0 0 0 0;
-            FIXED_SIZE(23, 23)
+            FIXED_SIZE(32, 32)
          }
       }
       
@@ -92,13 +76,12 @@ group { name: "elm/toolbar/base/default";
          description { state: "default" 0.0;
             rel1.to: "arrow_r_ev";
             rel2.to: "arrow_r_ev";
-            image.normal: "img/arrow.png";
-            FIXED_SIZE(5, 7)
-            color_class: "border_title_active";
+            image.normal: "icon_right_arrow.png";
+            FIXED_SIZE(32, 32)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 2 0;
+            rel1.offset: 4 0;
          }
       }
       part { name: "arrow_r_ev"; type: RECT;
@@ -109,7 +92,7 @@ group { name: "elm/toolbar/base/default";
             rel2.to: "base";
             align: 1.0 0.5;
             color: 0 0 0 0;
-            FIXED_SIZE(23, 23)
+            FIXED_SIZE(32, 32)
          }
       }
       part { name: "arrow_clipper_u"; type: RECT;
@@ -126,13 +109,12 @@ group { name: "elm/toolbar/base/default";
          description { state: "default" 0.0;
             rel1.to: "arrow_u_ev";
             rel2.to: "arrow_u_ev";
-            image.normal: "img/arrow_up.png";
-            FIXED_SIZE(7, 5)
-            color_class: "border_title_active";
+            image.normal: "icon_up_arrow.png";
+            FIXED_SIZE(32,32)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 0 -2;
+            rel1.offset: 0 -4;
          }
       }
       part { name: "arrow_u_ev"; type: RECT;
@@ -143,7 +125,7 @@ group { name: "elm/toolbar/base/default";
             rel2.to: "base";
             align: 0.5 0.0;
             color: 0 0 0 0;
-            FIXED_SIZE(23, 23)
+            FIXED_SIZE(32, 32)
          }
       }
       
@@ -161,13 +143,12 @@ group { name: "elm/toolbar/base/default";
          description { state: "default" 0.0;
             rel1.to: "arrow_d_ev";
             rel2.to: "arrow_d_ev";
-            image.normal: "img/arrow_down.png";
-            FIXED_SIZE(7, 5)
-            color_class: "border_title_active";
+            image.normal: "icon_down_arrow.png";
+            FIXED_SIZE(32, 32)
          }
          description { state: "clicked" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 0 2;
+            rel1.offset: 0 4;
          }
       }
       part { name: "arrow_d_ev"; type: RECT;
@@ -178,21 +159,11 @@ group { name: "elm/toolbar/base/default";
             rel2.to: "base";
             align: 0.5 1.0;
             color: 0 0 0 0;
-            FIXED_SIZE(23, 23)
+            FIXED_SIZE(32, 32)
          }
       }
    }
    programs {
-      program {
-         signal: "elm,orient,horizontal"; source: "elm";
-         action: STATE_SET "default" 0.0;
-         target: "base_SH";
-      }
-      program {
-         signal: "elm,orient,vertical"; source: "elm";
-         action: STATE_SET "vert" 0.0;
-         target: "base_SH";
-      }
       program {
          signal: "elm,action,show,left"; source: "elm";
          action: STATE_SET "visible" 0.0;
@@ -351,7 +322,8 @@ group { name: "elm/toolbar/base/default";
 group { name: "elm/toolbar/item/default";
    data.item: "transition_animation_on" "1";
    
-   images.image: "img/toolbar_bt_base2_SH.png" COMP;
+   images.image: "button-prelight.png" COMP;
+   images.image: "button-pressed.png" COMP;
 
 #define ICON     1
 #define LABEL    2
@@ -423,7 +395,7 @@ group { name: "elm/toolbar/item/default";
             rel1.to: "base";
             rel1.offset: 2 0;
             rel2.to: "base";
-            image.normal: "img/toolbar_bt_base2_SH.png";
+            image.normal: "button-pressed.png";
             image.border: 6 6 6 6;
             visible: 0;
          }
@@ -439,12 +411,16 @@ group { name: "elm/toolbar/item/default";
             rel1.to: "base";
             rel1.offset: 2 0;
             rel2.to: "base";
-            image.normal: "img/toolbar_bt_base_SH.png";
+            image.normal: "button-prelight.png";
             image.border: 6 6 6 6;
          }
          description { state: "selected" 0.0;
             inherit: "default" 0.0;
-            image.normal: "img/toolbar_bt_base2_SH.png";
+            image.normal: "button-prelight.png";
+         }
+         description { state: "pressed" 0.0;
+            inherit: "default" 0.0;
+            image.normal: "button-pressed.png";
          }
       }
       
@@ -552,8 +528,8 @@ group { name: "elm/toolbar/item/default";
             rel2.offset: -7 -3;
             align: 0.5 1.0;
             color: 255 255 255 255; color3: 255 255 255 255;
-            color_class: "border_title_active";
-            text { font: "Sans"; size: 12;
+            color_class: "label_text";
+            text { font: "Sans"; size: 10;
                min: 1 1;
                align: 0.5 0.5;
                text_class: "toolbar_item";
@@ -564,11 +540,11 @@ group { name: "elm/toolbar/item/default";
          description { state: "selected" 0.0;
             inherit: "default" 0.0;
             visible: 1;
-            color_class: "border_title_active";
+            color_class: "label_text";
          }
          description { state: "disabled" 0.0;
             inherit: "default" 0.0;
-            color_class: "border_title";
+            color_class: "label_text_disabled";
          }
          description { state: "noicon" 0.0;
             inherit: "default" 0.0;
@@ -578,7 +554,7 @@ group { name: "elm/toolbar/item/default";
          }
          description { state: "noicon_disabled" 0.0;
             inherit: "noicon" 0.0;
-            color_class: "border_title";
+            color_class: "label_text_disabled";
          }
          description { state: "icononly" 0.0;
             inherit: "default" 0.0;
@@ -609,8 +585,8 @@ group { name: "elm/toolbar/item/default";
             rel2.offset: -7 -3;
             align: 0.5 1.0;
             color: 255 255 255 255; color3: 255 255 255 255;
-            color_class: "border_title_active";
-            text { font: "Sans"; size: 12;
+            color_class: "label_text";
+            text { font: "Sans"; size: 10;
                min: 1 1;
                align: 0.5 0.5;
                text_class: "toolbar_item";
@@ -620,11 +596,11 @@ group { name: "elm/toolbar/item/default";
          }
          description { state: "selected" 0.0;
             inherit: "default" 0.0;
-            color_class: "border_title_active";
+            color_class: "label_text";
          }
          description { state: "disabled" 0.0;
             inherit: "default" 0.0;
-            color_class: "border_title";
+            color_class: "label_text_disabled";
          }
          description { state: "noicon" 0.0;
             inherit: "default" 0.0;
@@ -634,7 +610,7 @@ group { name: "elm/toolbar/item/default";
          }
          description { state: "noicon_disabled" 0.0;
             inherit: "noicon" 0.0;
-            color_class: "border_title";
+            color_class: "label_text_disabled";
          }
          description { state: "icononly" 0.0;
             inherit: "default" 0.0;
@@ -657,6 +633,18 @@ group { name: "elm/toolbar/item/default";
 	  
       OVER_P("shadow_clip_default","event","default","prelight")
       OVER_P("shadow_clip_prelight","event","default","prelight") 
+	  
+	  program {
+		  signal: "mouse,up,1"; source: "event";
+		  action: STATE_SET "default" 0.0;
+		  target: "shadow1_pre";
+	  }
+	   
+	  program {
+		  signal: "mouse,down,1"; source: "event";
+		  action: STATE_SET "pressed" 0.0;
+		  target: "shadow1_pre";
+	  }
 	   
       program {
          signal: "elm,orient,horizontal"; source: "elm";
@@ -909,7 +897,7 @@ group { name: "elm/toolbar/item/item_horizontal";
             rel1.to_x: "elm.swallow.icon";
             rel2.offset: -5 -3;
             align: 0.0 0.5;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                align: 0.0 0.5;
                text_class: "toolbar_item";
@@ -947,7 +935,7 @@ group { name: "elm/toolbar/item/item_horizontal";
             rel1.to_x: "elm.swallow.icon";
             rel2.offset: -5 -3;
             align: 0.0 0.5;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 1 1;
                align: 0.0 0.5;
                text_class: "toolbar_item";
@@ -991,20 +979,32 @@ group { name: "elm/toolbar/item/item_centered";
 
 // === separator
 group { name: "elm/toolbar/separator/default";
+	
+	images.image: "vline.png" COMP;
+	images.image: "menu_sep.png" COMP;
+	
    parts {
-      part { name: "base";  type: RECT;
+      part { name: "base"; 
          description { state: "default" 0.0;
-            min: 1 1;
-            max: 1 99999;
-            rel1.offset: 4 0;
-            rel2.offset: -5 -1;
-            color: 0 0 0 20;
+            min: 2 16;
+            max: 2 99999;
+			rel1.offset: 2 2;
+			rel2.offset: -3 -3;
+            image.normal: "vline.png";
+            image.border: 1 1 1 1;
+            fill.smooth: 0;
          }
          description { state: "vert" 0.0;
             inherit: "default" 0.0;
-            max: 99999 1;
-            rel1.offset: 0 4;
-            rel2.offset: -1 -5;
+            min: 1 2;
+            max: -1 2;
+			rel1.offset: 2 2;
+			rel2.offset: -3 -3;
+			image {
+				normal: "menu_sep.png";
+				border: 2 2 0 0;
+			}
+			fill.smooth: 0;
          }
       }
    }
@@ -1034,7 +1034,7 @@ group { name: "elm/toolbar/object/default";
             rel2.offset: -3 -3;
          }
       }
-      /*NOT HIGHLIGHT EFFECT IN RADIANCE THEME, SORRY!!
+      /*NOT HIGHLIGHT EFFECT IN OPENGEU THEME, SORRY!!
       part { name: "highlight"; mouse_events: 0;
          description { state: "default" 0.0;
             rel1.offset: -3 -7;
@@ -1071,17 +1071,19 @@ group { name: "elm/toolbar/object/default";
 // XXX: vert vs horiz (should emit)
 group { name: "elm/toolbar/more/default";
     
-   images.image: "img/gadget_popup_SH.png" COMP;
+   images.image: "base_bg.png" COMP;
      
    parts {
-      part { name: "base"; type: RECT;
+      part { name: "base";
          description { state: "default" 0.0;
             rel2.relative: 1.0 0.0;
             rel1.offset: 2 2;
             rel2.offset: -3 1;
             fixed: 1 1;
             visible: 0;
-            color_class: "dialog_base";
+            image.normal: "base_bg.png";
+            image.border: 2 2 2 2 ;
+            fill.smooth: 0;
          }
          description { state: "open" 0.0;
             inherit: "default" 0.0;
@@ -1096,24 +1098,6 @@ group { name: "elm/toolbar/more/default";
             visible: 1;
          }
       }
-      part { name: "base_SH";
-		  description { state: "default" 0.0;
-			  STAY_ON("base")
-			  image.normal: "img/gadget_popup_SH.png";
-			  image.border: 2 2 2 2;
-			  image.middle: 0;
-			  fill.smooth: 0;
-			  visible: 0;
-		  }
-         description { state: "open" 0.0;
-            inherit: "default" 0.0;
-            visible: 1;
-         }
-         description { state: "open2" 0.0;
-            inherit: "default" 0.0;
-            visible: 1;
-         }
-	  }
       part { name: "clipper"; type: RECT;
          description { state: "default" 0.0;
             rel1.to: "base";
@@ -1173,7 +1157,6 @@ group { name: "elm/toolbar/more/default";
         signal: "elm,state,open"; source: "elm";
         action: STATE_SET "open" 0.0;
         target: "base";
-        target: "base_SH";
         target: "clipper";
         target: "clipper2";
         transition: DECELERATE 0.15;
@@ -1182,7 +1165,6 @@ group { name: "elm/toolbar/more/default";
         signal: "elm,state,open2"; source: "elm";
         action: STATE_SET "open2" 0.0;
         target: "base";
-        target: "base_SH";
         target: "clipper";
         target: "clipper2";
         transition: DECELERATE 0.3;
@@ -1191,7 +1173,6 @@ group { name: "elm/toolbar/more/default";
         signal: "elm,state,close"; source: "elm";
         action: STATE_SET "default" 0.0;
         target: "base";
-        target: "base_SH";
         transition: DECELERATE 0.5;
      }
   }

@@ -1,7 +1,6 @@
 group { name: "elm/progressbar/horizontal/default";
-	images.image: "img/progbarH_base.png" COMP;
-	images.image: "img/progbarH_base_SH.png" COMP;
-	images.image: "img/progbarH_bar_SH.png" COMP;
+	images.image: "slider_runnerh.png" COMP;
+	images.image: "barH.png" COMP;
 
 #define ICON    1
 #define LABEL   2
@@ -89,7 +88,7 @@ group { name: "elm/progressbar/horizontal/default";
          description { state: "default" 0.0;
             fixed: 1 1;
             visible: 0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 0;
                text_class: "progressbar_text";
             }
@@ -120,7 +119,7 @@ group { name: "elm/progressbar/horizontal/default";
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "label_text";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_class: "progressbar";
                min: 0 0;
                align: 0.0 0.5;
@@ -144,25 +143,16 @@ group { name: "elm/progressbar/horizontal/default";
       part { name: "base";
          scale: 1;
          description { state: "default" 0.0;
-            min: 16 26;
-            max: -1 26;
+            min: 16 18;
+            max: -1 18;
             rel1.to_x: "elm.text";
             rel1.relative: 1.0 0.0;
             rel1.offset: 3 3;
             rel2.offset: -4 -4;
-            color_class: "dialog_base";
-            image.normal: "img/progbarH_base.png";
+            image.normal: "slider_runnerh.png";
             image.border: 4 4 4 4;
          }
       }
-       part { name: "base_SH"; mouse_events: 0;
-		 scale: 1;
-		 description { state: "default" 0.0;
-			 STAY_ON("base")
-			 image.normal: "img/progbarH_base_SH.png";
-			 image.border: 4 4 4 4;
-		 } 
-	  }
 	  part { name: "ins0"; type: SPACER;
          scale: 1;
          description { state: "default" 0.0;
@@ -170,7 +160,7 @@ group { name: "elm/progressbar/horizontal/default";
             rel1.to: "base";
             rel2.to: "base";
             rel2.relative: 0.0 1.0;
-            min: 1 26;
+            min: 1 18;
             align: 0.0 0.5;
          }
       }
@@ -181,7 +171,7 @@ group { name: "elm/progressbar/horizontal/default";
             rel1.to: "base";
             rel1.relative: 1.0 0.0;
             rel2.to: "base";
-            min: 1 26;
+            min: 1 18;
             align: 1.0 0.5;
          }
       }
@@ -197,8 +187,8 @@ group { name: "elm/progressbar/horizontal/default";
          dragable.y: 0 0 0;
          description { state: "default" 0.0;
             fixed: 1 1;
-            min: 1 26;
-            max: 1 26;
+            min: 1 18;
+            max: 1 18;
             rel1.to: "base";
             rel2.to: "base";
          }
@@ -207,7 +197,7 @@ group { name: "elm/progressbar/horizontal/default";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 1 0;
-            min: 1 26;
+            min: 1 18;
             rel1.to_x: "elm.cur.progressbar";
             rel1.relative: 1.0 0.0;
             rel2.to_x: "elm.cur.progressbar";
@@ -227,36 +217,31 @@ group { name: "elm/progressbar/horizontal/default";
          description { state: "default" 0.0;
             rel1.to_x: "ins0";
             rel1.to_y: "base";
+            rel1.offset: 1 2;
             rel1.relative: 0.0 0.0;
             rel2.to_x: "barend";
             rel2.to_y: "base";
+            rel2.offset: -3 -3;
+            fixed: 1 1;
             rel2.relative: 1.0 1.0;
-            image.normal: "img/progbarH_base.png";
-            image.border: 4 4 4 4;
-            color_class: "focus";
+            image.normal: "barH.png";
+            image.border: 5 5 5 5;
          }
          description { state: "inv" 0.0;
             inherit: "default" 0.0;
             rel1.to_x: "barend";
+            rel1.offset: 2 2;
             rel1.relative: 0.0 0.0;
             rel2.to_x: "ins1";
+            rel2.offset: -2 -3;
             rel2.relative: 1.0 1.0;
          }
       }
-      part { name: "bar_SH";
-		  clip_to: "fract_clip";
-		  scale: 1;
-		  description { state: "defalult" 0.0;
-			  STAY_ON("bar")
-			  image.normal: "img/progbarH_bar_SH.png";
-			  image.border: 4 4 4 4;
-		  }
-	  }
       part { name: "insidep0"; type: SPACER;
          scale: 1;
          description { state: "default" 0.0;
             fixed: 1 0;
-            min: 1 26;
+            min: 1 18;
             rel1.to_x: "base";
             rel1.relative: 0.0 0.0;
             rel1.offset: 1 0;
@@ -269,7 +254,7 @@ group { name: "elm/progressbar/horizontal/default";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 1 0;
-            min: 1 26;
+            min: 1 18;
             rel1.to_x: "base";
             rel1.relative: 1.0 0.0;
             rel2.to_x: "base";
@@ -282,33 +267,25 @@ group { name: "elm/progressbar/horizontal/default";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 1 1;
-            min: 64 26;
-            max: 64 26;
+            min: 50 0;
+            max: 50 16;
             rel1.to_x: "insidep0";
             rel1.to_y: "bar";
             rel1.relative: 0.0 0.0;
+            rel1.offset: 1 0;
             rel2.to_x: "insidep1";
             rel2.to_y: "bar";
+            rel2.offset: -3 -1;
             rel2.relative: 1.0 1.0;
-            image.normal: "img/progbarH_base.png";
-            image.border: 4 4 4 4;
+            image.normal: "barH.png";
+            image.border: 5 5 5 5;
             align: 0.0 0.5;
-            color_class: "focus";
          }
          description { state: "end" 0.0;
             inherit: "default" 0.0;
             align: 1.0 0.5;
          }
       }
-      part { name: "pulse_SH"; mouse_events: 0;
-		  clip_to: "pulse_clip";
-		  scale: 1;
-		  description { state: "default" 0.0;
-			  STAY_ON("pulse")
-			  image.normal: "img/progbarH_bar_SH.png";
-			  image.border: 4 4 4 4;
-		  }
-	  }
       part { name: "elm.text.status"; type: TEXT; mouse_events: 0;
          scale: 1;
          effect: SHADOW BOTTOM;
@@ -318,7 +295,7 @@ group { name: "elm/progressbar/horizontal/default";
             rel2.to: "base";
             color_class: "label_text";
             align: 0.5 0.5;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 1;
                text_class: "progress_status";
                align: 0.5 0.5;
@@ -459,9 +436,8 @@ group { name: "elm/progressbar/horizontal/default";
 }
 
 group { name: "elm/progressbar/vertical/default";
-	images.image: "img/progbarV_base.png" COMP;
-	images.image: "img/progbarV_base_SH.png" COMP;
-	images.image: "img/progbarV_bar_SH.png" COMP;
+	images.image: "slider_runnerv.png" COMP;
+	images.image: "barV.png" COMP;
 	
 #define ICON    1
 #define LABEL   2
@@ -549,7 +525,7 @@ group { name: "elm/progressbar/vertical/default";
          description { state: "default" 0.0;
             fixed: 1 1;
             visible: 0;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 0;
                text_class: "progressbar_text";
             }
@@ -580,7 +556,7 @@ group { name: "elm/progressbar/vertical/default";
             color: 255 255 255 255;
             color3: 255 255 255 255;
             color_class: "label_text";
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                text_class: "progressbar";
                min: 0 0;
                align: 0.5 0.0;
@@ -606,25 +582,17 @@ group { name: "elm/progressbar/vertical/default";
       part { name: "base";
          scale: 1;
          description { state: "default" 0.0;
-            min: 26 16;
-            max: 26 -1;
+            min: 18 16;
+            max: 18 -1;
             rel1.to_y: "elm.text";
             rel1.relative: 0.0 1.0;
             rel1.offset: 3 3;
             rel2.offset: -4 -4;
-            image.normal: "img/progbarV_base.png";
+            image.normal: "slider_runnerv.png";
             image.border: 4 4 4 4;
-            color_class: "dialog_base";
+            fill.smooth: 0;
          }
       }
-      part { name: "base_SH"; mouse_events: 0;
-		 scale: 1;
-		 description { state: "default" 0.0;
-			 STAY_ON("base")
-			 image.normal: "img/progbarV_base_SH.png";
-			 image.border: 4 4 4 4;
-		 } 
-	  }
       part { name: "ins0"; type: SPACER;
          scale: 1;
          description { state: "default" 0.0;
@@ -632,7 +600,7 @@ group { name: "elm/progressbar/vertical/default";
             rel1.to: "base";
             rel2.to: "base";
             rel2.relative: 1.0 0.0;
-            min: 26 1;
+            min: 18 1;
             align: 0.5 0.0;
          }
       }
@@ -643,7 +611,7 @@ group { name: "elm/progressbar/vertical/default";
             rel1.to: "base";
             rel1.relative: 0.0 1.0;
             rel2.to: "base";
-            min: 26 1;
+            min: 18 1;
             align: 0.5 1.0;
          }
       }
@@ -659,8 +627,8 @@ group { name: "elm/progressbar/vertical/default";
          dragable.y: 1 1 1;
          description { state: "default" 0.0;
             fixed: 1 1;
-            min: 26 1;
-            max: 26 1;
+            min: 18 1;
+            max: 18 1;
             STAY_ON("base")
          }
       }
@@ -668,7 +636,7 @@ group { name: "elm/progressbar/vertical/default";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 0 1;
-            min: 26 1;
+            min: 18 1;
             rel1.to_y: "elm.cur.progressbar";
             rel1.relative: 0.0 1.0;
             rel2.to_y: "elm.cur.progressbar";
@@ -688,36 +656,31 @@ group { name: "elm/progressbar/vertical/default";
          description { state: "default" 0.0;
             rel1.to_y: "ins0";
             rel1.to_x: "base";
+            rel1.offset: 2 1;
             rel1.relative: 0.0 0.0;
             rel2.to_y: "barend";
             rel2.to_x: "base";
+            rel2.offset: -3 -3;
+            fixed: 1 1;
             rel2.relative: 1.0 1.0;
-            image.normal: "img/progbarV_base.png";
-            image.border: 4 4 4 4;
-            color_class: "focus";
+            image.normal: "barV.png";
+            image.border: 5 5 5 5;
          }
          description { state: "inv" 0.0;
             inherit: "default" 0.0;
             rel1.to_y: "barend";
             rel1.relative: 0.0 0.0;
+            rel1.offset: 2 2;
             rel2.to_y: "ins1";
+            rel2.offset: -3 -2;
             rel2.relative: 1.0 1.0;
          }
       }
-      part { name: "bar_SH";
-		  clip_to: "fract_clip";
-		  scale: 1;
-		  description { state: "defalult" 0.0;
-			  STAY_ON("bar")
-			  image.normal: "img/progbarV_bar_SH.png";
-			  image.border: 4 4 4 4;
-		  }
-	  }
       part { name: "insidep0"; type: SPACER;
          scale: 1;
          description { state: "default" 0.0;
             fixed: 0 1;
-            min: 26 1;
+            min: 18 1;
             rel1.to_y: "base";
             rel1.relative: 0.0 0.0;
             rel2.to_y: "base";
@@ -729,7 +692,7 @@ group { name: "elm/progressbar/vertical/default";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 0 1;
-            min: 26 1;
+            min: 18 1;
             rel1.to_y: "base";
             rel1.relative: 0.0 1.0;
             rel2.to_y: "base";
@@ -742,33 +705,25 @@ group { name: "elm/progressbar/vertical/default";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 1 1;
-            min: 26 50;
-            max: 26 50;
+            min: 0 50;
+            max: 16 50;
             rel1.to_y: "insidep0";
             rel1.to_x: "bar";
             rel1.relative: 0.0 0.0;
+            rel1.offset: 0 2;
             rel2.to_y: "insidep1";
             rel2.to_x: "bar";
+            rel2.offset: -1 -2;
             rel2.relative: 1.0 1.0;
-            image.normal: "img/progbarV_base.png";
-			image.border: 4 4 4 4;
+            image.normal: "barV.png";
+			image.border: 5 5 5 5;
             align: 0.5 0.0;
-            color_class: "focus";
          }
          description { state: "end" 0.0;
             inherit: "default" 0.0;
             align: 0.5 1.0;
          }
       }
-      part { name: "pulse_SH";
-		  clip_to: "pulse_clip";
-		  scale: 1;
-		  description { state: "defalult" 0.0;
-			  STAY_ON("pulse")
-			  image.normal: "img/progbarV_bar_SH.png";
-			  image.border: 4 4 4 4;
-		  }
-	  }
       part { name: "statbox"; type: SPACER;
          scale: 1;
          description { state: "default" 0.0;
@@ -787,7 +742,7 @@ group { name: "elm/progressbar/vertical/default";
             rel2.to: "statbox";
             color_class: "label_text";
             align: 1.0 0.5;
-            text { font: "Sans"; size: 12;
+            text { font: "Sans"; size: 10;
                min: 0 1;
                text_class: "progress_status";
                align: 1.0 0.5;
@@ -933,8 +888,7 @@ group { name: "elm/progressbar/vertical/default";
 
 group { name: "elm/progressbar/horizontal/wheel";
    alias: "elm/progressbar/vertical/wheel";
-   images.image: "img/logo_small.png" COMP;
-   images.image: "img/logo_small_SH.png" COMP;
+   images.image: "logo.png" COMP;
    parts {
       part { name: "elm.swallow.bar" ; type: SWALLOW; mouse_events: 0;
          description { state: "default" 0.0;
@@ -964,28 +918,12 @@ group { name: "elm/progressbar/horizontal/wheel";
          clip_to: "busy_clip";
          scale: 1;
          description { state: "default" 0.0;
-            image.normal: "img/logo_small.png";
-            FIXED_SIZE(40,51)
+            image.normal: "logo.png";
+            FIXED_SIZE(51,51)
             align: 0.0 0.0;
             rel1.offset: 3 3;
             rel2.offset: 3 3;
-            color_class: "focus";
 			map.on: 1;
-            map.smooth: 1;
-            map.rotation.center: "logo";
-         }
-         description { state: "spin" 0.0;
-            inherit: "default" 0.0;
-            map.rotation.z: 360;
-         }
-      }
-      part { name: "logo_SH"; mouse_events: 0;
-         clip_to: "busy_clip";
-         description { state: "default" 0.0;
-            FIXED_SIZE(40,51)
-            STAY_ON("logo")
-            image.normal: "img/logo_small_SH.png";
-            map.on: 1;
             map.smooth: 1;
             map.rotation.center: "logo";
          }
@@ -1001,13 +939,11 @@ group { name: "elm/progressbar/horizontal/wheel";
          action: STATE_SET "spin" 0.0;
          transition: LINEAR 1.0;
          target: "logo";
-         target: "logo_SH";
          after: "spin2";
       }
       program { name: "spin2";
          action: STATE_SET "default" 0.0;
          target: "logo";
-         target: "logo_SH";
          after: "spin";
       }
       program {
@@ -1032,7 +968,6 @@ group { name: "elm/progressbar/horizontal/wheel";
       program { name: "spin4";
          action: STATE_SET "default" 0.0;
          target: "logo";
-         target: "logo_SH";
       }
    }
 }
@@ -1042,7 +977,7 @@ group { name: "elm/progressbar/horizontal/double";
    
    parts {
       part { name: "elm.cur.progressbar1"; mouse_events: 0; type: SPACER;
-         insert_after: "base";
+         //insert_after: "base";
          scale: 1;
          dragable.confine: "base";
          dragable.x: 1 1 1;
@@ -1058,7 +993,7 @@ group { name: "elm/progressbar/horizontal/double";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 1 0;
-            min: 1 26;
+            min: 1 18;
             rel1.to_x: "elm.cur.progressbar1";
             rel1.relative: 1.0 0.0;
             rel2.to_x: "elm.cur.progressbar1";
@@ -1073,20 +1008,22 @@ group { name: "elm/progressbar/horizontal/double";
          }
       }
       part { name: "bar1";
-         insert_after: "base_SH";
+         insert_after: "base";
          clip_to: "fract_clip";
          scale: 1;
          description { state: "default" 0.0;
             rel1.to_x: "ins0";
             rel1.to_y: "base";
             rel1.relative: 0.0 0.0;
+            rel1.offset: 1 2;
             rel2.to_x: "barend1";
             rel2.to_y: "base";
+            rel2.offset: -3 -3;
+            fixed: 1 1;
             rel2.relative: 1.0 1.0;
-            image.normal: "img/progbarH_base.png";
-            image.border: 4 4 4 4;
-            color: 220 220 220 255;
-            color_class: "dialog_base";
+            image.normal: "barH.png";
+            image.border: 5 5 5 5;
+            color: 220 220 220 200;
          }
          description { state: "inv" 0.0;
             inherit: "default" 0.0;
@@ -1121,7 +1058,7 @@ group { name: "elm/progressbar/vertical/double";
 
    parts {
       part { name: "elm.cur.progressbar1"; mouse_events: 0; type: SPACER;
-         insert_after: "base";
+         //insert_after: "base";
          scale: 1;
          dragable.confine: "base";
          dragable.x: 0 0 0;
@@ -1137,7 +1074,7 @@ group { name: "elm/progressbar/vertical/double";
          scale: 1;
          description { state: "default" 0.0;
             fixed: 0 1;
-            min: 26 1;
+            min: 18 1;
             rel1.to_y: "elm.cur.progressbar1";
             rel1.relative: 0.0 1.0;
             rel2.to_y: "elm.cur.progressbar1";
@@ -1152,20 +1089,22 @@ group { name: "elm/progressbar/vertical/double";
          }
       }
       part { name: "bar1";
-         insert_after: "base_SH";
+         insert_after: "base";
          clip_to: "fract_clip";
          scale: 1;
          description { state: "default" 0.0;
             rel1.to_y: "ins0";
             rel1.to_x: "base";
             rel1.relative: 0.0 0.0;
+            rel1.offset: 2 1;
             rel2.to_y: "barend1";
             rel2.to_x: "base";
+            rel2.offset: -3 -3;
+            fixed: 1 1;
             rel2.relative: 1.0 1.0;
-            image.normal: "img/progbarV_base.png";
-            image.border: 4 4 4 4;
-            color: 220 220 220 255;
-            color_class: "dialog_base";
+            image.normal: "barV.png";
+            image.border: 5 5 5 5;
+            color: 220 220 220 200;
          }
          description { state: "inv" 0.0;
             inherit: "default" 0.0;
