@@ -32,7 +32,7 @@ data {
 #define SELECTED 186\ 202\ 218
 
 //Color of foreground: e.g.: labels on buttons, on menus
-#define FG_COLOR 55\ 56\ 57
+#define FG_COLOR 0\ 0\ 0
 
 //The color of the Window Border
 #define RADIANCE_COLOR BGWIN
@@ -7692,7 +7692,7 @@ group { name: "e/pointer/enlightenment/rotate/color";
 		styles {
 			style {
 				name: "dialog_style";
-				base: "font=Sans font_size=10 text_class=tb_plain align=center color=#000 style=shadow shadow_color=#ffffff80 wrap=word";
+				base: "font=Sans font_size=10 text_class=tb_plain align=center color=#000000e6 wrap=word";
 				tag:  "br" "\n";
 				tag:  "hilight" "+ font=Sans:style=Bold text_class=tb_light";
 			}
