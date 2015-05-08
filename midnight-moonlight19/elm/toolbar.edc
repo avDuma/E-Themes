@@ -380,6 +380,8 @@ group { name: "elm/toolbar/item/default";
    parts {
       part { name: "base"; type: SPACER;
          description { state: "default" 0.0;
+			//rel1.offset: -3 -2;
+            //rel2.offset: 2 -1;
          }
          description { state: "vert" 0.0;
             rel1.offset: -1 0;
@@ -393,7 +395,8 @@ group { name: "elm/toolbar/item/default";
 		  clip_to: "shadow_clip_default";
          description { state: "default" 0.0;
             rel1.to: "base";
-            rel1.offset: 2 0;
+            rel1.offset: 1 0;
+            rel2.offset: -2 -1;
             rel2.to: "base";
             image.normal: "button-pressed.png";
             image.border: 6 6 6 6;
@@ -409,7 +412,8 @@ group { name: "elm/toolbar/item/default";
 		 clip_to: "shadow_clip_prelight";
 		 description { state: "default" 0.0;
             rel1.to: "base";
-            rel1.offset: 2 0;
+            rel1.offset: 1 0;
+            rel2.offset: -2 -1;
             rel2.to: "base";
             image.normal: "button-prelight.png";
             image.border: 6 6 6 6;
@@ -449,23 +453,23 @@ group { name: "elm/toolbar/item/default";
          description { state: "default" 0.0;
             align: 0.5 0.5;
             rel1.relative: 0.0 0.0;
-            rel1.offset: 2 2;
+            rel1.offset: 4 4;
             rel2.to_y: "elm.text";
             rel2.relative: 1.0 0.0;
-            rel2.offset: -3 -1;
+            rel2.offset: -5 -1;
          }
          description { state: "noicon" 0.0;
             inherit: "default" 0.0;
             visible: 0;
-            rel1.offset: 2 0;
+            rel1.offset: 4 0;
             rel2.relative: 1.0 0.0;
-            rel2.offset: -3 -4;
+            rel2.offset: -5 -4;
          }
          description { state: "icononly" 0.0;
             inherit: "default" 0.0;
             visible: 0;
             rel2.relative: 1.0 1.0;
-            rel2.offset: -3 -3;
+            rel2.offset: -5 -3;
             rel2.to_y: "icon_clip";
          }
       }
@@ -486,23 +490,23 @@ group { name: "elm/toolbar/item/default";
          description { state: "default" 0.0;
             align: 0.5 0.5;
             rel1.relative: 0.0 0.0;
-            rel1.offset: 2 2;
+            rel1.offset: 4 4;
             rel2.to_y: "elm.text";
             rel2.relative: 1.0 0.0;
-            rel2.offset: -3 -1;
+            rel2.offset: -5 -1;
          }
          description { state: "noicon" 0.0;
             inherit: "default" 0.0;
             visible: 0;
-            rel1.offset: 2 0;
+            rel1.offset: 4 0;
             rel2.relative: 1.0 0.0;
-            rel2.offset: -3 -4;
+            rel2.offset: -5 -4;
          }
          description { state: "icononly" 0.0;
             inherit: "default" 0.0;
             visible: 0;
             rel2.relative: 1.0 1.0;
-            rel2.offset: -3 -3;
+            rel2.offset: -5 -3;
             rel2.to_y: "icon_clip";
          }
       }
@@ -523,9 +527,9 @@ group { name: "elm/toolbar/item/default";
          scale: 1;
          clip_to: "text_clip1";
          description { state: "default" 0.0;
-            rel1.offset: 6 -3;
+            rel1.offset: 8 -3;
             rel1.relative: 0.0 1.0;
-            rel2.offset: -7 -3;
+            rel2.offset: -9 -3;
             align: 0.5 1.0;
             color: 255 255 255 255; color3: 255 255 255 255;
             color_class: "label_text";
@@ -548,7 +552,7 @@ group { name: "elm/toolbar/item/default";
          }
          description { state: "noicon" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 4 2;
+            rel1.offset: 6 2;
             rel1.relative: 0.0 0.0;
             align: 0.5 0.5;
          }
@@ -580,9 +584,9 @@ group { name: "elm/toolbar/item/default";
          scale: 1;
          clip_to: "text_clip2";
          description { state: "default" 0.0;
-            rel1.offset: 6 -3;
+            rel1.offset: 8 -3;
             rel1.relative: 0.0 1.0;
-            rel2.offset: -7 -3;
+            rel2.offset: -9 -3;
             align: 0.5 1.0;
             color: 255 255 255 255; color3: 255 255 255 255;
             color_class: "label_text";
@@ -604,7 +608,7 @@ group { name: "elm/toolbar/item/default";
          }
          description { state: "noicon" 0.0;
             inherit: "default" 0.0;
-            rel1.offset: 4 2;
+            rel1.offset: 6 2;
             rel1.relative: 0.0 0.0;
             align: 0.5 0.5;
          }
