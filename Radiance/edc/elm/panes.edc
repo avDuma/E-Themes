@@ -352,6 +352,7 @@ group { name: "elm/panes/vertical/flush";
             rel2.to_x: "elm.bar";
             color: 255 255 255 0;
             align: 1.0 0.5;
+            color_class: "focus";
          }
          description { state: "active" 0.0;
            inherit: "default" 0.0;
@@ -364,6 +365,7 @@ group { name: "elm/panes/vertical/flush";
             max: 4 99999;
             rel1.to_x: "elm.bar";
             color: 255 255 255 0;
+            color_class: "focus";
             align: 0.0 0.5;
          }
          description { state: "active" 0.0;
@@ -377,6 +379,7 @@ group { name: "elm/panes/vertical/flush";
             max: 4 99999;
             rel2.to_x: "elm.bar";
             color: 255 255 255 0;
+            color_class: "focus";
             align: 1.0 0.5;
          }
          description { state: "active" 0.0;
@@ -391,6 +394,7 @@ group { name: "elm/panes/vertical/flush";
             max: 32 99999;
             rel1.to_x: "elm.bar";
             color: 255 255 255 0;
+            color_class: "focus";
             align: 0.0 0.5;
          }
          description { state: "active" 0.0;
@@ -565,6 +569,7 @@ group { name: "elm/panes/horizontal/flush";
             max: 99999 32;
             rel2.to_y: "elm.bar";
             color: 255 255 255 0;
+            color_class: "focus";
             align: 0.5 1.0;
          }
          description { state: "active" 0.0;
@@ -578,6 +583,7 @@ group { name: "elm/panes/horizontal/flush";
             max: 99999 4;
             rel1.to_y: "elm.bar";
             color: 255 255 255 0;
+            color_class: "focus";
             align: 0.5 0.0;
          }
          description { state: "active" 0.0;
@@ -591,6 +597,7 @@ group { name: "elm/panes/horizontal/flush";
             max: 99999 4;
             rel2.to_y: "elm.bar";
             color: 255 255 255 0;
+            color_class: "focus";
             align: 0.5 1.0;
          }
          description { state: "active" 0.0;
@@ -605,6 +612,7 @@ group { name: "elm/panes/horizontal/flush";
             max: 99999 32;
             rel1.to_y: "elm.bar";
             color: 255 255 255 0;
+            color_class: "focus";
             align: 0.5 0.0;
          }
          description { state: "active" 0.0;
