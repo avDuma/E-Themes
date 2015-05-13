@@ -1,0 +1,11 @@
+group { name: "e/desktop/background";
+   parts {
+      part { name: "bg"; type: RECT;
+         description { state: "default" 0.0;
+			color: 255 255 255 255;
+			color_class: "desktop";
+         }
+      }
+   }
+}
+

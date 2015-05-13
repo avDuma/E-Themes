@@ -1,0 +1,49 @@
+/* * * * * * * * * * * * * * * * 
+ *  -The SimpleX Config File-  *
+ *								*
+ * Here the configuration that *
+ * you can't do with Esettings *
+ * * * * * * * * * * * * * * * */
+ 
+/* * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Very Important: you have to recompile the theme *
+ * after editing these settings!						 *
+ * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/// These stuffs can be changed also with Settings -> Look -> Colors, but
+/// won't affect the Elementary widget
+//Background of Window
+#define BGWIN 204\ 204\ 204
+#define SEPARATOR 153\ 153\ 153
+
+//Focus Color
+#define SELECTED 80\ 174\ 24
+
+//Color of foreground: e.g.: labels on buttons, on menus
+#define FG_COLOR 68\ 68\ 68
+
+//Color of selected foreground
+#define SEL_FG_COLOR FG_COLOR
+
+//Color of insensitive foreground
+#define INSENSITIVE_FG_COLOR 136\ 136\ 136
+
+//Color of EDJ Tooltips
+#define TOOLTIP_COLOR 190\ 195\ 189\ 255
+
+//Color of Label on EDJ Tooltips
+#define TOOLTIP_FG_COLOR FG_COLOR
+
+//ELM Tooltip Opacity: they take RADIANCE_COLOR as background color
+#define TOOLTIP_OPACITY 200
+
+//Color of error on background entry (used only on desklock at the moment)
+#define ERROR_BG_COLOR 237\ 123\ 123
+///
+
+///Panel settings
+//Systray Background Color for Xembed
+#define SYS_BG "204 204 204"
+
+//Pixmap showed on hidden shelf
+#define RADCONF_SHELF_HID_SIZE 2

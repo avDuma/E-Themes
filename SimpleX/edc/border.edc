@@ -1,0 +1,518 @@
+#define EVENT_PART(NAME, POSITION)			\
+part { name: "e.event."NAME; type: RECT;	\
+	description { state: "defualt" 0.0;		\
+		POSITION							\
+	color: TRANSPARENT;						\
+	}										\
+}
+
+#define WIN_BUTTON(NAME, POSITION)							\
+images.image: "img/bd_"NAME".png" COMP;						\
+part { name: NAME"_unfocused"; mouse_events: 0;				\
+	clip_to: "button_clip_default";							\
+	description { state: "default" 0.0;						\
+		align: 0.0 0.0;										\
+		POSITION											\
+		FIXED_SIZE(27,28)									\
+		image.normal: "img/bd_"NAME".png";					\
+		color_class: "border_title";						\
+	}														\
+	COLOR_STATE("prelight","fg_prelight")					\
+	COLOR_STATE("pressed","border_title_active")			\
+}															\
+part { name: NAME"_focused";  mouse_events: 0;				\
+	clip_to: "button_clip_focused";							\
+	description { state: "default" 0.0;						\
+		align: 0.0 0.0;										\
+		STAY_ON(NAME"_unfocused")							\
+		FIXED_SIZE(27,28)									\
+		image.normal: "img/bd_"NAME".png";					\
+		color_class: "border_title_active";					\
+	}														\
+	COLOR_STATE("prelight","fg_prelight")					\
+	COLOR_STATE("pressed","border_title_active")			\
+}															\
+OVER(NAME"_unfocused","e.event."NAME,"default","prelight")	\
+OVER(NAME"_focused","e.event."NAME,"default","prelight")	\
+CLICK(NAME"_unfocused","e.event."NAME,"default","pressed")	\
+CLICK(NAME"_focused","e.event."NAME,"default","pressed")
+
+#define MUTE_PART(NAME)					\
+part { name: NAME"_unfocused";			\
+	description { state: "default" 0.0;	\
+		visible: 0;						\
+	}									\
+}										\
+part { name: NAME"_focused";			\
+	description { state: "default" 0.0;	\
+		visible: 0;						\
+	}									\
+}										\
+EVENT_PART(NAME,visible: 0;)			\
+
+#define DIALOG_PARTS	\
+MUTE_PART("maximize")	\
+MUTE_PART("minimize")
+
+#define TITLE(REL1, REL2)									\
+		part { name: "e.text.title"; type: TEXT;			\
+				 scale: 1;									\
+				 effect: PLAIN;								\
+				 description { state: "default" 0.0;		\
+					rel1.to_x: REL1;						\
+					rel1.relative: 1.0 0.0;					\
+					rel1.offset: 0 6;						\
+					rel2.to: REL2;							\
+					rel2.relative: 0.0 0.0;					\
+					align: 0.5 0.0;							\
+					color: 255 255 255 255;					\
+					color_class: "border_title";			\
+					text { font: "Sans:style=Bold"; size: 12;	\
+						text_class: "title_bar";			\
+						align: 0.5 0.0;						\
+						min: 0 1;							\
+					}										\
+					fixed: 0 1;								\
+				 }											\
+				 COLOR_STATE("focused", "border_title_active")	\
+		}													\
+		EVENT_PART("titlebar", STAY_ON("e.text.title"))		\
+
+/* * *
+ *  INHERIT ONLY GROUP!
+ * This is a new pretty cool thing: for repeat a code always similar, *
+ * instead of a "variable-less" #define it's more clean a group with  *
+	images, parts and programs section								  *
+																  * * */
+
+group { name: "border_parts"; inherit_only: 1;
+	parts {
+		part { name: "client_clip"; type: RECT;
+				 description { state: "default" 0.0;
+					STAY_ON("e.swallow.client")
+				 }
+		}
+		CLIP_SWITCH("button", "bg", "bg", "default", "focused")
+		part { name: "bg"; type: RECT;
+			mouse_events: 0;
+			description { state: "default" 0.0;
+				color_class: "border_frame";
+				}
+			COLOR_STATE("focused","border_frame_active")
+		}
+		part { name: "e.swallow.client"; type: SWALLOW;
+				 clip_to: "client_clip";
+				 description { state: "default" 0.0;
+					rel1.to: "bg";
+					rel1.offset: 6 28;
+					rel2.to: "bg";
+					rel2.offset: -7 -7;
+				 }
+		}
+	}
+	programs {
+		program {
+			signal: "e,state,focused"; source: "e";
+			action: STATE_SET "focused" 0.0;
+			target: "bg";
+			target: "e.text.title";
+			target: "button_clip_default";
+			target: "button_clip_focused";
+		}
+		program {
+			signal: "e,state,unfocused"; source: "e";
+			action: STATE_SET "default" 0.0;
+			target: "bg";
+			target: "e.text.title";
+			target: "button_clip_default";
+			target: "button_clip_focused";
+		}
+	}
+}
+
+group { name: "resize_parts"; inherit_only: 1;
+	parts {
+		EVENT_PART("resize.t",
+			rel1.to: "bg";
+			rel2.to: "bg";
+			rel2.relative: 1.0 0.0;
+			rel2.offset: -1 6;
+		)
+		EVENT_PART("resize.b",
+			rel1.to: "bg";
+			rel2.to: "bg";
+			rel1.relative: 0.0 1.0;
+			rel1.offset: 0 -6;
+		)
+		EVENT_PART("resize.l",
+			rel1.to: "bg";
+			rel2.to: "bg";
+			rel2.relative: 0.0 1.0;
+			rel2.offset: 6 -1;
+		)
+		EVENT_PART("resize.r",
+			rel1.to: "bg";
+			rel2.to: "bg";
+			rel1.relative: 1.0 0.0;
+			rel1.offset: -6 0;
+		)
+		EVENT_PART("resize.tl",
+			rel1.to: "bg";
+			rel2.to: "bg";
+			rel2.relative: 0.0 0.0;
+			rel2.offset: 10 10;
+		)
+		EVENT_PART("resize.tr",
+			rel1.to: "bg";
+			rel2.to: "bg";
+			rel1.relative: 1.0 0.0;
+			rel2.relative: 1.0 0.0;
+			rel1.offset: -10 0;
+			rel2.offset: 0 10;
+		)
+		EVENT_PART("resize.bl",
+			rel1.to: "bg";
+			rel1.relative: 0.0 1.0;
+			rel1.offset: 0 -10;
+			rel2.to: "bg";
+			rel2.relative: 0.0 1.0;
+			rel2.offset: 10 0;
+		)
+		EVENT_PART("resize.br",
+			rel1.to: "bg";
+			rel1.relative: 1.0 1.0;
+			rel2.to: "bg";
+			rel1.offset: -10 -10;
+		)
+	}
+}
+
+group { name: "button_right_parts"; inherit_only: 1;
+	parts {
+		WIN_BUTTON("icon",
+			rel1.to: "bg";
+			rel1.offset: 5 0;
+			rel2.to: "bg";
+			rel2.relative: 1.0 0.0;
+		)
+		WIN_BUTTON("close",
+			align: 1.0 0.0;
+			rel2.to: "bg";
+			rel2.offset: -6 -1;
+			rel2.relative: 1.0 0.0;
+		)
+		WIN_BUTTON("maximize",
+			align: 1.0 0.0;
+			rel2.to: "close_unfocused";
+			rel2.offset: -1 -1;
+			rel2.relative: 0.0 1.0;
+		)
+		WIN_BUTTON("minimize",
+			align: 1.0 0.0;
+			rel2.to: "maximize_unfocused";
+			rel2.offset: -1 -1;
+			rel2.relative: 0.0 1.0;
+		)
+		EVENT_PART("icon",STAY_ON("icon_unfocused"))
+		EVENT_PART("close",STAY_ON("close_unfocused"))
+		EVENT_PART("maximize",STAY_ON("maximize_unfocused"))
+		EVENT_PART("minimize",STAY_ON("minimize_unfocused"))
+	}
+}
+
+group { name: "button_left_parts"; inherit_only: 1;
+	parts {
+		WIN_BUTTON("close",
+			rel1.to: "bg";
+			rel1.offset: 5 0;
+			rel2.to: "bg";
+			rel2.relative: 1.0 0.0;
+		)
+		WIN_BUTTON("icon",
+			align: 1.0 0.0;
+			rel2.to: "bg";
+			rel2.offset: -6 -1;
+			rel2.relative: 1.0 0.0;
+		)
+		WIN_BUTTON("maximize",
+			rel1.to: "close_unfocused";
+			rel1.relative: 1.0 0.0;
+			rel1.offset: 1 0;
+		)
+		WIN_BUTTON("minimize",
+			rel1.to: "maximize_unfocused";
+			rel1.relative: 1.0 0.0;
+			rel1.offset: 1 0;
+		)
+		EVENT_PART("icon",STAY_ON("icon_unfocused"))
+		EVENT_PART("close",STAY_ON("close_unfocused"))
+		EVENT_PART("maximize",STAY_ON("maximize_unfocused"))
+		EVENT_PART("minimize",STAY_ON("minimize_unfocused"))
+	}
+}
+
+//The Border Parts
+
+group { name: "e/widgets/border/default/border";	
+	alias: "e/widgets/border/shaped/border";
+	inherit: "border_parts";
+	inherit: "button_right_parts";	
+	parts {
+		TITLE("icon_unfocused","minimize_unfocused")
+	}
+	inherit: "resize_parts";
+}
+
+group { name: "e/widgets/border/dialog/border";
+	inherit: "e/widgets/border/default/border";
+	alias: "e/widgets/border/modal/border";
+	parts {
+		TITLE("icon_unfocused","close_unfocused")
+		DIALOG_PARTS
+	}
+}
+
+group { name: "e/widgets/border/noresize/border";
+	inherit: "border_parts";
+	inherit: "button_right_parts";
+	parts {
+		TITLE("icon_unfocused","minimize_unfocused")
+	}
+}
+
+group { name: "e/widgets/border/noresize_dialog/border";
+	inherit: "e/widgets/border/noresize/border";	
+	parts {
+		TITLE("icon_unfocused","close_unfocused")
+		DIALOG_PARTS
+	}
+}
+
+group { name: "e/widgets/border/left/border";
+	inherit: "border_parts";
+	inherit: "button_left_parts";	
+	parts {
+		TITLE("minimize_unfocused","icon_unfocused")
+	}
+	inherit: "resize_parts";
+}
+
+group { name: "e/widgets/border/left_dialog/border";
+	inherit: "e/widgets/border/left/border";
+	alias: "e/widgets/border/left_modal/border";
+	parts {
+		TITLE("close_unfocused","icon_unfocused")
+		DIALOG_PARTS
+	}
+}
+
+group { name: "e/widgets/border/left_noresize/border";
+	inherit: "border_parts";
+	inherit: "button_left_parts";
+	parts {
+		TITLE("minimize_unfocused","icon_unfocused")
+	}
+}
+
+group { name: "e/widgets/border/left_noresize_dialog/border";
+	inherit: "e/widgets/border/left_noresize/border";	
+	parts {
+		TITLE("close_unfocused","icon_unfocused")
+		DIALOG_PARTS
+	}
+}
+
+
+group { name: "e/widgets/border/pixel/border";
+	parts {
+		part { name: "client_clip"; type: RECT;
+			description { state: "default" 0.0;
+				rel1.to_y: "e.swallow.client";
+				rel2.to_y: "e.swallow.client";
+			}
+		}
+		part { name: "e.swallow.client"; type: SWALLOW;
+			description { state: "default" 0.0;
+				rel1.offset: 1 1;
+				rel2.offset: -2 -2;
+			}
+		}
+		part { name: "top"; type: RECT;
+			description { state: "default" 0.0;
+				color: 255 255 255 255;
+				color_class: "bd_pixel_color";
+				align: 0.0 0.0;
+				max: 99999 1;
+			}
+			COLOR_STATE("focused","focus")
+		}
+		part { name: "bottom"; type: RECT;
+			description { state: "default" 0.0;
+				color: 255 255 255 255;
+				color_class: "bd_pixel_color";
+				align: 0.0 1.0;
+				max: 99999 1;
+			}
+			COLOR_STATE("focused","focus")
+		}
+		part { name: "left"; type: RECT;
+			description { state: "default" 0.0;
+				color: 255 255 255 255;
+				color_class: "bd_pixel_color";
+				align: 0.0 0.0;
+				max: 1 99999;
+			}
+			COLOR_STATE("focused","focus")
+		}
+		part { name: "right"; type: RECT;
+			description { state: "default" 0.0;
+				color: 255 255 255 255;
+				color_class: "bd_pixel_color";
+				align: 1.0 0.0;
+				max: 1 99999;
+			}
+			COLOR_STATE("focused","focus")
+		}
+		part { name: "e.event.resize.tl"; type: RECT;
+			description { state: "default" 0.0;
+				rel2.relative: 0.0 0.0;
+				min: 32 4;
+				align: 0.0 0.0;
+				color: 0 0 0 0;
+			}
+		}
+		part { name: "e.event.resize.t"; type: RECT;
+			description { state: "default" 0.0;
+				rel1.relative: 1.0 0.0;
+				rel1.to_x: "e.event.resize.tl";
+				rel2.relative: 0.0 0.0;
+				rel2.to_x: "e.event.resize.tr";
+				min: 0 4;
+				align: 0.5 0.0;
+				color: 0 0 0 0;
+			}
+		}
+		part { name: "e.event.resize.tr"; type: RECT;
+			description { state: "default" 0.0;
+				rel1.relative: 1.0 0.0;
+				rel2.relative: 1.0 0.0;
+				min: 32 4;
+				align: 1.0 0.0;
+				color: 0 0 0 0;
+			}
+		}
+		part { name: "e.event.resize.bl"; type: RECT;
+			description { state: "default" 0.0;
+				rel1.relative: 0.0 1.0;
+				rel2.relative: 0.0 1.0;
+				min: 32 5;
+				align: 0.0 1.0;
+				color: 0 0 0 0;
+				fixed: 1 1;
+			}
+		}
+		part { name: "e.event.resize.b"; type: RECT;
+			description { state: "default" 0.0;
+				rel1.relative: 1.0 1.0;
+				rel1.to_x: "e.event.resize.tl";
+				rel2.relative: 0.0 1.0;
+				rel2.to_x: "e.event.resize.tr";
+				min: 0 5;
+				align: 0.5 1.0;
+				color: 0 0 0 0;
+				fixed: 0 1;
+			}
+		}
+		part { name: "e.event.resize.br"; type: RECT;
+			description { state: "default" 0.0;
+				rel1.relative: 1.0 1.0;
+				rel2.relative: 1.0 1.0;
+				min: 32 5;
+				align: 1.0 1.0;
+				color: 0 0 0 0;
+				fixed: 1 1;
+			}
+		}
+	}
+	programs {
+		program {
+			signal: "e,state,focused"; source: "e";
+			action: STATE_SET "focused" 0.0;
+			target: "top";
+			target: "bottom";
+			target: "left";
+			target: "right";
+		}
+		program {
+			signal: "e,state,unfocused"; source: "e";
+			action: STATE_SET "default" 0.0;
+			target: "top";
+			target: "bottom";
+			target: "left";
+			target: "right";
+		}
+	}
+}
+
+#undef WIN_BUTTON
+#undef EVENT_PART
+#undef MUTE_PART
+#undef DIALOG_PARTS
+#undef TITLE
+
+group { name: "e/widgets/border/default/move";
+	images.image: "img/bd_move.png" COMP;
+	parts {
+		part { name: "bg"; mouse_events: 0; type: RECT;
+			description { state: "default" 0.0;
+				color_class: "dialog_base";
+			}
+		}
+		part { name: "icon";
+			description { state: "default" 0.0;
+				align: 0.0 0.5;
+				FIXED_SIZE(27, 28)
+				rel1.offset: 2 2;
+				rel2.relative: 0.0 1.0;
+				rel2.offset: 2 -3;
+				image.normal: "img/bd_move.png";
+				color_class: "move_text";
+			}
+		}
+		part { name: "e.text.label"; type: TEXT;
+			effect: PLAIN;
+			scale: 1;
+			description { state: "default" 0.0;
+				rel1.to_x: "icon";
+				rel1.offset: 4 4;
+				rel1.relative: 1.0 0.0;
+				rel2.offset: -5 -5;
+				color: 255 255 255 255;
+				color_class: "move_text";
+				text { font: "Sans"; size: 12;
+					min: 1 1;
+					ellipsis: -1;
+					text_class: "move_text";
+				}
+			}
+		}
+	}
+}
+
+group { name: "e/widgets/border/default/resize";
+	inherit: "e/widgets/border/default/move";
+	images.image: "img/bd_resize.png" COMP;
+	parts {
+		part { name: "icon";
+			description { state: "default" 0.0;
+				image.normal: "img/bd_resize.png";
+				color_class: "resize_text";
+			}
+		}
+		part { name: "e.text.label"; type: TEXT;
+			description { state: "default" 0.0;
+				color_class: "resize_text";
+			}
+		}
+	}
+}
