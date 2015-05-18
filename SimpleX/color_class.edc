@@ -31,10 +31,10 @@ color_classes {
 		CCLASS("focus", SELECTED 255, SELECTED 54, SELECTED 18)
 		CCLASS("frame_base", BGWIN 255, TRANSPARENT, TRANSPARENT)
 		CCLASS("scrollframe_base", BGWIN 255, TRANSPARENT, TRANSPARENT)
-		CCLASS("ilist_item_header_odd_base", 255 255 255 255, TRANSPARENT, TRANSPARENT)	//dispari
-		CCLASS("ilist_item_header_base", 255 255 255 255, TRANSPARENT, TRANSPARENT)		//pari
-		CCLASS("ilist_item_odd_base", 255 255 255 255, TRANSPARENT, TRANSPARENT)	//dispari
-		CCLASS("ilist_item_base", 255 255 255 255, TRANSPARENT, TRANSPARENT)		//pari
+		CCLASS("ilist_item_header_odd_base", BGWIN 255, TRANSPARENT, TRANSPARENT)	//dispari
+		CCLASS("ilist_item_header_base", BGWIN 255, TRANSPARENT, TRANSPARENT)		//pari
+		CCLASS("ilist_item_odd_base", BGWIN 255, TRANSPARENT, TRANSPARENT)	//dispari
+		CCLASS("ilist_item_base", BGWIN 255, TRANSPARENT, TRANSPARENT)		//pari
 		CCLASS("button_text", FG_COLOR 255, TRANSPARENT, TRANSPARENT)
 		CCLASS("button_text_disabled", INSENSITIVE_FG_COLOR 255, TRANSPARENT, 255 255 255 130)
 		CCLASS("radio_text", FG_COLOR 255, TRANSPARENT, TRANSPARENT)
@@ -61,4 +61,5 @@ color_classes {
 		CCLASS("desktop", 82 89 131 255, TRANSPARENT, TRANSPARENT)
 		CCLASS("fg_prelight", 47 47 47 255, TRANSPARENT, TRANSPARENT)
 		CCLASS("bd_pixel_color", 0 0 0 255, TRANSPARENT, TRANSPARENT)
+		CCLASS("toolbar_line", 184 184 184 255, TRANSPARENT, TRANSPARENT)
 }

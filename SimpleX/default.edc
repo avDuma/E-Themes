@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *																		*
- *							<SIMPLEX THEME>									*
+ *							<SIMPLEX THEME>								*
  *																		*
  *			The E17/Moksha Port of the GTK SimpleX theme.				*
  *				Written by Alberto "Duma" Verdoja						*
  *																		*
  * 							give me a suggest: a.verdoja@gmail.com		*
- * 						 or search me (Duma) on forums.bodhilinux.com  *
+ * 						 or search me (Duma) on forums.bodhilinux.com   *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
  
  data {
@@ -26,7 +26,7 @@
 
 collections {
 // desktop in general
-#include "edc/comp.edc"//Haven't seen because I use super cool Ecomorph!
+#include "edc/comp.edc"//Haven't themed because I use super cool Ecomorph!
 #include "edc/background.edc"
 #include "edc/shelf.edc"
 #include "edc/border.edc"
@@ -91,29 +91,4 @@ collections {
 #include "edc/O/efm_icons.edc"
 #include "edc/O/icons.edc"
 #include "edc/O/wallpaper.edc"
-//#include "edc/O/border_icons.edc"
-//#include "edc/O/illume_gad.edc"
-//#include "edc/O/conf_gad.edc"
-//#include "edc/O/evrything.edc"
-//#include "edc/O/battery.edc"
-//#include "edc/O/mixer.edc"
-//#include "edc/O/backlight.edc"
-//#include "edc/O/temperature.edc"
-//#include "edc/O/cpufreq.edc"
-//#include "edc/O/gadman.edc"
-//#include "edc/O/randr.edc"
-//#include "edc/O/edgebindings.edc"
-//#include "edc/O/colors.edc"
-//#include "edc/O/spectrum.edc"
-//#include "edc/O/cslider.edc"
-//#include "edc/O/fontpreview.edc"
-//#include "edc/O/transitions.edc"
-//#include "edc/O/about.edc"
-//#include "edc/O/init.edc"
-//#include "edc/O/ibarbox.edc"
-//#include "edc/O/wizard.edc"
-//#include "edc/O/desklock.edc"
-//#include "edc/O/winlist.edc"
-//#include "edc/O/border.edc"
-//#include "edc/O/clock.edc"
 }

@@ -68,7 +68,7 @@ group { name: "e/transitions/crossfade";
 }
 
 group { name: "e/transitions/vswipe";
-	images.image: "vgrad_shadow_bi.png" COMP;
+   images.image: "img/vgrad_shadow_bi.png" COMP;
 	parts {
 		part { name: "e.swallow.bg.old"; type: SWALLOW;
 			clip_to: "bg_prev_clip";
@@ -83,7 +83,7 @@ group { name: "e/transitions/vswipe";
 		part { name: "divideold";
 			clip_to: "bg_prev_clip";
 			description { state: "default" 0.0;
-				image.normal: "vgrad_shadow_bi.png";
+            image.normal: "img/vgrad_shadow_bi.png";
 				rel1.to: "bg_prev_clip";
 				rel1.relative: 0.0 0.0;
 				rel2.to: "bg_prev_clip";
@@ -96,7 +96,7 @@ group { name: "e/transitions/vswipe";
 		part { name: "dividenew";
 			clip_to: "bg_new_clip";
 			description { state: "default" 0.0;
-				image.normal: "vgrad_shadow_bi.png";
+            image.normal: "img/vgrad_shadow_bi.png";
 				rel1.to: "bg_new_clip";
 				rel1.relative: 0.0 1.0;
 				rel2.to: "bg_new_clip";

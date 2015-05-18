@@ -74,18 +74,44 @@ program {	name: "click_"TARGET"_out";				\
 
 //Enable/Disable Program
 #define DISABLE(TARGET,STATE_ENABLE,STATE_DISABLE)	\
-program {						\
+program {											\
 			signal: "e,state,enable"; source: "e";	\
 			action: STATE_SET STATE_ENABLE 0.0;		\
 			transition: LINEAR 0.0;					\
 			target: TARGET;							\
-		}											\
-program {						\
+}													\
+program {											\
 			signal: "e,state,disable"; source: "e";	\
 			action: STATE_SET STATE_DISABLE 0.0;	\
 			transition: LINEAR 0.0;					\
 			target: TARGET;							\
-		}
+}
+
+#define DISABLED(TARGET,STATE_ENABLE,STATE_DISABLE)	\
+program {											\
+			signal: "e,state,enabled"; source: "e";	\
+			action: STATE_SET STATE_ENABLE 0.0;		\
+			transition: LINEAR 0.0;					\
+			target: TARGET;							\
+}													\
+program {											\
+			signal: "e,state,disabled"; source: "e";\
+			action: STATE_SET STATE_DISABLE 0.0;	\
+			transition: LINEAR 0.0;					\
+			target: TARGET;							\
+}
+
+//Focus / Unfocus Program
+#define FOCUS(TARGET,STATE_DEFAULT,STATE_FOCUSED)	\
+program { signal: "e,state,focused"; source: "e";	\
+	action: STATE_SET STATE_FOCUSED 0.0;			\
+	target: TARGET;									\
+}													\
+program { signal: "e,state,unfocused"; source: "e";	\
+	action: STATE_SET STATE_DEFAULT 0.0;			\
+	target: TARGET;									\
+}													\
+
 
 
 //Simple Clip Visible/Unvisible Toggle
@@ -209,6 +235,7 @@ part { name: NAME"_inside"; type: RECT;  mouse_events: 0;\
 		image: "img/button-prelight.png" COMP;					\
 		image: "img/button-pressed.png" COMP;					\
 		image: "img/button-insensitive.png" COMP;				\
+		image: "img/button-focus.png" COMP;						\
 	}															\
 		part { name: NAME; mouse_events: 0;						\
 			description { state: "default" 0.0;					\
@@ -220,6 +247,21 @@ part { name: NAME"_inside"; type: RECT;  mouse_events: 0;\
 			IMAGE_STATE("selected","img/button-pressed.png")	\
 			IMAGE_STATE("prelight","img/button-prelight.png")	\
 			IMAGE_STATE("disabled","img/button-insensitive.png")\
+		}														\
+		part { name: NAME"_focus"; mouse_events: 0;				\
+			description { state: "default" 0.0;					\
+				image.normal: "img/button-focus.png";			\
+				image.border: 2 2 2 2;							\
+				image.middle: 0;								\
+				fill.smooth: 0;									\
+				STAY_ON(NAME)									\
+				color_class: "focus";							\
+				visible: 0;										\
+			}													\
+			description { state: "focused";						\
+				inherit: "default" 0.0;							\
+				visible: 1;										\
+			}													\
 		}														\
 		part { name: "event_"NAME; type: RECT;					\
 			ignore_flags: ON_HOLD;								\
@@ -235,3 +277,4 @@ part { name: NAME"_inside"; type: RECT;  mouse_events: 0;\
 		OVER(NAME,"event_"NAME,"default","prelight")			\
 		CLICK(NAME,"event_"NAME,"default","selected")			\
 		DISABLE(NAME;target: "event_"NAME,"default","disabled")	\
+		FOCUS(NAME"_focus", "default", "focused")				\

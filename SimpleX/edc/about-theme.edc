@@ -1,99 +1,69 @@
 group { name: "e/theme/about";
-	// data.item: "borderless" "1";
-	// data.item: "shaped" "1";
-	images.image: "bevel_dark_out.png" COMP;
-	images.image: "screen_circular_shadow.png" COMP;
-	images.image: "button_normal.png" COMP;
-	images.image: "button_clicked.png" COMP;
-	min: 220 220;
-	max: 220 220;
+	styles.style { name: "theme_about_style";
+				base: "font=Sans:style=Bold font_size=12 align=center color=#fff wrap=word";
+				tag:  "br" "\n";
+			}
+	min: 300 280;
+	max: 300 280;
 	parts {
 		part { name: "sizer"; type: SPACER;
 			scale: 1;
 			description { state: "default" 0.0;
-				min: 220 220;
+				min: 300 280;
 			}
 		}
-		part { name: "bg";
+		part { name: "bg"; type: RECT;
 			description { state: "default" 0.0;
-				image.normal: "bg_radgrad.png";
-				image.scale_hint: STATIC;
-				fill.smooth: 0;
-				ASPECT_FILL((1024/653))
+				color_class: "dialog_base";
 			}
 		}
 		part { name: "name"; type: TEXT; mouse_events: 0;
-			effect: GLOW;
+			effect: PLAIN;
 			scale: 1;
 			description { state: "default" 0.0;
 				fixed: 1 1;
-				color: 51 153 255 255;
-				color2: 51 153 255 24;
-				color3: 51 153 255 18;
-				rel1.relative: 0.5 0.5;
-				rel2.relative: 0.5 0.5;
-				text { font: "Sans:style=Bold"; size: 64;
-					text: "Dark";
+				color: 255 255 255 255;
+				rel1.relative: 0.5 0.3;
+				rel2.relative: 0.5 0.3;
+				color_class: "focus";
+				text { font: "Sans:style=Bold"; size: 50;
+					text: "SimplEx";
 					min: 1 1;
 					ellipsis: -1;
 					align: 0.5 0.5;
 				}
 			}
 		}
-		part { name: "name2"; type: TEXT; mouse_events: 0;
-			effect: GLOW;
+		part { name: "name2"; type: TEXTBLOCK; mouse_events: 0;
+			effect: PLAIN;
 			scale: 1;
 			description { state: "default" 0.0;
 				fixed: 1 1;
-				color: 51 153 255 255;
-				color2: 51 153 255 24;
-				color3: 51 153 255 18;
-				rel1.relative: 0.5 0.9;
+				color: 255 255 255 255;
+				rel1.relative: 0.5 1.0;
 				rel1.to: "name";
-				rel2.relative: 0.5 0.9;
+				rel2.relative: 0.5 1.0;
 				rel2.to: "name";
-				align: 0.5 1.0;
-				text { font: "Sans"; size: 10;
-					text: "The default theme for Enlightenment";
+				align: 0.5 0.0;
+				color_class: "label_text";
+				text { style: "theme_about_style";
+					text: "E17 port of<br>"
+					"SimpleX GTK Theme<br>"
+					"by nale12<br><br>"
+					"Ported by Alberto 'Duma' Verdoja";
 					min: 1 1;
 					ellipsis: -1;
 					align: 0.5 1.0;
 				}
 			}
 		}
-		part { name: "shadow"; mouse_events: 0;
-			description { state: "default" 0.0;
-				rel1.relative: 0.0 0.0;
-				rel2.relative: 1.0 1.0;
-				image.normal: "screen_circular_shadow.png";
-				fill.smooth: 0;
-			}
-		}
-		part { name: "bevel";
-			description { state: "default" 0.0;
-				image.normal: "bevel_dark_out.png";
-				image.border: 1 1 1 1;
-				image.middle: 0;
-				fill.smooth: 0;
-			}
-		}
-		part { name: "base";
-			description { state: "default" 0.0;
-				image.normal: "button_normal.png";
-				image.border: 4 4 3 5;
-				image.middle: SOLID;
-				rel1.offset: -6 -6;
-				rel1.to: "e.text.label";
-				rel2.offset: 5 5;
-				rel2.to: "e.text.label";
-				fill.smooth: 0;
-							}
-			description { state: "clicked" 0.0;
-				inherit: "default" 0.0;
-				image.normal: "button_clicked.png";
-				image.border: 5 5 4 6;
-			}
-		}
+		
+		BUTTON_PARTS("base",
+			rel1.offset: -6 -6;
+			rel1.to: "e.text.label";
+			rel2.offset: 5 5;
+			rel2.to: "e.text.label";
+		)
 		part { name: "e.text.label"; type: TEXT; mouse_events: 0;
 			effect: PLAIN;
 			scale: 1;
@@ -103,11 +73,10 @@ group { name: "e/theme/about";
 				rel2.offset: -14 -14;
 				rel2.relative: 1.0 1.0;
 				color: 255 255 255 255;
-				color3: 0 0 0 128;
 				color_class: "button_text";
 				align: 1.0 1.0;
 				min: 85 0;
-				text { font: "Sans"; size: 10;
+				text { font: "Sans"; size: 12;
 					min: 1 1;
 					ellipsis: -1;
 					align: 0.5 0.5;
@@ -116,23 +85,12 @@ group { name: "e/theme/about";
 				fixed: 1 1;
 			}
 		}
-		part { name: "base2";
-			description { state: "default" 0.0;
-				image.normal: "button_normal.png";
-				image.border: 4 4 3 5;
-				image.middle: SOLID;
-				rel1.offset: -6 -6;
-				rel1.to: "e.text.theme";
-				rel2.offset: 5 5;
-				rel2.to: "e.text.theme";
-				fill.smooth: 0;
-							}
-			description { state: "clicked" 0.0;
-				inherit: "default" 0.0;
-				image.normal: "button_clicked.png";
-				image.border: 5 5 4 6;
-			}
-		}
+		BUTTON_PARTS("base2",
+			rel1.offset: -6 -6;
+			rel1.to: "e.text.theme";
+			rel2.offset: 5 5;
+			rel2.to: "e.text.theme";
+		)
 		part { name: "e.text.theme"; type: TEXT; mouse_events: 0;
 			effect: PLAIN;
 			scale: 1;
@@ -142,11 +100,10 @@ group { name: "e/theme/about";
 				rel2.offset: 13 -14;
 				rel2.relative: 0.0 1.0;
 				color: 255 255 255 255;
-				color3: 0 0 0 128;
 				color_class: "button_text";
 				align: 0.0 1.0;
 				min: 85 0;
-				text { font: "Sans"; size: 10;
+				text { font: "Sans"; size: 12;
 					min: 1 1;
 					ellipsis: -1;
 					align: 0.5 0.5;
@@ -158,35 +115,11 @@ group { name: "e/theme/about";
 	}
 	programs {
 		program {
-			signal: "mouse,down,1*"; source: "base";
-			action: STATE_SET "clicked" 0.0;
-			target: "base";
-			target: "e.text.label";
-		}
-		program {
-			signal: "mouse,up,1"; source: "base";
-			action: STATE_SET "default" 0.0;
-			target: "base";
-			target: "e.text.label";
-		}
-		program {
-			signal: "mouse,clicked,1*"; source: "base";
+			signal: "mouse,clicked,1*"; source: "event_base";
 			action: SIGNAL_EMIT "e,action,close" "";
 		}
 		program {
-			signal: "mouse,down,1*"; source: "base2";
-			action: STATE_SET "clicked" 0.0;
-			target: "base2";
-			target: "e.text.theme";
-		}
-		program {
-			signal: "mouse,up,1"; source: "base2";
-			action: STATE_SET "default" 0.0;
-			target: "base2";
-			target: "e.text.theme";
-		}
-		program {
-			signal: "mouse,clicked,1*"; source: "base2";
+			signal: "mouse,clicked,1*"; source: "event_base2";
 			action: SIGNAL_EMIT "e,action,settings,theme" "";
 		}
 	}

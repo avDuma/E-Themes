@@ -1,93 +1,88 @@
 group { name: "e/widgets/check";
-	images.image: "inset_shadow_tiny.png" COMP;
-	images.image: "bevel_in.png" COMP;
-	images.image: "sym_check_alum.png" COMP;
+	images.image: "img/check1.png" COMP;
+	images.image: "img/check2.png" COMP;
+	images.image: "img/check3.png" COMP;
+	images.image: "img/check4.png" COMP;
 	parts {
-		part { name: "base"; type: RECT;
-			description { state: "default" 0.0;
-				rel1.offset: 1 1;
-				rel1.to: "inset";
-				rel2.offset: -2 -2;
-				rel2.to: "inset";
-				color: 24 24 24 255;
-			}
-			description { state: "disabled" 0.0;
-				inherit: "default" 0.0;
-				color: 64 64 64 255;
-			}
-		}
-		part { name: "shadow"; mouse_events: 0;
-			description { state: "default" 0.0;
-				image.normal: "inset_shadow_tiny.png";
-				rel1.to: "base";
-				rel2.to: "base";
-			}
-			description { state: "disabled" 0.0;
-				inherit: "default" 0.0;
-				visible: 0;
-			}
-		}
-		part { name: "inset"; mouse_events: 0;
+		CLIP_SWITCH("base", "base", "base", "default", "selected")
+		part { name: "base"; mouse_events: 0;
+			clip_to: "base_clip_default";
 			description { state: "default" 0.0;
 				rel1.offset: 2 2;
 				rel2.relative: 0.0 1.0;
 				rel2.offset: 2 -3;
-				image.normal: "bevel_in.png";
-				image.border: 1 1 1 1;
+				align: 0.0 0.5;
+				image.normal: "img/check1.png";
+				FIXED_SIZE(16,16)
+			}
+			IMAGE_STATE("disabled","img/check3.png")
+		}
+		part { name: "base_sel"; mouse_events: 0;
+			clip_to: "base_clip_selected";
+			description { state: "default" 0.0;
+				image.normal: "img/check2.png";
+				STAY_ON("base")
+				FIXED_SIZE(16,16)
+			}
+			IMAGE_STATE("disabled","img/check4.png")
+		}
+		part { name: "focus"; mouse_events: 0;
+			description { state: "default" 0.0;
+				image.normal: "img/button-focus.png";
+				image.border: 2 2 2 2;
 				image.middle: 0;
 				fill.smooth: 0;
-				align: 0.0 0.5;
-				min: 13 13;
-				max: 13 13;
-				fixed: 1 1;
-			}
-		}
-		part { name: "clip"; type: RECT;
-			description { state: "default" 0.0;
-			}
-			description { state: "disabled" 0.0;
-				inherit: "default" 0.0;
-				color: 255 255 255 64;
-			}
-		}
-		part { name: "indicator"; mouse_events: 0;
-			clip_to: "clip";
-			description { state: "default" 0.0;
-				rel1.to: "base";
-				rel2.to: "base";
-				image.normal: "sym_check_alum.png";
-				min: 11 11;
-				max: 11 11;
+				color_class: "focus";
 				visible: 0;
+				rel1.to: "base";
+				rel1.offset: -2 -1;
+				rel2.to_x: "ghost_label";
+				rel2.offset: 1 -2;
 			}
-			description { state: "selected" 0.0;
+			description { state: "focused";
 				inherit: "default" 0.0;
 				visible: 1;
+			}
+		}
+		part { name: "ghost_label"; type: TEXT; //A spacer title
+			effect: PLAIN; mouse_events: 0;
+			scale: 1;
+			description { state: "default" 0.0;
+				align: 0.0 0.5;
+				rel1.offset: 2 -1;
+				rel1.to_x: "base";
+				rel1.relative: 1.0 0.0;
+				rel2.to_x: "base";
+				rel2.relative: 1.0 0.0;
+				rel2.offset: -2 -3;
+				color: TRANSPARENT;
+				text { font: "Sans"; size: 12;
+					min: 1 0;
+					align: 0.0 0.5;
+					ellipsis: -1;
+					text_source: "e.text.label";
+				}
 			}
 		}
 		part { name: "e.text.label"; type: TEXT;
 			effect: PLAIN;
 			scale: 1;
 			description { state: "default" 0.0;
-				rel1.offset: 2 2;
-				rel1.to_x: "inset";
+				rel1.offset: 2 1;
+				rel1.to_x: "base";
 				rel1.relative: 1.0 0.0;
-				rel2.offset: -3 -3;
+				rel2.offset: -2 -3;
 				color: 255 255 255 255;
-				color3: 0 0 0 128;
 				color_class: "check_text";
-				text { font: "Sans"; size: 10;
+				text { font: "Sans"; size: 12;
 					min: 1 1;
 					ellipsis: -1;
 					align: 0.0 0.5;
 					text_class: "check_button";
 				}
 			}
-			description { state: "disabled" 0.0;
-				inherit: "default" 0.0;
-				color: 21 21 21 255;
-				color3: 255 255 255 25;
-			}
+			COLOR_STATE("prelight","fg_prelight")			
+			COLOR_STATE("disabled","check_text_disabled")
 		}
 		part { name: "event"; type: RECT;
 			ignore_flags: ON_HOLD;
@@ -101,37 +96,29 @@ group { name: "e/widgets/check";
 		}
 	}
 	programs {
+		OVER("e.text.label","event","default","prelight")
+		FOCUS("focus","default","focused")
+		DISABLED( "base";
+			target: "base_sel";
+			target: "e.text.label";
+			target: "event",
+		"default","disabled"
+		)
 		program {
 			signal: "e,state,checked"; source: "e";
 			action: STATE_SET "selected" 0.0;
-			target: "indicator";
+			target: "base_clip_default";
+			target: "base_clip_selected";
 		}
 		program {
 			signal: "e,state,unchecked"; source: "e";
 			action: STATE_SET "default" 0.0;
-			target: "indicator";
+			target: "base_clip_default";
+			target: "base_clip_selected";
 		}
 		program {
 			signal: "mouse,up,1"; source: "event";
 			action: SIGNAL_EMIT "e,action,toggle" "";
-		}
-		program {
-			signal: "e,state,disabled"; source: "e";
-			action: STATE_SET "disabled" 0.0;
-			target: "base";
-			target: "shadow";
-			target: "clip";
-			target: "e.text.label";
-			target: "event";
-		}
-		program {
-			signal: "e,state,enabled"; source: "e";
-			action: STATE_SET "default" 0.0;
-			target: "base";
-			target: "shadow";
-			target: "clip";
-			target: "e.text.label";
-			target: "event";
 		}
 	}
 }
@@ -139,16 +126,25 @@ group { name: "e/widgets/check";
 group { name: "e/widgets/check_icon";
 	inherit: "e/widgets/check";
 	parts {
+		part { name: "clip"; type: RECT;
+			description { state: "default" 0.0;
+				color: 255 255 255 255;
+			}
+			description { state: "disabled" 0.0;
+				inherit: "default" 0.0;
+				color: 255 255 255 125;
+			}
+		}
 		part { name: "e.swallow.icon"; type: SWALLOW;
 			insert_before: "event";
 			clip_to: "clip";
 			description { state: "default" 0.0;
 				rel1.offset: 2 2;
 				rel1.relative: 1.0 0.0; 
-				rel1.to_x: "inset";
+				rel1.to_x: "base";
 				rel2.offset: 2 -3;
 				rel2.relative: 1.0 1.0;
-				rel1.to_x: "inset";
+				rel1.to_x: "base";
 				align: 0.0 0.5;
 				aspect: 1.0 1.0; aspect_preference: VERTICAL;
 			}
@@ -157,11 +153,28 @@ group { name: "e/widgets/check_icon";
 			description { state: "default" 0.0;
 				rel1.to_x: "e.swallow.icon";
 			}
-			description { state: "disabled" 0.0;
-				inherit: "default" 0.0;
-				color: 21 21 21 255;
-				color3: 255 255 255 25;
-			}
+			COLOR_STATE("disabled","check_text_disabled")
+		}
+	}
+	programs {
+		
+		program {
+			signal: "e,state,disabled"; source: "e";
+			action: STATE_SET "disabled" 0.0;
+			target: "base";
+			target: "base_sel";
+			target: "e.text.label";
+			target: "event";
+			target: "clip";
+		}
+		program {
+			signal: "e,state,enabled"; source: "e";
+			action: STATE_SET "default" 0.0;
+			target: "base";
+			target: "base_sel";
+			target: "e.text.label";
+			target: "event";
+			target: "clip";
 		}
 	}
 }
