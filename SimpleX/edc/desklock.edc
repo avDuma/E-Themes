@@ -83,6 +83,7 @@ group { name: "e/desklock/login_box";
 				text { font: "Sans:style=Bold"; size: 12;
 					min: 1 1;
 					align: 0.5 0.5;
+					ellipsis: -1;
 					text_source: "e.text.title";
 				}
 				fixed: 1 1;

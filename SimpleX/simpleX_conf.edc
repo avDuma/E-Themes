@@ -15,9 +15,10 @@
 //Background of Window
 #define BGWIN 204\ 204\ 204
 #define SEPARATOR 153\ 153\ 153
+#define BG_ENTRY 214\ 214\ 214
 
 //Focus Color
-#define SELECTED 80\ 174\ 24
+#define SELECTED 56\ 149\ 1
 
 //Color of foreground: e.g.: labels on buttons, on menus
 #define FG_COLOR 68\ 68\ 68
@@ -27,6 +28,18 @@
 
 //Color of insensitive foreground
 #define INSENSITIVE_FG_COLOR 136\ 136\ 136
+
+//Color of the Desktop
+#define DESKTOP_COLOR 82\ 89\ 131
+
+//Color of Prelight item
+#define PRELIGHT_COLOR 47\ 47\ 47
+
+//Color of border in "pixel" border layout
+#define BD_PIXEL_COLOR 0\ 0\ 0
+
+//Color of Tab (or toolbar) lines
+#define TOOLBAR_LINE 184\ 184\ 184
 
 //Color of EDJ Tooltips
 #define TOOLTIP_COLOR 190\ 195\ 189\ 255

@@ -26,7 +26,7 @@
 
 collections {
 // desktop in general
-#include "edc/comp.edc"//Haven't themed because I use super cool Ecomorph!
+#include "edc/comp.edc" //To theme!
 #include "edc/background.edc"
 #include "edc/shelf.edc"
 #include "edc/border.edc"

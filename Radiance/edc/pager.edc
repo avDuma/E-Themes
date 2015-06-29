@@ -1,14 +1,3 @@
-/*#define SQUARE(NAME,OPTION,REL1_TO,REL1_OFF,REL1_RELATIVE,REL2_TO,REL2_OFF,REL2_RELATIVE,BD_1,BD_2,BD_COLOR,BD_CCLASS)
-part { name: NAME"_border"; type: RECT;
-	OPTION
-	description { state: "default" 0.0;
-		rel1 { to: REL1_TO; offset: REL1_OFF, relative: REL1_RELATIVE; }
-		rel2 { to: REL2_TO; offset: REL2_OFF, relative: REL2_RELATIVE; }
-		color: BD_COLOR;
-		color_class: BD_CCLASS
-	}
-}*/
-
 group { name: "e/modules/pager/popup";
 	alias: "e/modules/pager16/popup";
 	inherit: "e/gadman/popup";

@@ -22,6 +22,7 @@ group { name: "e/widgets/frame";
 				text { font: "Sans:style=Bold"; size: 12;
 					text_class: "frame";
 					align: 0.0 0.0;
+					ellipsis: -1;
 					min: 1 1;
 				}
 				fixed: 0 1;

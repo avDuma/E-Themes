@@ -1,6 +1,6 @@
 #define EVENT_PART(NAME, POSITION)			\
 part { name: "e.event."NAME; type: RECT;	\
-	description { state: "defualt" 0.0;		\
+	description { state: "default" 0.0;		\
 		POSITION							\
 	color: TRANSPARENT;						\
 	}										\

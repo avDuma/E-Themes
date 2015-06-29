@@ -102,6 +102,7 @@
                   size: 4;                          \
                   fit: 1 1;                         \
                   min: 1 1;                         \
+                  ellipsis: -1;						\
                   align: 0.5 0.0;                   \
                }                                      \
             }                                         \

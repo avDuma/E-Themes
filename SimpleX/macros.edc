@@ -210,13 +210,13 @@ part { name: NAME"_clip_"STATE_UNVISIBLE; type: RECT;					\
 }
 
 //A program to design a bordered rectangle.
-#define RECTANGLE(NAME, BORDER, BD_OPTION, INSIDE_OPTION)\
-part { name: NAME; type: RECT;							\
+#define RECTANGLE(NAME, MAIN_OPTION, BORDER, BD_OPTION, INSIDE_OPTION)\
+part { name: NAME; MAIN_OPTION; type: RECT;				\
 	description { state: "default" 0.0;					\
 		BD_OPTION										\
 	}													\
 }														\
-part { name: NAME"_inside"; type: RECT;  mouse_events: 0;\
+part { name: NAME"_inside"; MAIN_OPTION; type: RECT;  mouse_events: 0;\
 	description { state: "default" 0.0;					\
 		rel1.to: NAME;									\
 		rel1.offset: BORDER BORDER;						\
