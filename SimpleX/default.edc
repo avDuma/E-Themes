@@ -26,7 +26,7 @@
 
 collections {
 // desktop in general
-#include "edc/comp.edc" //To theme!
+#include "edc/comp.edc" //Removed from Moksha
 #include "edc/background.edc"
 #include "edc/shelf.edc"
 #include "edc/border.edc"
@@ -68,7 +68,7 @@ collections {
 #include "edc/pager.edc"
 #include "edc/xkbswitch.edc"
 #include "edc/tasks.edc"
-#include "edc/connman.edc"
+//#include "edc/connman.edc" will be removed from Moksha
 #include "edc/systray.edc"
 #include "edc/clock.edc"
 #include "edc/ibar-ibox.edc"

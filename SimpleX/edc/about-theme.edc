@@ -47,7 +47,7 @@ group { name: "e/theme/about";
 				align: 0.5 0.0;
 				color_class: "label_text";
 				text { style: "theme_about_style";
-					text: "E17/Moksha port of<br>"
+					text: "Moksha port of<br>"
 					"SimpleX GTK Theme<br>"
 					"by nale12<br><br>"
 					"Ported by Alberto 'Duma' Verdoja";
