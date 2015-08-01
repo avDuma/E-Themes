@@ -149,11 +149,32 @@ group { name: "e/widgets/radio_icon";
 				aspect: 1.0 1.0; aspect_preference: VERTICAL;
 			}
 		}
+		part { name: "ghost_label"; type: TEXT; //A spacer title
+			effect: PLAIN; mouse_events: 0;
+			scale: 1;
+			description { state: "default" 0.0;
+				align: 0.0 0.5;
+				rel1.offset: 2 -1;
+				rel1.to_x: "e.swallow.icon";
+				rel1.relative: 1.0 0.0;
+				rel2.to_x: "e.swallow.icon";
+				rel2.relative: 1.0 0.0;
+				rel2.offset: -2 -3;
+				color: TRANSPARENT;
+				text { font: "Sans"; size: 12;
+					min: 1 0;
+					align: 0.0 0.5;
+					ellipsis: -1;
+					text_source: "e.text.label";
+				}
+			}
+		}
 		part { name: "e.text.label";
 			description { state: "default" 0.0;
 				rel1.to_x: "e.swallow.icon";
 			}
 			COLOR_STATE("disabled","radio_text_disabled")
+			COLOR_STATE("prelight","fg_prelight")	
 		}
 	}
 	programs {
