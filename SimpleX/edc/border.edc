@@ -118,7 +118,6 @@ group { name: "border_parts"; inherit_only: 1;
 			target: "e.text.title";
 			target: "button_clip_default";
 			target: "button_clip_focused";
-			target: "client_clip";
 		}
 		program {
 			signal: "e,state,unfocused"; source: "e";
@@ -127,7 +126,6 @@ group { name: "border_parts"; inherit_only: 1;
 			target: "e.text.title";
 			target: "button_clip_default";
 			target: "button_clip_focused";
-			target: "client_clip";
 		}
 	}
 }

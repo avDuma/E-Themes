@@ -10,10 +10,10 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
  
  data {
-	item: "theme/name"		"SimpleX";
+	item: "theme/name"		"SimplEx";
 	item: "theme/version"	"beta";
 	item: "theme/author"	"Alberto 'Duma' Verdoja";
-	item: "gtk-theme"		"SimpleX";
+	item: "gtk-theme"		"SimpleX-Green";
 	// theme api version. from 1.10 on we will check version to avoid
 	// compatibility issues: uncomment the following line (20) and E19
 	// will load, but something could be wrong!
@@ -26,7 +26,6 @@
 
 collections {
 // desktop in general
-#include "edc/comp.edc" //Removed from Moksha
 #include "edc/background.edc"
 #include "edc/shelf.edc"
 #include "edc/border.edc"
@@ -90,5 +89,4 @@ collections {
 // port unchanged stuff so this can work as a replacement
 #include "edc/O/efm_icons.edc"
 #include "edc/O/icons.edc"
-#include "edc/O/wallpaper.edc"
 }
