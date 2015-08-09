@@ -143,8 +143,8 @@ group { name: "e/modules/ibox/icon_overlay";
 			description { state: "hidden" 0.0;
 				inherit: "default" 0.0;
 				visible: 1;
-				rel1.relative: -0.5 -0.5;
-				rel2.relative: 1.5 1.5;
+				//rel1.relative: -0.5 -0.5;
+				//rel2.relative: 1.5 1.5;
 			}
 			description { state: "huge" 0.0;
 				inherit: "default" 0.0;
@@ -162,22 +162,17 @@ group { name: "e/modules/ibox/icon_overlay";
 				rel2.to: "background";
 			}
 		}
-		part { name: "bevel"; mouse_events: 0;
+		part { name: "bg"; mouse_events: 0; type: RECT;
 			description { state: "default" 0.0;
-				rel1.offset: -10 -6;
+				rel1.offset: -3 -3;
 				rel1.to: "e.text.label";
-				rel2.offset: 9 5;
+				rel2.offset: 4 4;
 				rel2.to: "e.text.label";
-				image.normal: "darken_rounded_square.png";
-				image.border: 15 15 15 15;
-				fill.smooth: 0;
-				fixed: 1 1;
-				color: 255 255 255 0;
+				color: TOOLTIP_COLOR;
 				visible: 0;
 			}
 			description { state: "visible" 0.0;
 				inherit: "default" 0.0;
-				color: 255 255 255 255;
 				visible: 1;
 			}
 		}
@@ -185,12 +180,9 @@ group { name: "e/modules/ibox/icon_overlay";
 			effect: PLAIN;
 			scale: 1;
 			description { state: "default" 0.0;
-				rel1.relative: 0.0 1.0;
-				rel2.relative: 1.0 1.0;
 				color: 255 255 255 0;
-				color3: 0 0 0 0;
 				color_class: "module_label";
-				text { font: "Sans"; size: 10;
+				text { font: "Sans"; size: 12;
 					min: 1 1;
 					ellipsis: -1;
 					align: 0.5 0.5;
@@ -199,10 +191,7 @@ group { name: "e/modules/ibox/icon_overlay";
 			}
 			description { state: "visible" 0.0;
 				inherit: "default" 0.0;
-				rel1.relative: 0.0 0.5;
-				rel2.relative: 1.0 0.5;
 				color: 255 255 255 255;
-				color3: 0 0 0 128;
 			}
 		}
 	}
@@ -241,16 +230,16 @@ group { name: "e/modules/ibox/icon_overlay";
 		program {
 			signal: "e,action,show,label"; source: "e";
 			action: STATE_SET "visible" 0.0;
-			transition: SINUSOIDAL 0.5;
+			transition: LINEAR 0.0;
 			target: "e.text.label";
-			target: "bevel";
+			target: "bg";
 		}
 		program {
 			signal: "e,action,hide,label"; source: "e";
 			action: STATE_SET "default" 0.0;
-			transition: SINUSOIDAL 1.0;
+			transition: LINEAR 0.0;
 			target: "e.text.label";
-			target: "bevel";
+			target: "bg";
 		}
 		program { name: "go_passive2";
 			action: STATE_SET "default" 0.0;
@@ -315,28 +304,13 @@ group { name: "e/modules/ibox/icon_overlay";
 
 group { name: "e/modules/ibox/drop";
 	alias: "e/modules/ibar/drop";
-	images.image: "outline_glow.png" COMP;
-	images.image: "diagonal_stripes.png" COMP;
 	parts {
-		part { name: "base"; mouse_events: 0;
+		part { name: "base"; mouse_events: 0; type: RECT;
 			description { state: "default" 0.0;
 				rel1.offset: 2 2;
 				rel2.offset: -3 -3;
-				image.normal: "outline_glow.png";
-				image.border: 4 4 4 4;
-				image.middle: 0;
-				fill.smooth: 0;
-			}
-		}
-		part { name: "pat"; mouse_events: 0;
-			description { state: "default" 0.0;
-				rel1.to: "base";
-				rel1.offset: 1 1;
-				rel2.offset: -2 -2;
-				rel2.to: "base";
-				image.normal: "diagonal_stripes.png";
-				color: 255 255 255 25;
-				TILED_PATTERN(240, 240)
+				color: 255 255 255 40;
+				color_class: "focus";
 			}
 		}
 	}
@@ -344,126 +318,33 @@ group { name: "e/modules/ibox/drop";
 
 group { name: "e/modules/ibox/drop_overlay";
 	alias: "e/modules/ibar/drop_overlay";
-	images.image: "mini_blue_glow_arrow_0.png" COMP;
-	images.image: "mini_blue_glow_arrow_1.png" COMP;
-	images.image: "mini_blue_glow_arrow_2.png" COMP;
-	images.image: "mini_blue_glow_arrow_3.png" COMP;
 	parts {
-		part { name: "drop0"; mouse_events: 0;
+		part { name: "base"; mouse_events: 0; type: RECT;
 			description { state: "default" 0.0;
-				image.normal: "mini_blue_glow_arrow_0.png";
-				rel1.offset: -10 -10;
-				rel1.relative: 0.0 0.0;
-				rel2.offset: -10 -10;
-				rel2.relative: 0.0 0.0;
-				align: 0.0 0.0;
-				min: 10 10;
-				fixed: 1 1;
-				visible: 0;
+				rel1.offset: 2 2;
+				rel2.offset: -3 -3;
+				color: 255 255 255 0;
+				color_class: "focus";
 			}
 			description { state: "active" 0.0;
 				inherit: "default" 0.0;
-				visible: 1;
-			}
-			description { state: "hidden" 0.0;
-				inherit: "default" 0.0;
-				rel1.offset: 11 11;
-				rel2.offset: 11 11;
-				min: 1 1;
-				color: 255 255 255 0;
-			}
-		}
-		part { name: "drop1"; mouse_events: 0;
-			description { state: "default" 0.0;
-				image.normal: "mini_blue_glow_arrow_1.png";
-				rel1.offset: 9 -10;
-				rel1.relative: 1.0 0.0;
-				rel2.offset: 9 -10;
-				rel2.relative: 1.0 0.0;
-				align: 1.0 0.0;
-				min: 10 10;
-				fixed: 1 1;
-				visible: 0;
-			}
-			description { state: "active" 0.0;
-				inherit: "default" 0.0;
-				visible: 1;
-			}
-			description { state: "hidden" 0.0;
-				inherit: "default" 0.0;
-				rel1.offset: -12 11;
-				rel2.offset: -12 11;
-				min: 1 1;
-				color: 255 255 255 0;
-			}
-		}
-		part { name: "drop2"; mouse_events: 0;
-			description { state: "default" 0.0;
-				image.normal: "mini_blue_glow_arrow_2.png";
-				rel1.offset: 9 9;
-				rel1.relative: 1.0 1.0;
-				rel2.offset: 9 9;
-				rel2.relative: 1.0 1.0;
-				align: 1.0 1.0;
-				min: 10 10;
-				fixed: 1 1;
-				visible: 0;
-			}
-			description { state: "active" 0.0;
-				inherit: "default" 0.0;
-				visible: 1;
-			}
-			description { state: "hidden" 0.0;
-				inherit: "default" 0.0;
-				rel1.offset: -12 -12;
-				rel2.offset: -12 -12;
-				min: 1 1;
-				color: 255 255 255 0;
-			}
-		}
-		part { name: "drop3"; mouse_events: 0;
-			description { state: "default" 0.0;
-				image.normal: "mini_blue_glow_arrow_3.png";
-				rel1.offset: -10 9;
-				rel1.relative: 0.0 1.0;
-				rel2.offset: -10 9;
-				rel2.relative: 0.0 1.0;
-				align: 0.0 1.0;
-				min: 10 10;
-				fixed: 1 1;
-				visible: 0;
-			}
-			description { state: "active" 0.0;
-				inherit: "default" 0.0;
-				visible: 1;
-			}
-			description { state: "hidden" 0.0;
-				inherit: "default" 0.0;
-				rel1.offset: 11 -12;
-				rel2.offset: 11 -12;
-				min: 1 1;
-				color: 255 255 255 0;
+				color: 255 255 255 30;
 			}
 		}
 	}
 	programs {
-		program { name: "drop1";
+		program { name: "action";
 			signal: "show"; source: "";
 			action: STATE_SET "active" 0.0;
-			target: "drop0";
-			target: "drop1";
-			target: "drop2";
-			target: "drop3";
-			after: "drop2";
-		}
-		program { name: "drop2";
-			action: STATE_SET "hidden" 0.0;
 			transition: LINEAR 0.5;
-			target: "drop0";
-			target: "drop1";
-			target: "drop2";
-			target: "drop3";
-			after: "drop1";
+			target: "base";
+			after: "action2";
+		}
+		program { name: "action2";
+			action: STATE_SET "default" 0.0;
+			transition: LINEAR 0.5;
+			target: "base";
+			after: "action";
 		}
 	}
 }
