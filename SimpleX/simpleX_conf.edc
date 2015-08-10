@@ -1,13 +1,13 @@
 /* * * * * * * * * * * * * * * * 
- *  -The SimpleX Config File-  *
- *								*
+ *  -The SimplEx Config File-  *
+ *							   *
  * Here the configuration that *
  * you can't do with Esettings *
  * * * * * * * * * * * * * * * */
  
 /* * * * * * * * * * * * * * * * * * * * * * * * * *
  * Very Important: you have to recompile the theme *
- * after editing these settings!						 *
+ * after editing these settings!				   *
  * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 /// These stuffs can be changed also with Settings -> Look -> Colors, but

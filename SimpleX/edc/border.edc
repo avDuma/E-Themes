@@ -471,8 +471,8 @@ group { name: "e/widgets/border/default/move";
 		part { name: "icon";
 			description { state: "default" 0.0;
 				align: 0.0 0.5;
-				FIXED_SIZE(27, 28)
-				rel1.offset: 2 2;
+				FIXED_SIZE(22, 22)
+				rel1.offset: 4 2;
 				rel2.relative: 0.0 1.0;
 				rel2.offset: 2 -3;
 				image.normal: "img/bd_move.png";
@@ -507,6 +507,8 @@ group { name: "e/widgets/border/default/resize";
 			description { state: "default" 0.0;
 				image.normal: "img/bd_resize.png";
 				color_class: "resize_text";
+				FIXED_SIZE(16,16)
+				rel1.offset: 6 2;
 			}
 		}
 		part { name: "e.text.label"; type: TEXT;
