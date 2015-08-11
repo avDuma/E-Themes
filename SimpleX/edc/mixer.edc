@@ -1,218 +1,112 @@
+#define SOUND_IMG(VOLUME) image: "img/audio-volume-"VOLUME".png" COMP;
+
 group { name: "e/modules/mixer/main";
-	images.image: "speaker.png" COMP;
-	images.image: "speaker_shadow.png" COMP;
-	images.image: "led_dot_white.png" COMP;
-	max: 160 160;
-	min: 16 16;
+	images {
+		SOUND_IMG("high")
+		SOUND_IMG("zero")
+		SOUND_IMG("medium")
+		SOUND_IMG("muted")
+		SOUND_IMG("low")
+	}
 	script {
 		public message(Msg_Type:type, id, ...) {
 			if ((type == MSG_INT_SET) && (id == 0)) {
-				new m, l, r;
+				new mute, left, right, total;
+				mute = getarg(2);
+				left = getarg(3);
+				right = getarg(4);
+				total = left + right;
 
-				m = getarg(2);
-				l = getarg(3);
-				r = getarg(4);
-				
-				if (m) {
+				if (mute)
 					run_program(PROGRAM:"mute");
-				} else {
-					run_program(PROGRAM:"unmute");
-				}
-				
-				if (l <= 0) {
-					run_program(PROGRAM:"l0-off");
-					run_program(PROGRAM:"l1-off");
-					run_program(PROGRAM:"l2-off");
-					run_program(PROGRAM:"l3-off");
-					run_program(PROGRAM:"l4-off");
-				} else if (l <= 20) {
-					run_program(PROGRAM:"l0-on");
-					run_program(PROGRAM:"l1-off");
-					run_program(PROGRAM:"l2-off");
-					run_program(PROGRAM:"l3-off");
-					run_program(PROGRAM:"l4-off");
-				} else if (l <= 40) {
-					run_program(PROGRAM:"l0-on");
-					run_program(PROGRAM:"l1-on");
-					run_program(PROGRAM:"l2-off");
-					run_program(PROGRAM:"l3-off");
-					run_program(PROGRAM:"l4-off");
-				} else if (l <= 60) {
-					run_program(PROGRAM:"l0-on");
-					run_program(PROGRAM:"l1-on");
-					run_program(PROGRAM:"l2-on");
-					run_program(PROGRAM:"l3-off");
-					run_program(PROGRAM:"l4-off");
-				} else if (l <= 80) {
-					run_program(PROGRAM:"l0-on");
-					run_program(PROGRAM:"l1-on");
-					run_program(PROGRAM:"l2-on");
-					run_program(PROGRAM:"l3-on");
-					run_program(PROGRAM:"l4-off");
-				} else {
-					run_program(PROGRAM:"l0-on");
-					run_program(PROGRAM:"l1-on");
-					run_program(PROGRAM:"l2-on");
-					run_program(PROGRAM:"l3-on");
-					run_program(PROGRAM:"l4-on");
-				}
+				else
+					run_program(PROGRAM:"on");
 
-				if (r <= 0) {
-					run_program(PROGRAM:"r0-off");
-					run_program(PROGRAM:"r1-off");
-					run_program(PROGRAM:"r2-off");
-					run_program(PROGRAM:"r3-off");
-					run_program(PROGRAM:"r4-off");
-				} else if (r <= 20) {
-					run_program(PROGRAM:"r0-on");
-					run_program(PROGRAM:"r1-off");
-					run_program(PROGRAM:"r2-off");
-					run_program(PROGRAM:"r3-off");
-					run_program(PROGRAM:"r4-off");
-				} else if (r <= 40) {
-					run_program(PROGRAM:"r0-on");
-					run_program(PROGRAM:"r1-on");
-					run_program(PROGRAM:"r2-off");
-					run_program(PROGRAM:"r3-off");
-					run_program(PROGRAM:"r4-off");
-				} else if (r <= 60) {
-					run_program(PROGRAM:"r0-on");
-					run_program(PROGRAM:"r1-on");
-					run_program(PROGRAM:"r2-on");
-					run_program(PROGRAM:"r3-off");
-					run_program(PROGRAM:"r4-off");
-				} else if (r <= 80) {
-					run_program(PROGRAM:"r0-on");
-					run_program(PROGRAM:"r1-on");
-					run_program(PROGRAM:"r2-on");
-					run_program(PROGRAM:"r3-on");
-					run_program(PROGRAM:"r4-off");
-				} else {
-					run_program(PROGRAM:"r0-on");
-					run_program(PROGRAM:"r1-on");
-					run_program(PROGRAM:"r2-on");
-					run_program(PROGRAM:"r3-on");
-					run_program(PROGRAM:"r4-on");
-				}
+				if (total <= 0)
+					run_program(PROGRAM:"none");
+				else if (total < 70)
+					run_program(PROGRAM:"low");
+				else if (total < 150)
+					run_program(PROGRAM:"medium");
+				else
+					run_program(PROGRAM:"high");
 			}
 		}
 	}
 	parts {
-		part { name: "speaker_shadow";
+		part { name: "eventarea";
+			type: RECT;
+			mouse_events: 1;
 			description { state: "default" 0.0;
-				rel1.to: "speaker";
-				rel1.relative: 0.0 (4/160);
-				rel1.offset: 0 1;
-				rel2.to: "speaker";
-				rel2.relative: 1.0 (164/160);
-				rel2.offset: -1 0;
-				image.normal: "speaker_shadow.png";
-				color: 255 255 255 128;
+				color: 0 0 0 0;
 			}
 		}
-		part { name: "speaker";
+		CLIP_SWITCH("mixer","audio","audio","default","muted")
+		part { name: "audio_disable";
+			clip_to: "mixer_clip_default";
 			description { state: "default" 0.0;
+				min: 16 16; max: 256 256;
 				aspect: 1 1; aspect_preference: BOTH;
-				image.normal: "speaker.png";
+				image.normal: "img/audio-volume-muted.png";
+				color_class: "module_label";
+				rel1.offset: 2 2;
+				rel2.offset: -3 -3;
 			}
 		}
-		part { name: "state"; type: RECT;
+		part { name: "audio";
+			clip_to: "mixer_clip_muted";
+			type: IMAGE;
+			mouse_events: 0;
 			description { state: "default" 0.0;
-				rel1.relative: -1.0 -1.0;
-				rel2.relative: 2.0 2.0;
-				color: 51 153 255 255;
+				min: 16 16;
+				max: 256 256;
+				aspect: 1 1;
+				aspect_preference: BOTH;
+				image.normal: "img/audio-volume-zero.png";
+				color_class: "module_label";
+				rel1.offset: 2 2;
+				rel2.offset: -3 -3;
 			}
-			description { state: "mute" 0.0;
+			description { state: "low" 0.0;
 				inherit: "default" 0.0;
-				color: 255 153 51 255;
+				image.normal: "img/audio-volume-low.png";
 			}
-		}
-#define LED(_NAME, _BASE, _X, _SIZE) \
-		part { name: _NAME; type: RECT; \
-			clip_to: "state"; \
-			description { state: "default" 0.0; \
-				rel1.relative: ((_BASE+(_X*8))/160) (80/160); \
-				rel2.relative: ((_BASE+(_X*8))/160) (80/160); \
-				min: 1 1; \
-				max: 1 1; \
-				visible: 0; \
-				color: 255 255 255 0; \
-			} \
-			description { state: "active" 0.0; \
-				inherit: "default" 0.0; \
-				visible: 1; \
-				color: 255 255 255 255; \
-			} \
-		} \
-		part { name: _NAME"g"; \
-			clip_to: "state"; \
-			description { state: "default" 0.0; \
-				rel1.to: _NAME; \
-				rel2.to: _NAME; \
-				image.normal: "led_dot_white.png"; \
-				min: _SIZE _SIZE; \
-				visible: 0; \
-				color: 255 255 255 0; \
-			} \
-			description { state: "active" 0.0; \
-				inherit: "default" 0.0; \
-				visible: 1; \
-				color: 255 255 255 255; \
-			} \
-		}
-		LED("r0", 99,  0,  1)
-		LED("r1", 99,  1,  9)
-		LED("r2", 99,  2, 15)
-		LED("r3", 99,  3, 21)
-		LED("r4", 99,  4, 27)
-		LED("l0", 61,  0,  1)
-		LED("l1", 61, -1,  9)
-		LED("l2", 61, -2, 15)
-		LED("l3", 61, -3, 21)
-		LED("l4", 61, -4, 27)
-#undef LED
-		part { name: "over"; type: RECT;
-			description { state: "default" 0.0;
-				rel1.to: "speaker";
-				rel2.to: "speaker";
-				color: 255 255 255 0;
+			description { state: "medium" 0.0;
+				inherit: "default" 0.0;
+				image.normal: "img/audio-volume-medium.png";
+			}
+			description { state: "high" 0.0;
+				inherit: "default" 0.0;
+				image.normal: "img/audio-volume-high.png";
 			}
 		}
 	}
 	programs {
 		program { name: "mute";
-			action: STATE_SET "mute" 0.0;
-			transition: LINEAR 0.3;
-			target: "state";
-		}
-		program { name: "unmute";
 			action: STATE_SET "default" 0.0;
-			transition: LINEAR 0.2;
-			target: "state";
+			target: "mixer_clip_default";
+			target: "mixer_clip_muted";
 		}
-#define PROG(_NAME) \
-		program { name: _NAME"-on"; \
-			action: STATE_SET "active" 0.0; \
-			target: _NAME; \
-			target: _NAME"g"; \
-		} \
-		program { name: _NAME"-off"; \
-			action: STATE_SET "default" 0.0; \
-			target: _NAME; \
-			target: _NAME"g"; \
+		program { name: "on";
+			action: STATE_SET "muted" 0.0;
+			target: "mixer_clip_default";
+			target: "mixer_clip_muted";
 		}
-		PROG("r0")
-		PROG("r1")
-		PROG("r2")
-		PROG("r3")
-		PROG("r4")
-		PROG("l0")
-		PROG("l1")
-		PROG("l2")
-		PROG("l3")
-		PROG("l4")
-#undef PROG
+		program { name: "none";
+			action: STATE_SET "default" 0.0;
+			target: "audio";
+		}
+		program { name: "low";
+			action: STATE_SET "low" 0.0;
+			target: "audio";
+		}
+		program { name: "medium";
+			action: STATE_SET "medium" 0.0;
+			target: "audio";
+		}
+		program { name: "high";
+			action: STATE_SET "high" 0.0;
+			target: "audio";
+		}
 	}
 }
-
-
