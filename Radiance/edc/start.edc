@@ -1,4 +1,9 @@
 group { name: "e/modules/start/main";
+images {
+	image: "img/logo_small.png" COMP;
+	image: "img/logo_small_glow.png" COMP;
+	image: "img/logo_small_SH.png" COMP;
+}
 parts {	
 	part { name: "shadow";
 		description { state: "default" 0.0;
