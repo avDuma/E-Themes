@@ -84,5 +84,5 @@ collections {
 // icons
 #include "edc/icons.edc" //Complete with border-icons and O/icons* file!
 //extra module themed by Duma
-
+#include "edc/forecasts.edc"
 }
