@@ -1,3 +1,42 @@
+#define MOUSE_ICON(_NAME, _SIZE, _BUTTON)	\
+   group { \
+      name: "e/icons/"_NAME; \
+      max: _SIZE _SIZE; \
+      parts { \
+         part { name: "icon"; mouse_events: 0; \
+            description { state: "default" 0.0; \
+               max: _SIZE _SIZE; \
+               aspect: 1.0 1.0; aspect_preference: BOTH; \
+               color_class: "menu_item"; \
+               image.image: "img/icons/icon_mouse_"_BUTTON"_base.png" COMP; \
+               image.normal: "img/icons/icon_mouse_"_BUTTON"_base.png"; \
+            } \
+            COLOR_STATE("selected", "menu_item_active")	\
+         } \
+         part { name: "button"; mouse_events: 0;	\
+			 description { state: "default" 0.0; \
+               max: _SIZE _SIZE; \
+               aspect: 1.0 1.0; aspect_preference: BOTH; \
+               color_class: "focus"; \
+               image.image: "img/icons/icon_mouse_"_BUTTON".png" COMP; \
+               image.normal: "img/icons/icon_mouse_"_BUTTON".png"; \
+            } \
+		 }	\
+      } \
+      programs {									\
+		program {									\
+        signal: "e,state,selected"; source: "e";	\
+        action: STATE_SET "selected" 0.0;			\
+        target: "icon";								\
+		}											\
+		program {									\
+        signal: "e,state,unselected"; source: "e";	\
+        action: STATE_SET "default" 0.0;			\
+        target: "icon";								\
+		}											\
+	  }		\
+   }
+
 #define ICON(_NAME, _SIZE, _FILE) \
    group { \
       name: "e/icons/"_NAME; \
@@ -11,10 +50,7 @@
                image.image: "img/icons/"_FILE COMP; \
                image.normal: "img/icons/"_FILE; \
             } \
-            description { state: "selected"; \
-				inherit: "default" 0.0; \
-				color_class: "menu_item_active"; \
-            } \
+            COLOR_STATE("selected", "menu_item_active")	\
          } \
       } \
       programs {									\
@@ -39,8 +75,8 @@
 	ICON("system-log-out",								 80, "icon_system-log-out.png")
 	ICON("system-lock-screen",							80, "icon_system-lock-screen.png")
 	ICON("application-exit",							  80, "icon_system-log-out.png")
-	ICON("enlightenment",								  80, "icon_enlightenment.png")
-	ICON("help-about",									  80, "icon_enlightenment.png")
+	ICON("enlightenment",								  80, "icon_moksha.png")
+	ICON("help-about",									  80, "icon_moksha.png")
 	ICON("preferences-desktop-environments",		 80, "icon_preferences-desktop-environments.png")
 	ICON("preferences-applications-screen-lock",	80, "icon_preferences-applications-screen-lock.png")
 	ICON("preferences-applications-screen-unlock", 80, "icon_preferences-applications-screen-unlock.png")
@@ -69,11 +105,8 @@
                image.image: "img/icons/"_FILE COMP;				\
                image.normal: "img/icons/"_FILE;					\
                color_class: "menu_item";			\
-            }										\
-            description { state: "selected" 0.0;	\
-				inherit: "default" 0.0;				\
-				color_class: "menu_item_active";	\
-         }											\
+            }	\
+            COLOR_STATE("selected", "menu_item_active")	\
       }												\
       programs {									\
 		program {									\
@@ -180,11 +213,11 @@
    ICON("preferences-desktop-keyboard-shortcuts",64,"icon_keys.png")          // "enlightenment/keys"
    ICON("preferences-desktop-pointer",64,"icon_mouse.png")             // *** // "enlightenment/mouse"
    ICON("preferences-desktop-mouse",64,"icon_mouse_clean.png")                // "enlightenment/mouse_clean"
-   ICON("preferences-desktop-mouse-left",64,"icon_mouse_left.png")     // *** // "enlightenment/mouse_left"
-   ICON("preferences-desktop-mouse-right",64,"icon_mouse_right.png")   // *** // "enlightenment/mouse_right"
-   ICON("preferences-desktop-mouse-middle",64,"icon_mouse_middle.png") // *** // "enlightenment/mouse_middle"
-   ICON("preferences-desktop-mouse-wheel",64,"icon_mouse_wheel.png")   // *** // "enlightenment/mouse_wheel"
-   ICON("preferences-desktop-mouse-extra",64,"icon_mouse_extra.png")   // *** // "enlightenment/mouse_extra"
+   MOUSE_ICON("preferences-desktop-mouse-left",64,"left")     // *** // "enlightenment/mouse_left"
+   MOUSE_ICON("preferences-desktop-mouse-right",64,"right")   // *** // "enlightenment/mouse_right"
+   MOUSE_ICON("preferences-desktop-mouse-middle",64,"middle") // *** // "enlightenment/mouse_middle"
+   MOUSE_ICON("preferences-desktop-mouse-wheel",64,"wheel")   // *** // "enlightenment/mouse_wheel"
+   MOUSE_ICON("preferences-desktop-mouse-extra",64,"extra")   // *** // "enlightenment/mouse_extra"
    ICON("preferences-desktop-locale",64,"icon_intl.png")                      // "enlightenment/intl"
    ICON("preferences-desktop-mixer",64,"icon_mixer.png")                      // "enlightenment/mixer"
    ICON("preferences-desktop-shelf",64,"icon_shelf.png")                        // *** // "enlightenment/shelf"
@@ -230,7 +263,7 @@
    ICON("preferences-menu-settings",64,"icon_menu_settings.png") // *** // "enlightenment/menu_settings"
    ICON("preferences-advanced",64,"icon_advanced.png")           // *** // "enlightenment/advanced"
    ICON("preferences-behavior",64,"icon_behavior.png")           // *** // "enlightenment/behavior"
-   ICON("preferences-look",64,"icon_look.png")                   // *** // "enlightenment/look"
+   ICON("preferences-look",64,"icon_colors.png")                   // *** // "enlightenment/look"
    ICON("preferences-utils",64,"icon_gadget.png")                // *** // "enlightenment/utils"
    ICON("preferences-extensions",64,"icon_extensions.png")       // *** // "enlightenment/extensions"
    ICON("preferences-file-icons",64,"icon_file_icons.png")       // *** // "enlightenment/file_icons"
@@ -261,16 +294,16 @@
    //Standard Module Category Icons 
    ICON("modules-utils",64,"icon_gadget.png")
    ICON("modules-system",64,"icon_gadget.png")
-   ICON("modules-look",64,"icon_look.png")
+   ICON("modules-look",64,"icon_colors.png")
    ICON("modules-files",64,"icon_efm_folder.png")
    ICON("modules-launcher",64,"icon_run.png")
-   ICON("modules-core",64,"logo_white_128.png")
+   ICON("modules-core",64,"icon_moksha.png")
    ICON("modules-mobile",64,"icon_globe.png")
    ICON("modules-settings",64,"icon_config.png")
    //Standard Emblem Icons
    ICON("emblem-symbolic-link",64,"icon_dummy.png")                // EFMBUTTON("symlink")
    //Standard Place Icons
-   ICON("start-here",128,"logo_white_128.png")                     // "enlightenment/e"
+   ICON("start-here",128,"icon_moksha.png")                     // "enlightenment/e"
    ICON("folder",64,"icon_efm_folder.png")                         // "fileman/folder"
    ICON("user-home",64,"icon_efm_home.png")                        // "fileman/home"
    ICON("user-temp",64,"icon_efm_tmp.png")                  // *** // "fileman/tmp"
@@ -303,3 +336,11 @@
 //	ICON("", 80, "")
 #endif
 #undef ICON
+#undef MOUSE_ICON
+#undef BD_ICON
+#undef ICONMIME
+
+//Just want to thank you ACYL project (Any Color You Like) and
+//Noun Project for their monochromatic and svgs icons: the bestest!
+//ACYL: http://pobtott.deviantart.com/art/Any-Color-You-Like-175624910
+//Noun Project: https://thenounproject.com

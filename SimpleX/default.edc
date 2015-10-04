@@ -83,4 +83,6 @@ collections {
 #include "edc/evrything.edc"
 // icons
 #include "edc/icons.edc" //Complete with border-icons and O/icons* file!
+//extra module themed by Duma
+
 }
