@@ -85,4 +85,6 @@ collections {
 #include "edc/icons.edc" //Complete with border-icons and O/icons* file!
 //extra module themed by Duma
 #include "edc/forecasts.edc"
+#include "edc/mail.edc"
+#include "edc/cpu.edc" //change textblock style to change text color!
 }
