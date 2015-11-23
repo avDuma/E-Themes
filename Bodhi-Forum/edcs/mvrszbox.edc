@@ -1,0 +1,168 @@
+/////////////////////////////////////////////////////////////////////////////
+/*** MOVE/RESIZE BOX ***/
+
+   group {
+      name: "e/widgets/border/default/move";
+      data.item: "shaped" "1";
+      images {
+         image: "icon_win_move.png" COMP;
+      }
+      parts {
+         part {
+            name: "shadow";
+            mouse_events: 0;
+            description {
+				min: 80 40;
+               state: "default" 0.0;
+               align: 0.5 0.0;
+               color_class: "menu_base";
+               image {
+                  normal: "img/popup_shadow.png";
+                  border: 15 15 15 15;
+               }
+            }
+         }
+         part {
+            name: "base";
+            mouse_events: 0;
+            description {
+               state: "default" 0.0;
+               rel1 {
+					offset: 6 6;
+					to: "shadow";
+				}
+				rel2 {
+					offset: -8 -8;
+					to: "shadow";
+					}
+               image {
+                  normal: "img/popup_base.png";
+                  border: 6 6 6 6;
+               }
+               fill.smooth: 0;
+            }
+         }
+         part {
+            name: "icon";
+            mouse_events: 0;
+            description {
+               state: "default" 0.0;
+               align: 0.0 0.5;
+               min: 21 21;
+               max: 21 21;
+               fixed: 1 1;
+               rel1.offset: 2 2;
+               rel1.to_x: "base";
+               rel2.relative: 0.0 1.0;
+               rel2.offset: 2 -3;
+               image.normal: "icon_win_move.png";
+            }
+         }
+         part {
+            name: "e.text.label";
+            type: TEXT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1.to_x: "icon";
+               rel1.offset: 0 3;
+               rel1.relative: 1.0 0.0;
+               rel2.to_x: "base";
+               rel2.offset: -3 -4;
+               color_class: "move_text";
+               text {
+                  text: "X Y";
+                  font: "Sans";
+                  size: 10;
+                  align: 0.5 0.5;
+                  min: 1 1;
+                  text_class: "move_text";
+               }
+            }
+         }
+      }
+   }
+   group {
+      name: "e/widgets/border/default/resize";
+      images {
+         image: "icon_win_resize.png" COMP;
+      }
+      data.item: "shaped" "1";
+      parts {
+         part {
+            name: "shadow";
+            mouse_events: 0;
+            description {
+				min: 80 40;
+               state: "default" 0.0;
+               align: 0.5 0.0;
+               color_class: "menu_base";
+               image {
+                  normal: "img/popup_shadow.png";
+                  border: 15 15 15 15;
+               }
+            }
+         }
+         part {
+            name: "base";
+            mouse_events: 0;
+            description {
+               state: "default" 0.0;
+               rel1 {
+					offset: 6 6;
+					to: "shadow";
+				}
+				rel2 {
+					offset: -8 -8;
+					to: "shadow";
+					}
+               image {
+                  normal: "img/popup_base.png";
+                  border: 6 6 6 6;
+               }
+               fill.smooth: 0;
+            }
+         }
+         part {
+            name: "icon";
+            mouse_events: 0;
+            description {
+               state: "default" 0.0;
+               align: 0.0 0.5;
+               min: 21 21;
+               max: 21 21;
+               fixed: 1 1;
+               rel1.offset: 2 2;
+               rel1.to_x: "base";
+               rel2.relative: 0.0 1.0;
+               rel2.offset: 2 -3;
+               image.normal: "icon_win_resize.png";
+            }
+         }
+         part {
+            name: "e.text.label";
+            type: TEXT;
+            scale: 1;
+            description {
+               state: "default" 0.0;
+               rel1.to_x: "icon";
+               rel1.offset: 0 3;
+               rel1.relative: 1.0 0.0;
+               rel2.to_x: "base";
+               rel2.offset: -3 -4;
+               color_class: "resize_text";
+               text {
+                  text: "WxH";
+                  font: "Sans";
+                  size: 10;
+                  align: 0.5 0.5;
+                  min: 1 1;
+                  text_class: "resize_text";
+               }
+            }
+         }
+      }
+   }
+
+
+
