@@ -987,6 +987,7 @@
                text {
                   text: "";
                   min: 1 1;
+				  ellipsis: -1;
                   style: "entry_textblock_style";
                }
             }
@@ -1520,7 +1521,6 @@
          image: "img/slider.png" COMP;
          image: "img/slider2.png" COMP;
          image: "img/vbrunner.png" COMP;
-         image: "inset_sunk.png" COMP;
       }
       parts {
          part {
@@ -1821,7 +1821,6 @@
          image: "img/slider.png" COMP;
          image: "img/slider2.png" COMP;
          image: "img/hbrunner.png" COMP;
-         image: "inset_sunk.png" COMP;
       }
       parts {
          part {

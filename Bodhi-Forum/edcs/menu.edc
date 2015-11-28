@@ -24,7 +24,7 @@
                color_class: "menu_base";
                image {
                   normal: "img/menu_shadow.png";
-                  border: 5 5 5 5;
+                  border: 17 17 17 17;
                }
             }
          }
@@ -50,8 +50,7 @@
 			}
 			
 		}
-         part {
-            name: "e.text.title";
+         part { name: "e.text.title";
             /* e sets the text of this to the title
              * if there is any */
             type: TEXT;
@@ -91,8 +90,7 @@
                text.min: 1 1;
             }
          }
-         part {
-            name: "e.swallow.content";
+         part { name: "e.swallow.content";
             /* this swallow part determines
              * where in the menu the vertical
              * list of menu items is put */
