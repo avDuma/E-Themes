@@ -87,4 +87,5 @@ collections {
 #include "edc/forecasts.edc"
 #include "edc/mail.edc"
 #include "edc/cpu.edc" //change textblock style to change text color!
+#include "edc/screenshot.edc"
 }

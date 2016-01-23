@@ -1,0 +1,93 @@
+group { name: "modules/screenshot/main";
+	max: 128 128;
+	images.image: "img/icons/icon_screenshot.png" COMP;
+	script {
+		public message(Msg_Type:type, id, ...)
+			{
+				if (type == MSG_INT_SET)
+					{
+						set_text(PART:"e.text.counter", "");
+						run_program(PROGRAM:"do_shot");
+					}
+			}
+	}
+	parts {
+		part { name: "icon"; mouse_events: 0; type: IMAGE;
+			description { state: "default" 0.0;
+				aspect: 1.0 1.0;
+				aspect_preference: BOTH;
+				rel1.offset: 2 2;
+				rel2.offset: -3 -3;
+				image.normal: "img/icons/icon_screenshot.png";
+				color_class: "module_label";
+			}
+			description { state: "pressed" 0.0;
+				inherit: "default" 0.0;
+				rel1.offset: 4 4;
+				rel2.offset: -5 -5;
+			}
+			COLOR_STATE("active","focus")
+		}
+		part { name: "e.text.counter"; mouse_events: 0; type: TEXT;
+			effect: OUTLINE;
+			description { state: "default" 0.0;
+				color: 255 255 255 255;
+				color2: 255 255 255 255;
+				color3: 255 255 255 255;
+				color_class: "module_label";
+				visible: 1;
+				text {
+					text: "";
+					font: "Sans:style=Bold";
+					size: 16;
+					min: 1 1;
+					align: 0.5 0.5;
+				}
+			}
+		}
+		part { name: "event"; mouse_events: 1; repeat_events: 0; type: RECT;
+			ignore_flags: ON_HOLD;
+			description { state: "default" 0.0;
+				color: 255 255 255 0;
+				rel1.to: "icon";
+				rel2.to: "icon";
+			}
+		}
+	}
+	programs {
+		CLICK("icon","event","default","pressed")
+		program { name: "mouse_up";
+			signal: "mouse,clicked,1"; source: "event";
+			action: SIGNAL_EMIT "e,action,screenshot,start" "";
+		}
+		program { name: "do_shot";
+			action: STATE_SET "default" 0.0;
+			target: "e.text.counter";
+			target: "icon";
+			after: "flash_start";
+		}
+		program { name: "flash_start";
+			action: STATE_SET "active" 0.0;
+			target: "icon";
+			transition: LINEAR 0.0;
+			after: "flash_end";
+		}
+		program { name: "flash_end";
+			action: STATE_SET "default" 0.0;
+			transition: LINEAR 0.0;
+			target: "icon";
+			in: 0.1 0.1;
+			after: "emit";
+		}
+		program { name: "emit";
+			action: SIGNAL_EMIT "e,action,screenshot,exec" "";
+			in: 0.1 0.1;
+		}
+		program { name: "stop";
+			signal: "e,action,screenshot,stop"; source: "";
+			action: STATE_SET "default" 0.0;
+			target: "e.text.counter";
+			target: "icon";
+		}
+	}
+}
