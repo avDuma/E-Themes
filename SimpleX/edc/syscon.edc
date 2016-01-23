@@ -177,3 +177,71 @@ group { name: "e/widgets/syscon/item/button";
 		}
 	}
 }
+
+group 
+     { name: "e/modules/syscon/button";
+        images.image: "img/icons/icon_system-shutdown.png" COMP;
+        min: 16 16;
+        max: 128 128;
+     parts {
+             part { name: "icon"; type: IMAGE;
+                  description { state: "default" 0.0;
+                       aspect: 1.0 1.0;
+                       aspect_preference: BOTH;
+                       max: 144 144;
+						rel1.offset: 1 1;
+						rel2.offset: -2 -2;
+						color_class: "module_label";
+						image.normal: "img/icons/icon_system-shutdown.png";
+						visible: 0;
+					}
+					description { state: "show" 0.0;
+						inherit: "default";
+						visible: 1;						
+					}
+				}      
+        part { name: "icon_overlay"; mouse_events: 1;
+         description { state: "default" 0.0;
+            aspect: 1.0 1.0; aspect_preference: BOTH;
+            rel1.offset: 1 1;
+            rel2.offset: -2 -2;
+            color_class: "module_label";
+            image.normal: "img/icons/icon_system-shutdown.png";
+         }
+         description { state: "huge" 0.0;
+            inherit: "default" 0.0;
+            visible: 1;
+            rel1.relative: -2.0  -2.0;
+            rel2.relative: 3.0  3.0;
+            color: 255 255 255 0;
+         }
+      }
+      }
+        programs {
+        OVER("icon","icon_overlay","default","show")
+             program  {
+                  name: "button_clicked";
+                  signal: "mouse,clicked,1";
+                  source: "icon_overlay";
+                  action: SIGNAL_EMIT "e,action,shutdown,show" "";
+               }
+               program { name: "go_big";
+         action: STATE_SET "visible" 0.0;
+         target: "icon_overlay";
+      }
+      program { name: "go_big2";
+      signal: "mouse,in"; source: "icon_overlay";
+         action: STATE_SET "huge" 0.0;
+         transition: LINEAR 0.7;
+         target: "icon_overlay";
+         after: "go_big";
+      }
+      program { name: "go_big_stop";
+		signal: "mouse,out"; source: "icon_overlay";
+		action: ACTION_STOP;
+		target: "go_big";
+		target: "go_big2";
+		after: "go_big";
+      }
+     }
+}

@@ -1,7 +1,3 @@
-
-
-
-	
 group { name: "modules/cpu/main";
 	images.image: "img/cpu.png" COMP;
 	styles {
