@@ -17,8 +17,10 @@
 	// theme api version. from 1.10 on we will check version to avoid
 	// compatibility issues: uncomment the following line (20) and E19
 	// will load, but something could be wrong!
-	// item: "version"			"110";
+	item: "version"			"110";
 }
+
+externals.external: "elm";
 
 #include "simpleX_conf.edc"
 #include "color_class.edc"
@@ -88,4 +90,9 @@ collections {
 #include "edc/mail.edc"
 #include "edc/cpu.edc" //change textblock style to change text color!
 #include "edc/screenshot.edc"
+
+//ELEMENTARY!!
+#include "edc/elm/access.edc"
+#include "edc/elm/actionslider.edc"
+#include "edc/elm/bg.edc"
 }
