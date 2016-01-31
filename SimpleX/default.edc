@@ -6,7 +6,7 @@
  *				Written by Alberto "Duma" Verdoja						*
  *																		*
  * 							give me a suggest: a.verdoja@gmail.com		*
- * 						 or search me (Duma) on forums.bodhilinux.com   *
+ * 						 or search me (Duma) on forums.bodhilinux.com	*
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
  
  data {
@@ -96,7 +96,7 @@ collections {
 #include "edc/elm/actionslider.edc"
 #include "edc/elm/bg.edc"
 #include "edc/elm/border.edc"
-//#include "edc/elm/bubble.edc"
+#include "edc/elm/bubble.edc"
 //#include "edc/elm/button.edc"
 //#include "edc/elm/calendar.edc"
 //#include "edc/elm/check.edc"
